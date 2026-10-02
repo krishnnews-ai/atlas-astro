@@ -1,12 +1,29 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { homeDoc } from '../lib/content';
-import { site } from '../config/site';
+import { posts } from '../lib/content';
 
-// `/` renders the variant chosen in src/config/site.ts (Blogar-style switch).
-const doc = homeDoc(site.homeVariant);
+const latest = posts.slice(-20).reverse();
 ---
 
-<Layout {...doc}>
-  <Fragment set:html={doc.main} />
+<Layout
+  title="CoinAI News — Latest Crypto & AI News"
+  description="Latest crypto & AI news"
+  bodyClass="home page-template page-template-page-front page-template-page-front-php page page-id-41 wp-embed-responsive theme-atlas s-front site-skin site-light box-solid wheading-simple sticky-header-active sticky-sidebar sidebar-full elementor-default elementor-kit-6 elementor-page elementor-page-41"
+  css="home-default"
+  js="home-default"
+  dir="ltr"
+>
+  <main id="main" class="site-main">
+    <header class="page-header">
+      <h1 class="page-title">Latest News</h1>
+    </header>
+    <div class="post-list">
+      {latest.map((p) => (
+        <article class="post-item">
+          <h2><a href={`/${p.slug}/`}>{p.title}</a></h2>
+          {p.excerpt && <p>{p.excerpt}</p>}
+        </article>
+      ))}
+    </div>
+  </main>
 </Layout>
