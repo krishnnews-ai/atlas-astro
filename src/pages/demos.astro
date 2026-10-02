@@ -1,11 +1,28 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { homeDoc } from '../lib/content';
+import { posts } from '../lib/content';
 
-// The /atlas/ demo-picker splash page.
-const doc = homeDoc('splash');
+const latest = posts.slice(-20).reverse();
 ---
 
-<Layout {...doc}>
-  <Fragment set:html={doc.main} />
+<Layout
+  title="CoinAI News — Latest Crypto & AI News"
+  description="Latest crypto & AI news"
+  bodyClass="home page-template page-template-page-front page-template-page-front-php page page-id-41 wp-embed-responsive theme-atlas s-front site-skin site-light box-solid wheading-simple sticky-header-active sticky-sidebar sidebar-full elementor-default elementor-kit-6 elementor-page elementor-page-41"
+  css="home-default"
+  js="home-default"
+  dir="ltr"
+>
+  <main id="main" class="site-main" style="max-width:900px;margin:0 auto;padding:20px;">
+    <h1 style="font-size:28px;margin-bottom:24px;">Latest Crypto & AI News</h1>
+    {latest.map((p) => (
+      <article style="border-bottom:1px solid #eee;padding:20px 0;">
+        <h2 style="margin:0 0 8px;font-size:20px;">
+          <a href={`/${p.slug}/`} style="text-decoration:none;color:#111;">{p.title}</a>
+        </h2>
+        {p.excerpt && <p style="color:#555;margin:0 0 6px;">{p.excerpt}</p>}
+        <small style="color:#999;">{p.date}</small>
+      </article>
+    ))}
+  </main>
 </Layout>
