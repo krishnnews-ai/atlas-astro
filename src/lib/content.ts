@@ -1,4 +1,3 @@
-// Loads the cleaned HTML fragments + routing manifest produced by harvest/build-generated.mjs.
 import manifest from '../data/manifest.json';
 
 const CHROME = import.meta.glob('../generated/chrome/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
@@ -13,7 +12,8 @@ const pick = (map: Record<string, string>, file: string) => {
   return k ? map[k] : '';
 };
 
-const SITE_DESC = 'CoinAI News — Latest Crypto & AI News';
+const SITE_DESC = 'CoinAI News';
+const DEFAULT_BODY_CLASS = 'post-template-default single single-post single-format-standard wp-embed-responsive theme-atlas s-front site-skin site-light box-solid wheading-simple sticky-header-active reading-indicator-bottom sticky-sidebar elementor-default elementor-kit-6';
 
 type Chrome = { header: string; footer: string; tail: string };
 const chrome = (key: string): Chrome => ({
@@ -30,8 +30,6 @@ export const pages = manifest.pages as Record<string, { title: string; bodyClass
 
 export type Doc = { title: string; description: string; bodyClass: string; css: string; js: string; dir: string; main: string } & Chrome;
 
-const DEFAULT_BODY_CLASS = 'post-template-default single single-post single-format-standard wp-embed-responsive theme-atlas s-front site-skin site-light box-solid wheading-simple sticky-header-active reading-indicator-bottom sticky-sidebar elementor-default elementor-kit-6';
-
 export function homeDoc(variant: string): Doc {
   const m = homes[variant] ?? homes.default;
   const key = homes[variant] ? variant : 'default';
@@ -44,14 +42,10 @@ export function postDoc(slug: string): Doc {
     return { title: 'Not Found', description: '', bodyClass: DEFAULT_BODY_CLASS, css: 'single', js: 'single', dir: 'ltr', main: '', ...chrome('inner') };
   }
   return {
-    title: p.title || slug,
-    description: p.excerpt || '',
+    title: p.title || slug, description: p.excerpt || '',
     bodyClass: p.bodyClass || DEFAULT_BODY_CLASS,
-    css: 'single',
-    js: 'single',
-    dir: 'ltr',
-    main: pick(POST, slug + '.html'),
-    ...chrome('inner')
+    css: 'single', js: 'single', dir: 'ltr',
+    main: pick(POST, slug + '.html'), ...chrome('inner')
   };
 }
 
