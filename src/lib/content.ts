@@ -13,7 +13,7 @@ const pick = (map: Record<string, string>, file: string) => {
   return k ? map[k] : '';
 };
 
-const SITE_DESC = 'Atlas is a responsive blog, magazine & news theme — a pixel-faithful Astro re-creation.';
+const SITE_DESC = 'CoinAI News — Latest Crypto & AI News';
 
 type Chrome = { header: string; footer: string; tail: string };
 const chrome = (key: string): Chrome => ({
@@ -30,6 +30,8 @@ export const pages = manifest.pages as Record<string, { title: string; bodyClass
 
 export type Doc = { title: string; description: string; bodyClass: string; css: string; js: string; dir: string; main: string } & Chrome;
 
+const DEFAULT_BODY_CLASS = 'post-template-default single single-post single-format-standard wp-embed-responsive theme-atlas s-front site-skin site-light box-solid wheading-simple sticky-header-active reading-indicator-bottom sticky-sidebar elementor-default elementor-kit-6';
+
 export function homeDoc(variant: string): Doc {
   const m = homes[variant] ?? homes.default;
   const key = homes[variant] ? variant : 'default';
@@ -39,12 +41,12 @@ export function homeDoc(variant: string): Doc {
 export function postDoc(slug: string): Doc {
   const p = posts.find((x) => x.slug === slug);
   if (!p) {
-    return { title: 'Not Found', description: '', bodyClass: 'single-post', css: 'single', js: 'single', dir: 'ltr', main: '', ...chrome('inner') };
+    return { title: 'Not Found', description: '', bodyClass: DEFAULT_BODY_CLASS, css: 'single', js: 'single', dir: 'ltr', main: '', ...chrome('inner') };
   }
   return {
     title: p.title || slug,
     description: p.excerpt || '',
-    bodyClass: p.bodyClass || 'single-post',
+    bodyClass: p.bodyClass || DEFAULT_BODY_CLASS,
     css: 'single',
     js: 'single',
     dir: 'ltr',
