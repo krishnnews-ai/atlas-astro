@@ -35,18 +35,34 @@ export function homeDoc(variant: string): Doc {
   const key = homes[variant] ? variant : 'default';
   return { title: m.title, description: SITE_DESC, bodyClass: m.bodyClass, css: m.css, js: m.css, dir: m.dir || 'ltr', main: pick(HOME, key + '.html'), ...chrome(m.chrome) };
 }
+
 export function postDoc(slug: string): Doc {
-  const p = posts.find((x) => x.slug === slug)!;
-  return { title: p.title, description: p.excerpt, bodyClass: p.bodyClass, css: 'single', js: 'single', dir: 'ltr', main: pick(POST, slug + '.html'), ...chrome('inner') };
+  const p = posts.find((x) => x.slug === slug);
+  if (!p) {
+    return { title: 'Not Found', description: '', bodyClass: 'single-post', css: 'single', js: 'single', dir: 'ltr', main: '', ...chrome('inner') };
+  }
+  return {
+    title: p.title || slug,
+    description: p.excerpt || '',
+    bodyClass: p.bodyClass || 'single-post',
+    css: 'single',
+    js: 'single',
+    dir: 'ltr',
+    main: pick(POST, slug + '.html'),
+    ...chrome('inner')
+  };
 }
+
 export function catDoc(cat: string): Doc {
   const m = categories[cat];
-  return { title: m.title, description: SITE_DESC, bodyClass: m.bodyClass, css: 'archive', js: 'archive', dir: 'ltr', main: pick(CAT, cat + '.html'), ...chrome('inner') };
+  return { title: m?.title || cat, description: SITE_DESC, bodyClass: m?.bodyClass || 'archive', css: 'archive', js: 'archive', dir: 'ltr', main: pick(CAT, cat + '.html'), ...chrome('inner') };
 }
+
 export function tagDoc(tag: string): Doc {
   const m = tags[tag];
-  return { title: m.title, description: SITE_DESC, bodyClass: m.bodyClass, css: 'archive', js: 'archive', dir: 'ltr', main: pick(TAG, tag + '.html'), ...chrome('inner') };
+  return { title: m?.title || tag, description: SITE_DESC, bodyClass: m?.bodyClass || 'archive', css: 'archive', js: 'archive', dir: 'ltr', main: pick(TAG, tag + '.html'), ...chrome('inner') };
 }
+
 export function pageDoc(name: string, css = 'archive'): Doc {
   const m = pages[name];
   return { title: m?.title || 'Atlas', description: SITE_DESC, bodyClass: m?.bodyClass || '', css, js: css, dir: 'ltr', main: pick(PAGE, name + '.html'), ...chrome('inner') };
