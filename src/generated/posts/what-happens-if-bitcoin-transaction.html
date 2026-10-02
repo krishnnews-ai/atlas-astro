@@ -1,0 +1,402 @@
+<!--
+Title: What Happens If a Bitcoin Transaction Disappears From the Mempool?
+Author: Top Crypto News
+Published: 2026-09-08T13:13:03.260Z
+Updated: 2026-09-08T13:13:03.261Z
+Categories: Coin Ai News, wallet, Sponsored
+MetaDescription: What happens when a Bitcoin transaction disappears from the mempool? Learn why transactions are dropped, replaced, confirmed, or rebroadcast.
+-->
+
+<article class="atlas-post" data-slug="what-happens-if-bitcoin-transaction">
+  <header class="atlas-post__header">
+    <h1 class="atlas-post__title">What Happens If a Bitcoin Transaction Disappears From the Mempool?</h1>
+    <div class="atlas-post__meta">
+      <span class="atlas-post__author">Top Crypto News</span>
+      <time class="atlas-post__date" datetime="2026-09-08T13:13:03.260Z">2026-09-08T13:13:03.260Z</time>
+    </div>
+    <div class="atlas-post__categories">
+      <span class="atlas-post__category">Coin Ai News</span><span class="atlas-post__category">wallet</span><span class="atlas-post__category">Sponsored</span>
+    </div>
+  </header>
+
+  <div class="atlas-post__content">
+<article>
+
+<h1><div class="separator" style="clear: both; text-align: center;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhoibXQ4fQ-4gY5J7Ljpg7OPVbMnsOyaPrz-jEeZzJe-9zO0FGWxBwrHGpLJ9ONiv5ExBRB94IwaV-f5LjasJuIsKSVsfdvfpMy3zgy8sS_ps7t6ngMfJoGSNhRcJ3zasBJ6M8xoSkuU8fo_UQxPflSsV-yA0XZ946WPd0C24JBT5S_LMSKsqaDfytOadNF/s1670/bitcoin-transaction-disappears-from-mempool.jpg.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img alt="Bitcoin transaction disappears from the mempool while waiting for confirmation" border="0" data-original-height="941" data-original-width="1670" height="360" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhoibXQ4fQ-4gY5J7Ljpg7OPVbMnsOyaPrz-jEeZzJe-9zO0FGWxBwrHGpLJ9ONiv5ExBRB94IwaV-f5LjasJuIsKSVsfdvfpMy3zgy8sS_ps7t6ngMfJoGSNhRcJ3zasBJ6M8xoSkuU8fo_UQxPflSsV-yA0XZ946WPd0C24JBT5S_LMSKsqaDfytOadNF/w640-h360/bitcoin-transaction-disappears-from-mempool.jpg.png" title="What Happens If a Bitcoin Transaction Disappears From the Mempool?" width="640" /></a></div><br /><strong><span>&nbsp;&nbsp; &nbsp;</span><br /></strong></h1><h1><strong><span style="font-size: medium;">By CoinAINews Staff</span></strong></h1><p>You send Bitcoin, receive a transaction ID, and watch the payment sit in the mempool. Then, unexpectedly, it disappears.</p>
+
+<p>That can be alarming. The first thought is usually: <em>Did my Bitcoin disappear? Was the transaction cancelled? Did something go wrong?</em></p>
+
+<p>Usually, the answer is no.</p>
+
+<p>When an unconfirmed Bitcoin transaction disappears from the mempool, it generally means that a particular node or group of nodes is no longer keeping or relaying that transaction. The transaction may have been <strong>confirmed, replaced, evicted because of mempool pressure, or removed after remaining unconfirmed for too long</strong>.</p>
+
+<p>The important distinction is this: <strong>disappearing from the mempool is not the same thing as being confirmed or permanently cancelled.</strong></p>
+
+<h2>Quick Answer: What Does It Mean When a Bitcoin Transaction Disappears?</h2>
+
+<div style="margin: 20px 0px; overflow-x: auto; width: 100%;">
+<table style="border-collapse: collapse; min-width: 720px; width: 100%;">
+<thead>
+<tr>
+<th style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;">What happened?</th>
+<th style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;">What it usually means</th>
+<th style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;">What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Transaction confirmed</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">It was included in a Bitcoin block.</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Check the transaction's confirmations.</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Transaction replaced</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">A conflicting transaction replaced it, commonly through RBF.</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Look for the replacement transaction.</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Low-fee transaction dropped</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">The transaction was no longer attractive for relay or was evicted from a full mempool.</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Check the transaction status and rebroadcast or fee-bump when appropriate.</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Long-unconfirmed transaction expires</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Nodes can remove old unconfirmed transactions from their mempools.</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Verify whether it confirmed elsewhere before taking action.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>First, What Is the Bitcoin Mempool?</h2>
+
+<p>The mempool is essentially a waiting area for Bitcoin transactions that have been broadcast to nodes but have not yet been included in a block.</p>
+
+<p>When you send BTC, your wallet creates and signs a transaction. The transaction is then broadcast to the Bitcoin network. Nodes validate it according to their rules and may keep it in their local mempool while miners consider it for inclusion in a future block.</p>
+
+<p>It is important to understand that Bitcoin does not have one single global mempool.</p>
+
+<p>Different nodes can have slightly different sets of unconfirmed transactions. A transaction may disappear from one node's mempool while still being visible elsewhere.</p>
+
+<p>Bitcoin's developer documentation also notes that nodes do not necessarily retain arbitrary historic transactions that are no longer in their memory pool or relay set. </p>
+
+<h2>Why Would a Bitcoin Transaction Disappear From the Mempool?</h2>
+
+<p>There are several possible explanations. The most important ones are confirmation, replacement and eviction.</p>
+
+<h3>1. The Transaction Was Confirmed</h3>
+
+<p>The simplest explanation is that the transaction was mined into a block.</p>
+
+<p>Once a transaction is included in the <a href="https://www.coinainews.com/2026/09/can-bitcoin-transaction-get-stuck.html">Bitcoin blockchain</a>, it is no longer an unconfirmed mempool transaction. It disappears from the mempool because it has moved into the permanent blockchain history.</p>
+
+<p>This is why a transaction disappearing from a mempool explorer is not automatically bad news.</p>
+
+<p>Before assuming the payment failed, search the transaction ID on a reliable Bitcoin block explorer and check whether it has a block height and confirmations.</p>
+
+<h3>2. The Transaction Was Replaced by Another Transaction</h3>
+
+<p>Bitcoin supports transaction replacement mechanisms such as <strong>Replace-by-Fee, or RBF</strong>.</p>
+
+<p>With RBF, an unconfirmed transaction can be replaced by another transaction that spends the same inputs under the applicable replacement rules, generally offering a higher fee rate.</p>
+
+<p>This can happen when a sender realizes that the original fee is too low and uses a wallet's fee-bumping feature.</p>
+
+<p>The original transaction may then disappear from the <a href="https://www.coinainews.com/2026/09/can-someone-steal-bitcoin-with-wallet-address.html">mempool </a>while the replacement transaction becomes the one waiting for confirmation. Bitcoin's BIP 125 describes the opt-in RBF mechanism for replacing transactions in node mempools. </p>
+
+<p>So if your original transaction suddenly disappears, check whether a replacement transaction exists before assuming the BTC has been lost.</p>
+
+<h3>3. The Transaction Was Dropped Because of Low Fee Pressure</h3>
+
+<p>Bitcoin block space is limited. When many transactions compete for that space, fee rates can rise.</p>
+
+<p>Transactions paying relatively low fees can remain unconfirmed while higher-fee transactions move ahead of them.</p>
+
+<p>Bitcoin.org explains that transaction fees are based on transaction size and the price of block space rather than simply the amount of BTC being sent. </p>
+
+<p>If a transaction remains unconfirmed and becomes unattractive compared with the transactions competing for block space, a node can eventually remove it from its mempool.</p>
+
+<h3>4. The Mempool Became Too Full</h3>
+
+<p>Mempools have resource limits. Bitcoin Core currently has a default maximum mempool size of 300 MB, and its policy allows transactions to be removed when the mempool needs to make room.</p>
+
+<p>This means a transaction does not necessarily have to wait for the full expiration period before disappearing.</p>
+
+<p>In a crowded fee market, lower-fee transactions can be pushed out as nodes prioritize their available mempool space.</p>
+
+<h3>5. The Transaction Reached Its Mempool Expiry</h3>
+
+<p>Bitcoin Core's current source code sets the default <code>-mempoolexpiry</code> value to <strong>336 hours</strong>, which equals approximately <strong>14 days</strong>. This is a node policy setting, not a Bitcoin consensus rule. Operators can configure it differently. </p>
+
+<p>That distinction matters.</p>
+
+<p>There is no Bitcoin blockchain rule saying that every unconfirmed transaction must disappear exactly after 14 days. Instead, <a href="https://www.coinainews.com/2026/09/why-can-sending-10-bitcoin-cost-more.html">Bitcoin Core's</a> default policy tells a node not to keep a transaction in its mempool longer than that configured period.</p>
+
+<p>Other nodes may have different policies, and a transaction can be removed earlier for other reasons.</p>
+
+<h2>Does a Disappeared Transaction Mean My Bitcoin Is Gone?</h2>
+
+<p><strong>No, not by itself.</strong></p>
+
+<p>A transaction disappearing from the mempool does not mean that the Bitcoin itself has vanished from the blockchain.</p>
+
+<p>The important question is whether the transaction was actually confirmed.</p>
+
+<p>If it was not confirmed and was simply dropped from the mempool, the original transaction did not become part of the blockchain. In a normal self-custody situation, the inputs have not been permanently spent by that transaction.</p>
+
+<p>However, you should not immediately create another transaction without checking the original transaction's status. A transaction can still exist in another node's mempool or may have been confirmed even if one particular explorer no longer shows it.</p>
+
+<h2>Can a Dropped Bitcoin Transaction Come Back?</h2>
+
+<p>Yes.</p>
+
+<p>A transaction that disappeared from one or more mempools can potentially be broadcast again if it is still valid and its inputs have not been spent by a conflicting confirmed transaction.</p>
+
+<p>This is one reason wallets can sometimes show an old transaction as pending again after rebroadcasting.</p>
+
+<p>Bitcoin's network is decentralized, so there is no single central server that permanently decides whether an unconfirmed transaction exists.</p>
+
+<p>However, if the transaction has been replaced or its inputs have already been spent by another confirmed transaction, simply rebroadcasting the old transaction will not make it valid again.</p>
+
+<h2>What If the Transaction Disappears but the Recipient Has Not Received Bitcoin?</h2>
+
+<p>This is one of the most confusing situations for users.</p>
+
+<p>Suppose you send BTC, the recipient sees nothing, and later the transaction disappears from the mempool.</p>
+
+<p>Do not immediately send the Bitcoin again.</p>
+
+<p>First check these things:</p>
+
+<ol>
+<li>Look up the original transaction ID.</li>
+<li>Check whether the transaction has any confirmations.</li>
+<li>Check whether a replacement transaction exists.</li>
+<li>Confirm that the receiving address was correct.</li>
+<li>Check whether your wallet still considers the inputs spent or pending.</li>
+<li>Check whether the transaction was dropped because of its fee rate.</li>
+</ol>
+
+<p>If the original transaction was never confirmed and was genuinely dropped, your wallet may be able to create or rebroadcast a valid transaction using the available funds.</p>
+
+<h2>What Happens to the Bitcoin After a Transaction Is Dropped?</h2>
+
+<p>This depends on the wallet's state and whether another transaction has spent the same inputs.</p>
+
+<p>A useful way to think about it is that an unconfirmed transaction is a proposed spend, not yet a confirmed change to Bitcoin's blockchain state.</p>
+
+<p>If that transaction disappears without being confirmed or replaced by a conflicting confirmed transaction, the underlying unspent outputs can remain available to the owner.</p>
+
+<p>But wallet software may continue displaying the funds as unavailable until it rescans the network, rebroadcasts transactions, or updates its internal transaction state.</p>
+
+<p>That is why the balance shown by a wallet and the actual blockchain state can temporarily look confusing after a transaction disappears.</p>
+
+<h2>Can You Cancel a Bitcoin Transaction After It Disappears?</h2>
+
+<p>There is no universal Bitcoin "cancel" button.</p>
+
+<p>If an unconfirmed transaction is still in the network and supports an appropriate replacement mechanism, the sender may be able to replace it.</p>
+
+<p>If it has already disappeared from many mempools, the situation can be different. It may simply need to be rebroadcast, replaced, or recreated depending on what happened to the original inputs.</p>
+
+<p>Once a transaction is confirmed in a Bitcoin block, it cannot be reversed through a normal cancellation request.</p>
+
+<h2>RBF Can Explain a Disappearing Transaction</h2>
+
+<p>Replace-by-Fee is particularly important when investigating a missing mempool transaction.</p>
+
+<p>Imagine you send 0.01 BTC with a fee that later turns out to be too low.</p>
+
+<p>Your wallet may create a replacement transaction using the same input but a higher fee. If the replacement satisfies the applicable relay rules, nodes can remove the old transaction and accept the replacement.</p>
+
+<p>The result can look like this:</p>
+
+<div style="margin: 20px 0px; overflow-x: auto; width: 100%;">
+<table style="border-collapse: collapse; min-width: 650px; width: 100%;">
+<thead>
+<tr>
+<th style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;">Stage</th>
+<th style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;">Transaction</th>
+<th style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">1</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Original transaction</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Unconfirmed</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">2</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Higher-fee replacement</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Broadcast</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">3</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Original transaction</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Removed/replaced</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">4</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Replacement transaction</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Waiting for confirmation</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>What About CPFP?</h2>
+
+<p><strong>Child Pays for Parent, or CPFP</strong>, is another mechanism used to help accelerate an unconfirmed transaction.</p>
+
+<p>Instead of replacing the original transaction, a new transaction spends an output from the unconfirmed transaction and attaches a higher fee. Miners can consider the combined fee economics of the parent and child transactions.</p>
+
+<p>CPFP is particularly useful when the recipient controls an output from the pending transaction and wants to help get the package confirmed.</p>
+
+<p>Importantly, CPFP does not mean the original transaction has been cancelled. It is a way of encouraging confirmation of the transaction package.</p>
+
+<h2>Why Does a Bitcoin Transaction Disappear From One Explorer but Not Another?</h2>
+
+<p>This can happen because different services observe different nodes and relay paths.</p>
+
+<p>Bitcoin does not maintain one global mempool database. Each node maintains its own local mempool, subject to its own policies and configuration.</p>
+
+<p>Therefore, seeing a transaction disappear from one mempool explorer does not automatically prove that every Bitcoin node has forgotten it.</p>
+
+<p>For that reason, a transaction ID should be checked against more than one reliable source when the status is unclear.</p>
+
+<h2>What Should You Do If Your Bitcoin Transaction Disappears?</h2>
+
+<p>Stay calm and follow a simple checklist.</p>
+
+<h3>Step 1: Check the Transaction ID</h3>
+
+<p>Search the transaction ID in a reputable Bitcoin block explorer.</p>
+
+<h3>Step 2: Check Confirmations</h3>
+
+<p>If the transaction has a block height and confirmations, it was confirmed. The fact that it no longer appears in the mempool is normal.</p>
+
+<h3>Step 3: Look for a Replacement</h3>
+
+<p>If your wallet supports RBF, check whether it created a replacement transaction.</p>
+
+<h3>Step 4: Check the Fee</h3>
+
+<p>Compare the transaction's fee rate with the fee environment around the time it was broadcast. Bitcoin fees are based on transaction size and competition for block space, not simply on how much BTC is being transferred. </p>
+
+<h3>Step 5: Check Your Wallet</h3>
+
+<p>Your wallet may need to rescan or rebroadcast the transaction. The exact process depends on the wallet you use.</p>
+
+<h3>Step 6: Do Not Double-Spend Manually Without Understanding the State</h3>
+
+<p>Sending another transaction immediately can create unnecessary confusion if the original transaction is still alive somewhere on the network.</p>
+
+<p>Always determine what happened to the original inputs first.</p>
+
+<h2>Is a Bitcoin Transaction Permanently Lost If It Leaves the Mempool?</h2>
+
+<p>Not necessarily.</p>
+
+<p>The word "disappeared" can sound much more serious than it actually is.</p>
+
+<p>A transaction can disappear because it was confirmed. It can disappear because it was replaced. It can disappear because a node evicted it. Or it can disappear because it reached that node's configured mempool expiry.</p>
+
+<p>None of those situations automatically means that Bitcoin itself has been destroyed.</p>
+
+<p>The blockchain is what ultimately matters for confirmed ownership and spending history.</p>
+
+<h2>Pending vs Dropped vs Confirmed Bitcoin Transactions</h2>
+
+<div style="margin: 20px 0px; overflow-x: auto; width: 100%;">
+<table style="border-collapse: collapse; min-width: 720px; width: 100%;">
+<thead>
+<tr>
+<th style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;">Status</th>
+<th style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;">Meaning</th>
+<th style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;">Can it change?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"><strong>Pending</strong></td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Transaction is unconfirmed and may be in one or more mempools.</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Yes.</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"><strong>Dropped</strong></td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">A node no longer keeps the transaction in its mempool.</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">It may be rebroadcast if still valid.</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"><strong>Replaced</strong></td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Another transaction superseded the original under replacement rules.</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">The replacement may confirm.</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"><strong>Confirmed</strong></td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Transaction is included in a block.</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">It becomes part of blockchain history.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>What happens if a Bitcoin transaction disappears from the mempool?</h3>
+
+<p>It usually means the transaction was confirmed, replaced, or removed from a node's mempool. It does not automatically mean the Bitcoin was lost.</p>
+
+<h3>Can a Bitcoin transaction disappear after 14 days?</h3>
+
+<p>Yes. Bitcoin Core's default mempool expiry is currently 336 hours, or about 14 days. However, this is a node policy setting and transactions can be removed earlier for other reasons. </p>
+
+<h3>Does a dropped Bitcoin transaction mean it was cancelled?</h3>
+
+<p>Not exactly. A dropped transaction was removed from a node's mempool, but it was not necessarily "cancelled" by the Bitcoin network. You should first verify whether it was confirmed or replaced elsewhere.</p>
+
+<h3>Can a dropped Bitcoin transaction be rebroadcast?</h3>
+
+<p>Potentially, yes. If the transaction remains valid and its inputs have not been spent by another confirmed transaction, it may be possible to broadcast it again.</p>
+
+<h3>Can an RBF transaction make the original transaction disappear?</h3>
+
+<p>Yes. A valid replacement can cause the original transaction to be removed from a node's mempool. BIP 125 defines the opt-in RBF mechanism. </p>
+
+<h3>Will my Bitcoin come back if the transaction is dropped?</h3>
+
+<p>If the transaction never confirmed and the relevant inputs remain unspent, the funds can generally become spendable again. Your wallet may need to update or rescan before displaying the correct available balance.</p>
+
+<h3>Is a Bitcoin transaction that disappeared from the mempool gone forever?</h3>
+
+<p>No. A transaction leaving a mempool does not by itself determine its final status. Check the blockchain and look for confirmation or a replacement transaction.</p>
+
+<h3>Should I send the Bitcoin again if the transaction disappeared?</h3>
+
+<p>Not immediately. First determine whether the original transaction confirmed, was replaced, or was genuinely dropped. Sending again without checking can create unnecessary complications.</p>
+
+<h2>The Bottom Line</h2>
+
+<p><strong>A Bitcoin transaction disappearing from the mempool does not automatically mean your Bitcoin is gone.</strong></p>
+
+<p>The transaction may have been confirmed, replaced through RBF, removed because of mempool pressure, or aged out of a node's mempool. Bitcoin Core currently uses a default mempool expiry of 336 hours, or 14 days, although operators can configure this policy and transactions can leave the mempool for other reasons. </p>
+
+<p>The safest approach is simple: <strong>check the transaction ID, verify confirmations, look for a replacement, and only then decide what to do next.</strong></p>
+
+<p>The mempool is temporary. The Bitcoin blockchain is what ultimately records confirmed transactions.</p>
+
+<h2>Sources</h2>
+
+<ul>
+<li><a href="https://github.com/bitcoin/bitcoin/blob/master/src/kernel/mempool_options.h" rel="noopener" target="_blank">Bitcoin Core — Mempool Options</a></li>
+<li><a href="https://github.com/bitcoin/bitcoin/blob/master/src/init.cpp" rel="noopener" target="_blank">Bitcoin Core — Node Configuration and Mempool Expiry</a></li>
+<li><a href="https://bitcoin.org/fees/" rel="noopener" target="_blank">Bitcoin.org — Bitcoin Transaction Fees</a></li>
+<li><a href="https://bitcoin.org/bip/125/" rel="noopener" target="_blank">Bitcoin.org — BIP 125: Replace-by-Fee</a></li>
+<li><a href="https://developer.bitcoin.org/reference/p2p_networking.html" rel="noopener" target="_blank">Bitcoin Developer Documentation — P2P Networking</a></li>
+</ul>
+
+</article>
+  </div>
+</article>

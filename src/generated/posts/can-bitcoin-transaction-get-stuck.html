@@ -1,0 +1,391 @@
+<!--
+Title: Can a Bitcoin Transaction Get Stuck Forever?
+Author: Top Crypto News
+Published: 2026-09-08T12:23:58.710Z
+Updated: 2026-09-08T12:23:58.711Z
+Categories: Coin Ai News, wallet, ETFs
+MetaDescription: Can a Bitcoin transaction get stuck forever? Learn why BTC payments stay pending how RBF and CPFP help,and what happens when transactions are droppeed
+-->
+
+<article class="atlas-post" data-slug="can-bitcoin-transaction-get-stuck">
+  <header class="atlas-post__header">
+    <h1 class="atlas-post__title">Can a Bitcoin Transaction Get Stuck Forever?</h1>
+    <div class="atlas-post__meta">
+      <span class="atlas-post__author">Top Crypto News</span>
+      <time class="atlas-post__date" datetime="2026-09-08T12:23:58.710Z">2026-09-08T12:23:58.710Z</time>
+    </div>
+    <div class="atlas-post__categories">
+      <span class="atlas-post__category">Coin Ai News</span><span class="atlas-post__category">wallet</span><span class="atlas-post__category">ETFs</span>
+    </div>
+  </header>
+
+  <div class="atlas-post__content">
+<article>
+
+<h1><strong><div class="separator" style="clear: both; text-align: center;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCyqmg74uSWCy_Bx68pmZMULQv-UtdCx5gEDOB4fjaXe9Sxfnx7CYe51ySV11_qU3ADvFonx-ypoy1M8ad1oonl8yZbiefMRVRadsSXWwwG-61QpGGcye_BekAhRDupTdgsFK3TVSmTADQk0rk9CC855hKQ7j0MUXTvgDJBJJI-phDlWczDoQGultCM3JV/s1672/bitcoin-transaction-stuck-forever-pending-confirmation.jpg%20(2).png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img alt="Can a Bitcoin transaction get stuck forever while waiting for confirmation" border="0" data-original-height="941" data-original-width="1672" height="360" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCyqmg74uSWCy_Bx68pmZMULQv-UtdCx5gEDOB4fjaXe9Sxfnx7CYe51ySV11_qU3ADvFonx-ypoy1M8ad1oonl8yZbiefMRVRadsSXWwwG-61QpGGcye_BekAhRDupTdgsFK3TVSmTADQk0rk9CC855hKQ7j0MUXTvgDJBJJI-phDlWczDoQGultCM3JV/w640-h360/bitcoin-transaction-stuck-forever-pending-confirmation.jpg%20(2).png" title="Can a Bitcoin Transaction Get Stuck Forever?" width="640" /></a></div><br /><span style="font-size: medium;"><br /></span></strong></h1><h1><strong><span style="font-size: medium;">By CoinAINews Staff</span></strong></h1><p>You send Bitcoin, the wallet says <strong>“pending,”</strong> and then nothing seems to happen. Minutes turn into hours. Maybe even a full day passes, and the transaction still has zero confirmations.</p>
+
+<p>That naturally raises a worrying question: <strong>Can a Bitcoin transaction get stuck forever?</strong></p>
+
+<p><strong>Usually, no.</strong> An unconfirmed Bitcoin transaction does not remain permanently trapped in the network simply because it has a low fee. Depending on what happens to the transaction, it can eventually confirm, be replaced by another transaction, or disappear from individual nodes' mempools after being dropped. If the transaction is still unconfirmed, the Bitcoin itself has not necessarily been lost.</p>
+
+<p>The important distinction is between a transaction being <strong>delayed</strong> and Bitcoin being <strong>permanently lost</strong>. They are not the same thing.</p>
+
+<div style="margin: 20px 0px; overflow-x: auto; width: 100%;">
+<table style="border-collapse: collapse; min-width: 720px; width: 100%;">
+<thead>
+<tr>
+<th style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;">Situation</th>
+<th style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;">What It Means</th>
+<th style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;">Possible Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Low-fee transaction</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Miners may prefer higher-fee transactions</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">May confirm later or be dropped</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">RBF-enabled</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Sender can replace the unconfirmed transaction</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Higher-fee replacement can confirm</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Recipient controls an output</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">CPFP may increase the effective fee</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Parent and child can be confirmed together</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Transaction dropped from mempool</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Nodes no longer keep the unconfirmed transaction</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Funds can generally be spent again by the sender</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Already confirmed</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Transaction is part of the blockchain</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">It cannot simply be cancelled</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>Can a Bitcoin Transaction Really Get Stuck Forever?</h2>
+
+<p>In practical terms, an ordinary valid Bitcoin transaction does not sit forever in one universal waiting line.</p>
+
+<p>Bitcoin does not have one centralized mempool that every transaction must remain in until a miner picks it. Individual nodes maintain their own mempools, and those <a href="https://www.coinainews.com/2026/09/why-can-sending-10-bitcoin-cost-more.html">mempools</a> can differ.</p>
+
+<p>A transaction that has not yet been confirmed is therefore in a temporary state. It may continue to be relayed, eventually get included in a block, be replaced through a fee-bumping mechanism such as RBF, or be removed from nodes' mempools.</p>
+
+<p>That is why the word <strong>“forever”</strong> can be misleading when talking about pending Bitcoin transactions.</p>
+
+<p>The bigger question is not whether the transaction will remain visible forever. The question is <strong>what happens to the coins if the transaction never confirms?</strong></p>
+
+<h2>Why Do Bitcoin Transactions Get Stuck?</h2>
+
+<p>The most common reason is a fee rate that is too low compared with the transactions competing for block space.</p>
+
+<p>Bitcoin blocks have limited capacity. Miners generally have an economic incentive to prioritize transactions that offer attractive fees relative to the amount of block space they consume.</p>
+
+<p>Bitcoin fees are therefore not simply based on how much BTC you are sending. A small transaction can require a similar amount of block space to a much larger transaction.</p>
+
+<p>This is why sending $10 worth of Bitcoin can sometimes cost more than sending $1,000 worth of Bitcoin if the smaller payment happens to require a larger transaction structure.</p>
+
+<p>When network demand rises, transactions offering low fee rates can wait longer.</p>
+
+<h2>What Is the Bitcoin Mempool?</h2>
+
+<p>The <strong>mempool</strong> is essentially temporary storage for transactions that have been broadcast but have not yet been confirmed in a block.</p>
+
+<p>It is important to understand that there is no single global mempool. Different Bitcoin nodes maintain their own collections of unconfirmed transactions.</p>
+
+<p>This explains why one block explorer may show a transaction as pending while another node may no longer have it in its local mempool.</p>
+
+<p>Mempool data can also change as transactions are confirmed, replaced or removed.</p>
+
+<p>The mempool is therefore better thought of as a temporary holding area rather than a permanent queue.</p>
+
+<h2>How Long Can a Bitcoin Transaction Stay Pending?</h2>
+
+<p>There is no universal guaranteed maximum confirmation time for every Bitcoin transaction.</p>
+
+<p>A transaction with an attractive fee rate may confirm relatively quickly. A transaction with a very low fee rate can remain unconfirmed much longer, especially when the network is busy.</p>
+
+<p>Bitcoin.org notes that transactions paying too low a fee can take much longer to receive their first confirmation. </p>
+
+<p>At the node-policy level, unconfirmed transactions can also eventually be removed from mempools. Current Bitcoin Core policy uses a default mempool expiry of about <strong>14 days</strong>, although individual nodes and network conditions can differ.</p>
+
+<p>That does <strong>not</strong> mean every transaction automatically disappears after exactly 14 days. It means nodes are not required to keep an unconfirmed transaction in memory indefinitely.</p>
+
+<h2>What Happens If Your Transaction Is Dropped?</h2>
+
+<p>This is one of the most misunderstood parts of Bitcoin.</p>
+
+<p>If an unconfirmed transaction disappears from a node's mempool, that does not mean the Bitcoin was burned.</p>
+
+<p>If the transaction never became part of a confirmed block, the original coins have not been permanently transferred by that transaction.</p>
+
+<p>Depending on the wallet and the network state, the wallet may eventually be able to treat the inputs as available again and create a new transaction.</p>
+
+<p>However, wallets can behave differently while they are still tracking the old transaction. Sometimes the old transaction may also be rebroadcast and appear again on the network.</p>
+
+<p>That is why it is better to check the transaction ID and <a href="https://www.coinainews.com/2026/09/can-bitcoin-be-recovered-without-seed.html">wallet</a> status rather than immediately assuming the BTC has disappeared.</p>
+
+<h2>Can You Speed Up a Stuck Bitcoin Transaction?</h2>
+
+<p>Often, yes.</p>
+
+<p>There are two important mechanisms to understand: <strong>Replace-By-Fee (RBF)</strong> and <strong>Child-Pays-For-Parent (CPFP)</strong>.</p>
+
+<h3>1. Replace-By-Fee (RBF)</h3>
+
+<p>RBF allows an unconfirmed Bitcoin transaction to be replaced with another transaction that spends the same coins while offering a higher fee under the applicable replacement rules.</p>
+
+<p>The idea is simple: if the original transaction is not attractive enough for miners, a higher-fee replacement gives miners a stronger economic incentive to include the replacement.</p>
+
+<p>RBF is an <strong>unconfirmed-transaction mechanism</strong>. Once a transaction has been confirmed, you cannot use RBF to simply undo it.</p>
+
+<p>Bitcoin's RBF rules are described in BIP 125, while modern Bitcoin software also supports broader full-RBF relay policies. </p>
+
+<h3>2. Child-Pays-For-Parent (CPFP)</h3>
+
+<p>CPFP works differently.</p>
+
+<p>Instead of replacing the original transaction, a new transaction is created that spends an output from the unconfirmed transaction and pays a sufficiently high fee.</p>
+
+<p>Because the child transaction depends on the parent, miners can consider the combined economics of the package when deciding whether to include the transactions.</p>
+
+<p>This can be especially useful when the <strong>recipient</strong> controls an output from the stuck transaction and the original sender cannot increase the fee.</p>
+
+<p>Mempool's documentation lists both RBF and CPFP as established ways to increase the effective fee rate of a stuck transaction. </p>
+
+<h2>Can You Cancel a Stuck Bitcoin Transaction?</h2>
+
+<p><strong>Not in the normal sense of pressing a universal “cancel” button.</strong></p>
+
+<p>Bitcoin transactions are designed to become final once confirmed. Before confirmation, however, an eligible transaction may be replaced.</p>
+
+<p>That distinction matters.</p>
+
+<p>If you accidentally sent BTC to the wrong address and the transaction has already confirmed, RBF cannot rescue you. Bitcoin does not have a central authority that can reverse the blockchain transaction.</p>
+
+<p>If the transaction is still unconfirmed and your wallet supports an appropriate replacement mechanism, you may be able to replace it with a transaction that sends the funds somewhere else.</p>
+
+<p>That is better described as <strong>replacement</strong>, not cancellation.</p>
+
+<h2>What If You Sent Bitcoin to the Wrong Address?</h2>
+
+<p>This situation requires extra caution.</p>
+
+<p>If the transaction is still unconfirmed and your wallet supports RBF, there may be a possibility of replacing the transaction, depending on the transaction's structure and the wallet's capabilities.</p>
+
+<p>But if the transaction has already been confirmed, the <a href="https://www.coinainews.com/2026/09/can-someone-find-your-name-from-bitcoin-wallet.html">Bitcoin network</a> does not provide a normal reversal mechanism.</p>
+
+<p>The only practical recovery route may then involve the owner of the receiving address voluntarily sending the Bitcoin back.</p>
+
+<p>If the address belongs to an exchange or another identifiable service, contacting that service may be worth trying. Recovery is not guaranteed.</p>
+
+<h2>Does a Stuck Transaction Mean My Bitcoin Is Lost?</h2>
+
+<p><strong>No—not automatically.</strong></p>
+
+<p>A pending transaction is different from a confirmed transaction.</p>
+
+<p>When you create a Bitcoin transaction, the transaction attempts to spend specific unspent transaction outputs, commonly called <strong>UTXOs</strong>. Until the transaction is confirmed, the blockchain has not permanently recorded that spend.</p>
+
+<p>The wallet may still show the BTC as pending or unavailable because it is tracking the transaction, but that is different from the Bitcoin being destroyed.</p>
+
+<p>If the transaction eventually gets dropped without confirmation, the wallet can generally return to a state where those coins can be spent again, although wallet software may need to rescan, refresh or otherwise reconcile its transaction history.</p>
+
+<h2>What If My Transaction Has Been Pending for Days?</h2>
+
+<p>Do not immediately send another transaction without understanding what happened to the first one.</p>
+
+<p>Start with the <strong>transaction ID (TXID)</strong> and check it on a reputable Bitcoin block explorer.</p>
+
+<p>Then determine:</p>
+
+<ul>
+<li>Whether the transaction is still unconfirmed.</li>
+<li>What fee rate it paid.</li>
+<li>Whether it signals or otherwise qualifies for RBF in the relevant wallet/network policy.</li>
+<li>Whether the transaction has descendants that affect replacement.</li>
+<li>Whether the transaction has disappeared from the mempools being monitored.</li>
+<li>Whether your wallet has a “speed up,” “bump fee,” or RBF option.</li>
+</ul>
+
+<p>If the transaction was created through an exchange, the situation can be different because the exchange controls the transaction construction and may not expose RBF or CPFP controls to customers.</p>
+
+<h2>Can a Bitcoin Transaction Disappear and Then Come Back?</h2>
+
+<p>Yes, this can happen.</p>
+
+<p>Remember that Bitcoin does not have one permanent global mempool. A transaction can disappear from one node's mempool while still being held by another node or wallet.</p>
+
+<p>A wallet may also rebroadcast a transaction.</p>
+
+<p>So seeing a transaction disappear from one explorer does not necessarily mean the transaction has been permanently abandoned.</p>
+
+<p>This is another reason why the <strong>TXID</strong> is important when troubleshooting a pending payment.</p>
+
+<h2>What Happens Once a Bitcoin Transaction Is Confirmed?</h2>
+
+<p>Once a transaction is included in a valid Bitcoin block, it has received its first confirmation.</p>
+
+<p>Additional blocks add additional confirmations and make the transaction increasingly difficult to reverse through a blockchain reorganization.</p>
+
+<p>Bitcoin.org explains that each additional confirmation increases the consensus that the received bitcoins have not been spent elsewhere. </p>
+
+<p>For everyday transactions, the number of confirmations considered sufficient can depend on the recipient, transaction size and risk tolerance.</p>
+
+<p>The important point for this article is simple: <strong>RBF and ordinary mempool troubleshooting apply to unconfirmed transactions.</strong></p>
+
+<h2>Why Low Fees Can Cause Long Delays</h2>
+
+<p>Bitcoin block space is scarce.</p>
+
+<p>When many users want their transactions confirmed at the same time, fee competition can increase. A transaction that looked perfectly reasonable when it was created can become less attractive if the market suddenly becomes more competitive.</p>
+
+<p>This can happen during major market moves, periods of unusually high Bitcoin activity or other events that increase demand for block space.</p>
+
+<p>The result is a fee market in which transactions offering higher fee rates can generally become more attractive to miners.</p>
+
+<p>Bitcoin.org explains that transaction fees are related to the size of the transaction rather than simply the amount of Bitcoin being transferred. </p>
+
+<h2>Is There a Difference Between “Pending” and “Dropped”?</h2>
+
+<p>Yes, and the difference is important.</p>
+
+<p><strong>Pending:</strong> The transaction is still being tracked as unconfirmed and may be present in one or more mempools.</p>
+
+<p><strong>Dropped:</strong> A node has removed the transaction from its mempool. This does not mean the transaction was confirmed or that the Bitcoin was destroyed.</p>
+
+<p><strong>Confirmed:</strong> The transaction has been included in the blockchain.</p>
+
+<p>These three states should not be treated as interchangeable.</p>
+
+<div style="margin: 20px 0px; overflow-x: auto; width: 100%;">
+<table style="border-collapse: collapse; min-width: 650px; width: 100%;">
+<thead>
+<tr>
+<th style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;">Status</th>
+<th style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;">Blockchain?</th>
+<th style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;">Can RBF Apply?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Unconfirmed</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">No</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Potentially</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Dropped from mempool</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">No</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">A new transaction may be created if funds are available again</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Confirmed</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">Yes</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 10px;">No</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>How to Avoid Getting a Bitcoin Transaction Stuck</h2>
+
+<p>You cannot guarantee an exact confirmation time, but you can reduce the risk of unnecessary delays.</p>
+
+<ul>
+<li><strong>Check the fee estimate:</strong> Use your wallet's current fee recommendations before broadcasting.</li>
+<li><strong>Understand fee rates:</strong> Bitcoin fees are commonly discussed in satoshis per virtual byte, or sat/vB.</li>
+<li><strong>Use RBF when appropriate:</strong> If your wallet supports it, RBF can provide a useful fee-bumping option.</li>
+<li><strong>Do not panic after a short delay:</strong> A pending transaction does not automatically mean something has gone wrong.</li>
+<li><strong>Keep your wallet software updated:</strong> Wallet features and fee-management options can change.</li>
+<li><strong>Keep your recovery information secure:</strong> Never share a seed phrase or private key with someone claiming they can “unstick” your transaction.</li>
+</ul>
+
+<h2>What You Should Do If Your Bitcoin Transaction Is Stuck</h2>
+
+<p>If your BTC transaction has been pending for longer than expected, follow this basic checklist:</p>
+
+<ol>
+<li>Find the transaction ID.</li>
+<li>Check the transaction on a reputable Bitcoin block explorer.</li>
+<li>Confirm that it is genuinely unconfirmed.</li>
+<li>Look at the transaction's fee rate.</li>
+<li>Check whether your wallet supports RBF or fee bumping.</li>
+<li>If you are the recipient and control an unconfirmed output, check whether CPFP is supported.</li>
+<li>If the transaction has disappeared, refresh or rescan the wallet before creating another transaction.</li>
+<li>If the payment originated from an exchange, contact the exchange rather than attempting random replacement transactions.</li>
+</ol>
+
+<p>Mempool's own guidance recommends using the service or wallet that created the transaction when you are unsure how to apply RBF or CPFP. </p>
+
+<h2>Can Bitcoin Transactions Get Stuck Forever? The Real Answer</h2>
+
+<p>Bitcoin transactions can certainly become <strong>very delayed</strong>, especially when the fee rate is too low relative to current demand.</p>
+
+<p>But an ordinary unconfirmed transaction does not simply become a permanent blockchain transaction that sits in limbo forever.</p>
+
+<p>It can be confirmed. It can potentially be replaced. Or it can eventually disappear from node mempools if it remains unconfirmed.</p>
+
+<p>The most important thing to remember is that <strong>an unconfirmed Bitcoin transaction is not the same thing as a confirmed loss of Bitcoin.</strong></p>
+
+<p>And if you are dealing with a stuck transaction right now, the first step is not to panic or send another payment blindly. Find the TXID, check its status and fee rate, and determine whether RBF, CPFP or simply waiting is the appropriate option.</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>Can a Bitcoin transaction remain pending forever?</h3>
+
+<p>It can remain unresolved for a long time, but an unconfirmed transaction is not permanently stored by every Bitcoin node. Nodes can eventually remove old or low-priority transactions from their mempools.</p>
+
+<h3>What happens to Bitcoin if a transaction never confirms?</h3>
+
+<p>If the transaction never becomes part of the blockchain, the original spend has not been confirmed. Once the transaction is dropped and the wallet recognizes the inputs as available again, the funds can generally be spent in a new transaction.</p>
+
+<h3>Can I speed up a stuck Bitcoin transaction?</h3>
+
+<p>Potentially. RBF can replace an eligible unconfirmed transaction with a higher-fee transaction. CPFP can increase the effective fee of a parent transaction by attaching a higher-fee child transaction.</p>
+
+<h3>Can I cancel a Bitcoin transaction after it is confirmed?</h3>
+
+<p>No. Bitcoin does not provide a normal cancellation button for confirmed blockchain transactions.</p>
+
+<h3>Does a low Bitcoin fee mean my BTC is lost?</h3>
+
+<p>No. A low fee can make confirmation slower, but it does not by itself mean the Bitcoin has been lost.</p>
+
+<h3>How long should I wait for a Bitcoin transaction?</h3>
+
+<p>There is no single answer. Confirmation time depends on the transaction's fee rate, network demand and other factors. A low-fee transaction can take substantially longer than one paying a competitive fee.</p>
+
+<h3>What is RBF in Bitcoin?</h3>
+
+<p>RBF, or Replace-By-Fee, is a mechanism that can allow an unconfirmed transaction to be replaced with a higher-fee version under applicable relay and wallet rules.</p>
+
+<h3>What is CPFP in Bitcoin?</h3>
+
+<p>CPFP means Child-Pays-For-Parent. It uses a new transaction with a higher fee to encourage miners to include an earlier unconfirmed parent transaction as well.</p>
+
+<h2>Bottom Line</h2>
+
+<p><strong>Can a Bitcoin transaction get stuck forever?</strong> Not in the simple sense that a pending transaction will remain permanently trapped in the blockchain.</p>
+
+<p>A low-fee transaction can remain unconfirmed for a surprisingly long time, but Bitcoin's transaction and mempool system provides several possible outcomes: confirmation, replacement or eventual removal from mempools.</p>
+
+<p>If your transaction is stuck, check the TXID first. Then look at the fee rate and determine whether your wallet supports RBF or whether CPFP is possible. Most importantly, remember that <strong>pending does not automatically mean lost.</strong></p>
+
+<h2>Sources</h2>
+
+<ul>
+<li><a href="https://bitcoin.org/en/faq" rel="noopener" target="_blank">Bitcoin.org — Bitcoin FAQ</a></li>
+<li><a href="https://bitcoin.org/bip/125/" rel="noopener" target="_blank">Bitcoin.org — BIP 125: Opt-in Full Replace-by-Fee Signaling</a></li>
+<li><a href="https://mempool.space/docs/faq" rel="noopener" target="_blank">Mempool.space — Transaction FAQ</a></li>
+<li><a href="https://help.blockstream.com/education/transactions/transaction-basics/what-is-replace-by-fee" rel="noopener" target="_blank">Blockstream — What Is Replace-by-Fee?</a></li>
+</ul>
+
+</article>
+  </div>
+</article>

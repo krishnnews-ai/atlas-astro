@@ -1,0 +1,441 @@
+<!--
+Title: BIS Researchers Test XRP Ledger to Verify Official Statistics Onchain
+Author: Top Crypto News
+Published: 2026-09-04T14:51:07.691Z
+Updated: 2026-09-04T14:58:12.597Z
+Categories: Bitcoin News, Editor&apos;s Choice, Learn crypto
+MetaDescription: BIS researchers tested XRP Ledger to verify official statistics using cryptographic hashes, fast finality and low-cost blockchain anchoring.
+-->
+
+<article class="atlas-post" data-slug="bis-researchers-test-xrp-ledger-official-statistics">
+  <header class="atlas-post__header">
+    <h1 class="atlas-post__title">BIS Researchers Test XRP Ledger to Verify Official Statistics Onchain</h1>
+    <div class="atlas-post__meta">
+      <span class="atlas-post__author">Top Crypto News</span>
+      <time class="atlas-post__date" datetime="2026-09-04T14:51:07.691Z">2026-09-04T14:51:07.691Z</time>
+    </div>
+    <div class="atlas-post__categories">
+      <span class="atlas-post__category">Bitcoin News</span><span class="atlas-post__category">Editor&amp;apos;s Choice</span><span class="atlas-post__category">Learn crypto</span>
+    </div>
+  </header>
+
+  <div class="atlas-post__content">
+<article>
+
+<h1><div class="separator" style="clear: both; text-align: center;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKM_Ni8WMPhD3EZ3hcF1_Jgrgu7U8R6YP6Nzcnqa0cL7hbEqxNrLM_aeuhkmlhojqWsZyzjxO4fhLHtnlMIPnArY2E95MWmlcYRm4Hp28l4PSgRpngOgnnzP13aZrVH93Vk0c_89ZkZK3dEy3NcblnmhLEUwuCWOdlG7VwsgOZKSGPnfJDDrY17cDDe22w/s1672/bis-xrp-ledger-official-statistics-verification.jpg.png" style="margin-left: 1em; margin-right: 1em;"><img alt="BIS researchers test XRP Ledger to verify official statistics onchain" border="0" data-original-height="941" data-original-width="1672" height="360" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKM_Ni8WMPhD3EZ3hcF1_Jgrgu7U8R6YP6Nzcnqa0cL7hbEqxNrLM_aeuhkmlhojqWsZyzjxO4fhLHtnlMIPnArY2E95MWmlcYRm4Hp28l4PSgRpngOgnnzP13aZrVH93Vk0c_89ZkZK3dEy3NcblnmhLEUwuCWOdlG7VwsgOZKSGPnfJDDrY17cDDe22w/w640-h360/bis-xrp-ledger-official-statistics-verification.jpg.png" title="BIS Researchers Test XRP Ledger for Official Statistics" width="640" /></a></div><strong><span style="font-size: medium;"><h1><strong><span style="font-size: medium;"><br /></span></strong></h1>By CoinAINews Staff</span></strong></h1>
+
+<p><strong>September 4, 2026</strong> — The XRP Ledger is being tested for a use case that has little to do with cryptocurrency trading: helping users verify the origin and integrity of official statistical data.</p>
+
+<p>Researchers from the <strong>Bank for International Settlements (BIS)</strong> have developed and tested a blockchain-based proof of concept that uses the <strong>XRP Ledger (XRPL)</strong> to anchor cryptographic information associated with official statistics.</p>
+
+<p>The idea is not to put entire economic datasets on a blockchain. Instead, the system creates cryptographic fingerprints of published data, combines those fingerprints using a Merkle-tree structure and records a summary value on the ledger.</p>
+
+<p>A consumer can then use the published file and a ledger lookup to check whether the data matches the version that was originally anchored and whether the publisher identity can be verified.</p>
+
+<div style="background: rgb(245, 245, 245); border-left: 4px solid rgb(85, 85, 85); margin: 24px 0px; padding: 16px;">
+<p style="margin: 0px;"><span style="color: red;"><strong>Important BIS disclaimer:</strong> The BIS working paper states that the views expressed are those of the authors and do not necessarily reflect the views of the BIS or its member central banks.</span></p>
+</div>
+
+<p>This distinction is important. The research represents a <strong>proof of concept</strong>, not an announcement that the BIS has adopted XRP or XRPL as permanent production infrastructure.</p>
+
+<h2>What Did BIS Researchers Actually Test?</h2>
+
+<p>The researchers were looking at a problem that becomes increasingly important as official statistics move through digital systems.</p>
+
+<p>Statistical authorities and international organizations publish economic and financial information in standardized machine-readable formats. Those files can subsequently be downloaded, redistributed, processed or consumed by third-party platforms and automated systems.</p>
+
+<p>Once data leaves the original publisher's environment, a recipient may have difficulty independently proving that the file they received is exactly the same version that the original institution published.</p>
+
+<p>The BIS project proposes adding a cryptographic verification layer to that process.</p>
+
+<p>Each dataset can be converted into a canonical representation and cryptographically hashed. The resulting fingerprints can then be aggregated and anchored to a public blockchain.</p>
+
+<p>If someone changes the data afterward, the cryptographic result changes as well, allowing the recipient to detect a mismatch.</p>
+
+<h2>How the XRP Ledger Is Used</h2>
+
+<p>The proof of concept was implemented on the <strong>XRP Ledger</strong>.</p>
+
+<p>The BIS paper describes the system as combining an SDMx-native canonicalisation and hashing pipeline, Merkle aggregation, publisher credentials and blockchain anchoring.</p>
+
+<p>The process can be summarized in four basic steps:</p>
+
+<ol>
+<li>The statistical data is converted into a canonical representation.</li>
+<li>Cryptographic hashes are generated for the relevant data.</li>
+<li>Those hashes are combined through a Merkle-tree structure into a summary root.</li>
+<li>The root is anchored to the XRP Ledger.</li>
+</ol>
+
+<p>The published statistical message also carries information that allows a consumer to reconstruct the verification process, including the ordered Merkle leaves and a <strong>W3C Verifiable Credential</strong> signed by the publisher's identity key.</p>
+
+<p>The publisher identity is cryptographically linked to an XRPL address through an on-chain attestation registry.</p>
+
+<p>The result is intended to allow a consumer to verify both the identity of the claimed publisher and the integrity of the data.</p>
+
+<h2>The Statistics Are Not Stored Onchain</h2>
+
+<p>This is one of the most important facts about the project.</p>
+
+<p>The BIS prototype does <strong>not</strong> store the complete statistical datasets on the XRP Ledger.</p>
+
+<p>Instead, the underlying data remains off-chain while cryptographic information representing the data is anchored to the ledger.</p>
+
+<p>A useful way to understand the concept is to think of the blockchain as a <strong>public digital notary</strong>.</p>
+
+<p>The ledger provides a timestamped, publicly verifiable reference. The actual statistical file can remain in an existing data-distribution system.</p>
+
+<p>This approach also helps preserve confidentiality because the underlying statistical data does not need to be published on the blockchain.</p>
+
+<h2>Why the Merkle Tree Matters</h2>
+
+<p>Recording a separate blockchain transaction for every dataset could create unnecessary overhead.</p>
+
+<p>The BIS architecture addresses this through <strong>Merkle aggregation</strong>.</p>
+
+<p>Individual data fingerprints can be combined into a Merkle tree. The resulting root represents the entire batch.</p>
+
+<p>That means a single blockchain anchoring transaction can represent a large number of datasets rather than requiring one transaction for each dataset.</p>
+
+<p>The BIS paper specifically examines batching across large numbers of datasets and notes that one ledger entry can cover thousands of datasets.</p>
+
+<p>This is important because the cost of blockchain anchoring can then be distributed across the entire batch.</p>
+
+<h2>How Much Does the XRPL Anchoring Cost?</h2>
+
+<p>The BIS paper reports a <strong>median observed network fee of 10 drops</strong> for an anchoring transaction.</p>
+
+<p>Because one drop equals one-millionth of an XRP, 10 drops equals:</p>
+
+<p><strong>0.00001 XRP</strong></p>
+
+<p>The paper's cost comparison uses an illustrative XRP price of approximately <strong>$0.30 per XRP</strong>. At that assumed price, 10 drops corresponds to approximately:</p>
+
+<p><strong>$0.000003 per anchoring transaction</strong></p>
+
+<p>That dollar figure should not be interpreted as a permanently fixed USD transaction cost. It is the conversion used in the paper's illustrative cost analysis.</p>
+
+<div style="margin: 20px 0px; overflow-x: auto; width: 100%;">
+<table style="border-collapse: collapse; font-size: 16px; min-width: 680px; table-layout: fixed; width: 100%;">
+<thead>
+<tr>
+<th style="border: 1px solid rgb(204, 204, 204); padding: 12px; width: 35%;">Metric</th>
+<th style="border: 1px solid rgb(204, 204, 204); padding: 12px; width: 30%;">Reported / Modeled Figure</th>
+<th style="border: 1px solid rgb(204, 204, 204); padding: 12px; width: 35%;">Context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>Observed network fee</strong></td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">10 drops</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">Equal to 0.00001 <br />XRP</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>Illustrative USD <br />conversion</strong></td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">~$0.000003</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">Based on the paper's <br />$0.30/XRP example</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>Large-batch <br />approach</strong></td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">Thousands of <br />datasets</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">One root can represent <br />a large batch</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>Underlying data</strong></td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">Off-chain</td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">Only cryptographic <br />verification information <br />is anchored</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p>The paper's cost model shows why batching matters. When many datasets share a single anchor, the blockchain cost allocated to each individual dataset can become extremely small.</p>
+
+<h2>Prototype Publication Took 3–5 Seconds</h2>
+
+<p>The researchers also measured the performance of their prototype.</p>
+
+<p>Under the controlled test conditions described in the paper, the system achieved median publication latency of approximately <strong>3–5 seconds</strong>.</p>
+
+<p>Verification latency was approximately <strong>1–2 seconds</strong>.</p>
+
+<p>These numbers should not be presented as a guarantee of future production performance.</p>
+
+<p>The prototype measurements were conducted under controlled conditions, and the research is explicitly a proof of concept rather than a production deployment.</p>
+
+<div style="margin: 20px 0px; overflow-x: auto; width: 100%;">
+<table style="border-collapse: collapse; font-size: 16px; min-width: 650px; table-layout: fixed; width: 100%;">
+<thead>
+<tr>
+<th style="border: 1px solid rgb(204, 204, 204); padding: 12px;">Performance Measure</th>
+<th style="border: 1px solid rgb(204, 204, 204); padding: 12px;">BIS Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>Publication latency</strong></td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">3–5 seconds median</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>Verification latency</strong></td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">1–2 seconds median</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>Purpose</strong></td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">Near-real-time data verification</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>System status</strong></td>
+<td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">Research proof of concept</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>Why Did the Researchers Use XRPL?</h2>
+
+<p>The BIS researchers identified several characteristics that made the XRP Ledger suitable for the proof of concept.</p>
+
+<ul>
+<li>Low nominal transaction fees</li>
+<li>Fast consensus finality</li>
+<li>Available developer resources</li>
+<li>Existing technical analysis of the XRPL consensus protocol</li>
+</ul>
+
+<p>However, the research should not be interpreted as saying that XRPL is the only blockchain capable of performing this function.</p>
+
+<p>The paper describes the overall approach as <strong>data-format-agnostic</strong> and the system architecture is modular. Its blockchain component can theoretically be replaced by another suitable target blockchain.</p>
+
+<h2>What Role Does XRP Play?</h2>
+
+<p>It is important to distinguish the <strong>XRP Ledger</strong> from <strong>XRP</strong>, the network's native digital asset.</p>
+
+<p>The research primarily concerns XRPL as the public ledger used for cryptographic anchoring.</p>
+
+<p>However, XRPL transactions require network fees denominated in XRP. The BIS paper reports a median observed fee of 10 drops for its anchoring transactions.</p>
+
+<p>This does <strong>not</strong> mean that the BIS is using XRP as a central-bank settlement asset in this experiment.</p>
+
+<p>The research does not announce an XRP-based payment system, reserve system or cross-border settlement arrangement for central banks.</p>
+
+<h2>XRPL Validator Vet Suggests an NFT-Based Approach</h2>
+
+<p>The BIS research has also prompted discussion within the XRP Ledger community about how the verification record could be represented on the ledger over the long term.</p>
+
+<p><strong>Vet</strong>, an XRPL validator and community figure, publicly suggested using an NFT-based ledger object rather than relying on a payment transaction memo for the verification reference.</p>
+
+<p>Under the BIS proof of concept, the Merkle root is anchored through the memo field of an XRPL Payment transaction.</p>
+
+<p>Vet's suggestion is different: the hash or a reference could be placed in an NFT's URI, potentially pointing toward content-addressed or permanent storage such as IPFS or Arweave.</p>
+
+<p>The proposal is based on the distinction between a transaction memo and an NFT ledger object. Vet argues that an object-based approach could provide a different long-term way to locate the verification reference without depending solely on transaction-history retrieval.</p>
+
+<p>However, this is <strong>Vet's community proposal, not a BIS recommendation</strong>.</p>
+
+<p>The BIS paper does not state that the project will replace its payment-memo implementation with NFTs.</p>
+
+<h2>SDMx Makes the Research Potentially Broader</h2>
+
+<p>The project uses <strong>SDMx</strong>, short for Statistical Data and Metadata eXchange.</p>
+
+<p>SDMx is an international standard designed to describe statistical data and metadata, normalize their exchange and improve the sharing of statistical information across organizations.</p>
+
+<p>The official SDMx organization lists eight international sponsors:</p>
+
+<ul>
+<li>Bank for International Settlements (BIS)</li>
+<li>European Central Bank (ECB)</li>
+<li>Eurostat</li>
+<li>International Labour Organization (ILO)</li>
+<li>International Monetary Fund (IMF)</li>
+<li>Organisation for Economic Co-operation and Development (OECD)</li>
+<li>United Nations Statistical Division (UNSD)</li>
+<li>World Bank</li>
+</ul>
+
+<p>This gives the research a potentially broader statistical context.</p>
+
+<p>But there is an important distinction: <strong>being an SDMx sponsor does not mean an organization has adopted XRPL for its statistics.</strong></p>
+
+<p>The BIS experiment is a BIS research project using XRPL as its proof-of-concept blockchain.</p>
+
+<p>Other organizations using SDMx could potentially examine similar verification mechanisms, but any such deployment would require an independent decision by the relevant organization.</p>
+
+<h2>Could the Same Idea Work Beyond SDMx?</h2>
+
+<p>The researchers describe the approach as data-format-agnostic.</p>
+
+<p>The paper specifically discusses extending the architecture to other structured statistical or regulatory formats, including <strong>XBRL</strong>.</p>
+
+<p>This is potentially important for financial reporting and regulatory data because many institutions already depend on machine-readable information.</p>
+
+<p>Still, these are possible extensions rather than confirmed production deployments.</p>
+
+<h2>Why AI Makes Data Verification More Important</h2>
+
+<p>Artificial intelligence is another reason the researchers believe data provenance deserves greater attention.</p>
+
+<p>AI systems increasingly process economic, financial and statistical information automatically.</p>
+
+<p>A human analyst may recognize the source of a dataset before using it. An automated system may simply consume whatever machine-readable information is available.</p>
+
+<p>That creates a new question:</p>
+
+<p><strong>Can an automated system verify where the data came from and whether it has changed?</strong></p>
+
+<p>The BIS paper identifies <strong>automated verification by AI agents</strong> as a possible future extension of the architecture.</p>
+
+<p>The idea is not that AI would automatically determine whether a statistic is economically correct.</p>
+
+<p>Instead, an AI agent could potentially verify the cryptographic provenance and integrity of a dataset before incorporating it into an analysis or workflow.</p>
+
+<h2>Blockchain Cannot Prove That a Statistic Is Correct</h2>
+
+<p>This limitation is essential to understanding the research.</p>
+
+<p>A blockchain can help establish that a dataset matches the cryptographic version that was previously anchored.</p>
+
+<p>It cannot independently determine whether the original statistic was calculated correctly.</p>
+
+<p>For example, if an institution publishes an incorrect inflation figure and anchors that figure's fingerprint to a blockchain, the blockchain can later help demonstrate that the published file has not been altered.</p>
+
+<p>It cannot prove that the original calculation or methodology was correct.</p>
+
+<p>So the BIS project should be understood as a mechanism for <strong>data integrity and provenance</strong>, rather than a system for determining whether a statistic is objectively true.</p>
+
+<h2>What the BIS Experiment Does Not Mean</h2>
+
+<ul>
+<li>It does <strong>not</strong> mean the BIS has permanently adopted XRP Ledger.</li>
+<li>It does <strong>not</strong> mean official statistics are stored directly on XRPL.</li>
+<li>It does <strong>not</strong> announce an XRP-based central-bank payment system.</li>
+<li>It does <strong>not</strong> mean the IMF has adopted XRPL.</li>
+<li>It does <strong>not</strong> mean the World Bank has adopted XRPL.</li>
+<li>It does <strong>not</strong> mean the ECB, OECD or United Nations have adopted XRPL.</li>
+<li>It does <strong>not</strong> provide an XRP price prediction.</li>
+<li>It does <strong>not</strong> represent a production deployment of a global statistical-verification system.</li>
+<li>It <strong>does</strong> demonstrate a blockchain-based proof of concept implemented on XRPL.</li>
+<li>It <strong>does</strong> demonstrate how cryptographic fingerprints and Merkle aggregation can be used to anchor statistical information.</li>
+<li>It <strong>does</strong> report prototype-level publication and verification times measured in seconds.</li>
+</ul>
+
+<h2>Why the Experiment Matters for XRPL</h2>
+
+<p>The significance of the research goes beyond the XRP price narrative that can easily surround news involving the XRP Ledger.</p>
+
+<p>The experiment demonstrates a different potential role for a public blockchain: <strong>serving as a verification layer for machine-readable information.</strong></p>
+
+<p>Financial infrastructure depends on reliable information as much as it depends on payments.</p>
+
+<p>Central banks, statistical authorities, financial institutions and automated systems all need to know whether the information they are using is authentic and unchanged.</p>
+
+<p>A public cryptographic anchor can provide an independently verifiable reference without requiring the complete dataset to be placed onchain.</p>
+
+<p>That is the core technological idea being tested here.</p>
+
+<h2>What Are the Main Limitations?</h2>
+
+<p>The research is a prototype, so its results should not be confused with a production deployment.</p>
+
+<p>The researchers evaluated the system under controlled conditions and explicitly discuss the need for further work before a production environment could be considered.</p>
+
+<p>A real institutional deployment would need to address areas such as operational security, identity management, key protection, monitoring, governance, infrastructure resilience and sustained-load testing.</p>
+
+<p>There would also need to be clear processes for handling compromised credentials, publisher-key rotation and other operational events.</p>
+
+<p>The proof of concept provides an engineering basis for exploring these questions, but it does not answer all of them.</p>
+
+<h2>Bottom Line</h2>
+
+<p>BIS researchers have developed and tested a proof-of-concept system that uses the <strong>XRP Ledger</strong> to help verify the provenance and integrity of official statistical data.</p>
+
+<p>The actual statistics remain off-chain. The system instead uses cryptographic hashing, Merkle aggregation, publisher credentials and a public blockchain anchor.</p>
+
+<p>The prototype reported median publication latency of approximately <strong>3–5 seconds</strong> and verification latency of approximately <strong>1–2 seconds</strong> under the controlled conditions described in the paper.</p>
+
+<p>The observed network fee was <strong>10 drops, or 0.00001 XRP</strong>. Using the paper's illustrative $0.30-per-XRP assumption, that translates to approximately <strong>$0.000003 per anchoring transaction</strong>.</p>
+
+<p>Merkle batching is central to the economics because one root can represent a large batch of datasets, potentially thousands, rather than requiring a separate blockchain transaction for every dataset.</p>
+
+<p>The research also points toward possible future applications involving other structured formats such as XBRL and automated verification by AI agents.</p>
+
+<p>At the same time, community discussion has already raised alternative implementation ideas, including Vet's proposal to explore an NFT-based approach for storing a long-term verification reference. That proposal is separate from the BIS research design.</p>
+
+<p>The biggest takeaway is therefore not that the BIS has “adopted XRP.” It has not announced such an adoption.</p>
+
+<p>The significant development is that BIS researchers have demonstrated how a public blockchain such as XRPL can be used as a cryptographic trust layer for official data.</p>
+
+<p>As financial information becomes increasingly machine-readable and increasingly consumed by automated systems, proving where data came from and whether it has been altered could become an important part of digital financial infrastructure.</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>1. Did BIS researchers test the XRP Ledger?</h3>
+
+<p>Yes. The BIS working paper presents a proof of concept implemented on the XRP Ledger for verifying the provenance and integrity of official statistical data.</p>
+
+<h3>2. Did BIS put official statistics directly on XRPL?</h3>
+
+<p>No. The underlying datasets remain off-chain. Cryptographic information representing the data is anchored to the ledger.</p>
+
+<h3>3. What was the XRPL transaction fee in the BIS research?</h3>
+
+<p>The paper reports a median observed fee of 10 drops per anchoring transaction, equal to 0.00001 XRP. Its illustrative cost comparison converts that amount to approximately $0.000003 using an XRP price of $0.30.</p>
+
+<h3>4. Why is Merkle batching important?</h3>
+
+<p>Merkle aggregation allows many individual data fingerprints to be represented by one root. This means a single blockchain transaction can cover a large batch of datasets, reducing the effective blockchain cost per dataset.</p>
+
+<h3>5. How fast was the prototype?</h3>
+
+<p>The researchers reported median publication latency of approximately 3–5 seconds and verification latency of approximately 1–2 seconds under the controlled test conditions.</p>
+
+<h3>6. Does this mean the BIS adopted XRP?</h3>
+
+<p>No. The research documents a proof of concept using XRPL. It does not announce permanent BIS adoption of XRP or XRPL.</p>
+
+<h3>7. Are the IMF, World Bank and ECB adopting XRPL?</h3>
+
+<p>There is no such announcement in this research. These organizations are among the international sponsors of SDMx, the statistical standard used by the project, but that sponsorship does not constitute XRPL adoption.</p>
+
+<h3>8. What did XRPL validator Vet suggest?</h3>
+
+<p>Vet suggested exploring an NFT-based approach for the verification reference instead of relying on a payment transaction memo. This is a community proposal and is not part of the BIS prototype.</p>
+
+<h3>9. Can blockchain prove that a statistic is correct?</h3>
+
+<p>No. Blockchain anchoring can help verify data integrity and provenance, but it cannot independently determine whether the original statistic was calculated correctly.</p>
+
+<h3>10. Could AI agents use this system?</h3>
+
+<p>Potentially. The BIS paper identifies automated verification by AI agents as a possible future extension, but it does not say that AI systems are already universally using XRPL to verify official statistics.</p>
+
+<h3>11. Could the architecture work with other data formats?</h3>
+
+<p>Yes. The researchers describe the approach as data-format-agnostic and specifically discuss possible extensions to structured formats such as XBRL.</p>
+
+<h3>12. Is this an XRP price prediction?</h3>
+
+<p>No. The research concerns data verification and blockchain infrastructure. It does not provide an XRP price forecast or investment recommendation.</p>
+
+<h2>Sources</h2>
+
+<p><strong>Primary source — BIS Working Paper No. 1374:</strong><br />
+<a href="https://www.bis.org/publications/working-paper-1374-verifiable-official-statistics-blockchain-based-approach" rel="noopener noreferrer" target="_blank">Bank for International Settlements — Verifiable official statistics: a blockchain-based approach</a></p>
+
+<p><strong>Full research paper:</strong><br />
+<a href="https://www.bis.org/publications/working-paper-1374-verifiable-official-statistics-blockchain-based-approach.pdf" rel="noopener noreferrer" target="_blank">BIS Working Paper No. 1374 — PDF</a></p>
+
+<p><strong>SDMx official documentation:</strong><br />
+<a href="https://sdmx.org/about-sdmx/welcome/" rel="noopener noreferrer" target="_blank">SDMx — Statistical Data and Metadata eXchange</a></p>
+
+<p><strong>XRPL NFT documentation:</strong><br />
+<a href="https://xrpl.org/docs/concepts/tokens/nfts" rel="noopener noreferrer" target="_blank">XRP Ledger — Non-Fungible Tokens</a></p>
+
+<div style="background: rgb(247, 247, 247); border-left: 4px solid rgb(119, 119, 119); margin: 24px 0px; padding: 16px;">
+<p style="margin: 0px;"><span style="color: red;"><strong>Editorial note:</strong> This article distinguishes between findings reported in the BIS research and subsequent community commentary. The BIS work is a proof of concept implemented on the XRP Ledger. References to Vet's NFT proposal are presented as an independent community suggestion and not as a BIS recommendation. The article does not interpret the research as XRP adoption by BIS or by the SDMx sponsor organizations.</span></p>
+</div>
+
+</article>
+  </div>
+</article>

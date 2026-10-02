@@ -1,0 +1,458 @@
+<!--
+Title: Zcash Just Got a Major Speed Boost: Zakura Says Private Transactions Can Drop Below 200ms
+Author: Top Crypto News
+Published: 2026-08-31T09:31:00.956Z
+Updated: 2026-08-31T09:36:24.316Z
+Categories: Bitcoin News, Altcoin News, Learn crypto, Market News
+MetaDescription: Zakura Common makes Zcash private transactions faster, with mobile proof generation reportedly over 14x quicker and some transactions under 200ms.
+-->
+
+<article class="atlas-post" data-slug="zcash-just-got-major-speed-boost-zakura">
+  <header class="atlas-post__header">
+    <h1 class="atlas-post__title">Zcash Just Got a Major Speed Boost: Zakura Says Private Transactions Can Drop Below 200ms</h1>
+    <div class="atlas-post__meta">
+      <span class="atlas-post__author">Top Crypto News</span>
+      <time class="atlas-post__date" datetime="2026-08-31T09:31:00.956Z">2026-08-31T09:31:00.956Z</time>
+    </div>
+    <div class="atlas-post__categories">
+      <span class="atlas-post__category">Bitcoin News</span><span class="atlas-post__category">Altcoin News</span><span class="atlas-post__category">Learn crypto</span><span class="atlas-post__category">Market News</span>
+    </div>
+  </header>
+
+  <div class="atlas-post__content">
+<br /><article><div class="separator" style="clear: both; text-align: center;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7TaBrpaUKCiiducqRvces8MtRKgxSqpSkqe_3pshjBAyvtcyqpMWCk-WDSQPSTkX6MYdduSxHgLIoS3M9u7GvWVatAW0mOIxQnm4IMuipg2y3R0LiSwQTXjn0I1PIVNenSeb_LZ1vEyWZHdCoKdkGFU-PI0WvmEXeKldqP332c2f_Mt022P310-7Ttn71/s1672/zakura-zcash-common-14x-faster-private-transactions.jpg.png" style="margin-left: 1em; margin-right: 1em;"><img alt="Zakura Common Boosts Zcash Private Transaction Speed" border="0" data-original-height="941" data-original-width="1672" height="225" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7TaBrpaUKCiiducqRvces8MtRKgxSqpSkqe_3pshjBAyvtcyqpMWCk-WDSQPSTkX6MYdduSxHgLIoS3M9u7GvWVatAW0mOIxQnm4IMuipg2y3R0LiSwQTXjn0I1PIVNenSeb_LZ1vEyWZHdCoKdkGFU-PI0WvmEXeKldqP332c2f_Mt022P310-7Ttn71/w400-h225/zakura-zcash-common-14x-faster-private-transactions.jpg.png" title="Zakura Common improves Zcash private transaction performance with faster mobile proof generation" width="400" /></a></div>
+
+  <p><br /></p>
+
+  <p>Zcash has spent years trying to solve one of the hardest problems in cryptocurrency: how do you make private payments fast enough for ordinary people to use every day?</p>
+
+  <p>Now, a new release from the team behind the Zakura Zcash node is taking aim at one of the most noticeable bottlenecks — the time a user's device spends creating a private transaction.</p>
+
+  <p>On August 29, Zakura announced <strong>Zakura Common</strong>, an open-source collection of cryptography and protocol libraries designed to accelerate Zcash wallets and full nodes. According to Zakura's published benchmarks, mobile proof generation is now <strong>more than 14 times faster</strong>, while desktop performance is more than five times faster.</p>
+
+  <p>In some cases, Zakura says the time a wallet spends creating a private transaction can fall from <strong>more than three seconds to under 200 milliseconds</strong>.</p>
+
+  <p>That is a significant change for a privacy-focused cryptocurrency where the transaction can feel slow before it even reaches the blockchain.</p>
+
+  <p>
+    <a href="https://zakura.com/announcements/zakura-common/" rel="noopener noreferrer" target="_blank">
+      Read Zakura's official announcement
+    </a>
+  </p>
+
+  <hr />
+
+  <h2>The Problem Zakura Is Trying to Fix</h2>
+
+  <p>Zcash is designed around privacy.</p>
+
+  <p>Shielded transactions can hide important transaction details, including the sender, receiver and amount. But that privacy comes with a computational cost.</p>
+
+  <p>Before a private <a href="https://www.coinainews.com/2026/08/how-can-you-tell-if-crypto-investment.html">Zcash payment</a> can be broadcast, a wallet has to perform cryptographic calculations to construct the necessary proof. On mobile devices, that work can become a noticeable part of the user experience.</p>
+
+  <p>A three-second wait may not sound enormous in isolation. But if someone has to stare at a loading screen every time they make a private payment, the delay can become a serious usability problem.</p>
+
+  <p>Zakura's latest software attacks that bottleneck at the cryptographic-library level.</p>
+
+  <p>And importantly, <strong>this is not a Zcash consensus upgrade</strong>.</p>
+
+  <p>Existing Zcash network rules do not need to change for compatible wallets and software to benefit. Developers can integrate the new libraries into their own releases.</p>
+
+  <p>That distinction matters: Zakura Common is primarily a <strong>software-performance improvement</strong>, not a new blockchain consensus mechanism.</p>
+
+  <p>
+    <a href="https://zakura.com/announcements/zakura-common/" rel="noopener noreferrer" target="_blank">
+      Zakura Common — Official Announcement
+    </a>
+  </p>
+
+  <h2>More Than a 14x Improvement</h2>
+
+  <p>The headline number is the mobile proof-generation improvement, but Zakura says several components of its cryptographic stack have become substantially faster.</p>
+
+  <div style="margin: 20px 0px; overflow-x: auto; width: 100%;">
+    <table style="border-collapse: collapse; font-size: 16px; min-width: 650px; width: 100%;">
+      <thead>
+        <tr>
+          <th style="border: 1px solid rgb(204, 204, 204); padding: 12px; text-align: left;">Component</th>
+          <th style="border: 1px solid rgb(204, 204, 204); padding: 12px; text-align: left;">Reported Improvement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">Mobile proof generation</td>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>More than 14x faster</strong></td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">Desktop proof generation</td>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">More than 5x faster</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">Sinsemilla hashing</td>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">More than 21x faster</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">Trial decryption</td>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">More than 1.5x faster</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">zk-SNARK verification</td>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">4x–8x faster</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">Wallet transaction creation</td>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>Under 200ms in many cases</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>These are Zakura's benchmark results rather than a guarantee that every device or wallet will achieve identical performance. Actual results will depend on hardware, software implementation and how quickly individual wallets adopt the new libraries.</p>
+
+  <h2>Why Mobile Performance Matters So Much</h2>
+
+  <p>Desktop computers have considerably more processing power than smartphones.</p>
+
+  <p>That makes mobile devices one of the more difficult environments for privacy-preserving cryptography.</p>
+
+  <p>Zakura says its optimization work specifically targets this problem. The team's published benchmarks show the largest improvement in proof generation on mobile hardware, where the process is now more than 14 times faster.</p>
+
+  <p>The result could be particularly important for <a href="https://www.coinainews.com/2026/08/can-cryptocurrencies-survive-quantum-era.html">wallets</a>.</p>
+
+  <p>Instead of treating privacy as something that necessarily requires a long computational wait, wallet developers can potentially use a more optimized cryptographic stack to make shielded transactions feel almost instantaneous.</p>
+
+  <h2>Zakura Common Does Not Require a Network Upgrade</h2>
+
+  <p>One of the more interesting aspects of the release is what it <strong>doesn't</strong> require.</p>
+
+  <p>Zakura says the improvements are publicly available under the MIT/Apache 2.0 dual license and do not require a Zcash network upgrade.</p>
+
+  <p>The upcoming Zakura 1.3.0 release is moving to the new stack, while other projects can independently integrate the libraries.</p>
+
+  <p>
+    <a href="https://zakura.com/announcements/zakura-common/" rel="noopener noreferrer" target="_blank">
+      View the official Zakura Common release
+    </a>
+  </p>
+
+  <h2>The Bigger Ambition: 50,000+ Private Transactions Per Second</h2>
+
+  <p>Zakura Common should not be viewed as an isolated optimization.</p>
+
+  <p>It fits into a much larger effort to scale Zcash.</p>
+
+  <p>The Zakura team has described a long-term ambition of supporting payment volumes in the range of major global payment networks, with <strong>more than 50,000 transactions per second</strong> serving as a benchmark for the project's scalability goals.</p>
+
+  <p>That is dramatically beyond the performance requirements of today's Zcash software.</p>
+
+  <p>Reaching that level would require much more than faster proof generation.</p>
+
+  <p>It would require improvements across the entire stack — including transaction verification, networking, wallet synchronization, data availability and the amount of information validators need to process and retain.</p>
+
+  <p>That is where <strong>Project Tachyon</strong> enters the picture.</p>
+
+  <h2>Project Tachyon: The Larger Zcash Scaling Effort</h2>
+
+  <p>Project Tachyon is a proposed Zcash scalability initiative being developed by community members.</p>
+
+  <p>Its goal is much broader than simply making transactions faster on a smartphone.</p>
+
+  <p>Tachyon explores advanced cryptographic techniques, including proof-carrying data and recursive proofs, to reduce the amount of work required to process large numbers of shielded transactions.</p>
+
+  <p>The project explores a future in which private payments can scale while preserving Zcash's core privacy properties.</p>
+
+  <p>
+    <a href="https://tachyon.z.cash/" rel="noopener noreferrer" target="_blank">
+      Explore Project Tachyon
+    </a>
+  </p>
+
+  <p>The relationship between the projects is important.</p>
+
+  <p><strong>Zakura Common improves the cryptographic machinery. Tachyon tackles deeper protocol-level scaling problems.</strong></p>
+
+  <p>Together, they form part of a broader attempt to move Zcash toward much higher transaction capacity without abandoning privacy.</p>
+
+  <h2>NU7 Is Another Piece of the Story</h2>
+
+  <p>The timing also matters because Zcash is preparing for its next major network-development phase.</p>
+
+  <p>Zakura says its optimized software can handle the <strong>25-second block times proposed for NU7</strong>. The project's announcement describes the new cryptographic stack as something that can push performance further while the broader Zcash ecosystem continues working toward future upgrades.</p>
+
+  <p>NU7 itself remains a community-governance process rather than a completed upgrade.</p>
+
+  <p>The Zcash Foundation opened a ZCAP poll in late August to resolve outstanding questions about the scope of NU7, illustrating that parts of the upgrade remain subject to community discussion and approval.</p>
+
+  <p>
+    <a href="https://zfnd.org/zcap-poll-now-open-nu7/" rel="noopener noreferrer" target="_blank">
+      Read the Zcash Foundation's NU7 update
+    </a>
+  </p>
+
+  <h2>Zcash Is Trying to Solve More Than One Bottleneck</h2>
+
+  <p>A blockchain cannot reach payment-network scale by optimizing only one piece of code.</p>
+
+  <p>Imagine a highway where cars can suddenly accelerate five times faster, but the road still has the same number of lanes.</p>
+
+  <p>Traffic will eventually hit another bottleneck.</p>
+
+  <p>Zcash faces a similar problem.</p>
+
+  <p>Faster proof generation helps users create transactions more quickly. Faster verification helps nodes process transactions. Faster hashing improves another computational component. But network bandwidth, state growth, transaction size and synchronization can still constrain overall performance.</p>
+
+  <p>That is why the broader Zcash scaling strategy involves multiple projects attacking different bottlenecks.</p>
+
+  <p>Zakura is focused heavily on node and <a href="https://www.coinainews.com/2026/08/can-coinbase-pull-back-crypto.html">cryptographic</a> performance.</p>
+
+  <p>Tachyon is exploring deeper protocol and proof-system improvements.</p>
+
+  <p>The objective is not simply to make one benchmark look better.</p>
+
+  <p>The objective is to make <strong>private digital payments practical at global scale</strong>.</p>
+
+  <h2>The Helius CEO Reaction</h2>
+
+  <p>The release also attracted attention outside the immediate Zcash developer community.</p>
+
+  <p>Helius CEO Mert highlighted the result, describing it as an <strong>"insane engineering feat."</strong> The reaction reflects why the release has generated interest beyond Zcash itself: achieving a double-digit improvement in a highly optimized cryptographic workload is technically difficult.</p>
+
+  <p>However, the reaction should not be confused with independent verification of the benchmark. Zakura's published measurements remain the primary source for the performance claims.</p>
+
+  <h2>What About ZEC's Price?</h2>
+
+  <p>The release also arrived alongside renewed market interest in Zcash.</p>
+
+  <p>Reporting following the announcement placed <strong>ZEC around the $839 area</strong>, with the token gaining roughly 5% around the time of the news.</p>
+
+  <p>
+    <a href="https://www.tradingview.com/news/coinpedia%3Ae5f8a6623094b%3A0-zcash-developer-zakura-launches-common-as-zec-price-jumps-5/" rel="noopener noreferrer" target="_blank">
+      Read the market report
+    </a>
+  </p>
+
+  <p>But investors should separate the technology story from the price story.</p>
+
+  <p>A faster cryptographic library does not automatically mean that ZEC must rise.</p>
+
+  <p>Crypto markets react to multiple factors, including liquidity, broader market conditions, speculation and expectations about future adoption.</p>
+
+  <p>The most defensible conclusion is simply that the Zakura announcement coincided with a period of stronger ZEC price activity.</p>
+
+  <p><strong>It would be misleading to claim that Zakura Common alone caused the price move.</strong></p>
+
+  <h2>Why This Could Matter for Zcash Adoption</h2>
+
+  <p>Privacy is only useful if people are willing to use it.</p>
+
+  <p>If sending a private transaction requires several seconds of computation on a modern smartphone, some users may choose convenience over privacy.</p>
+
+  <p>Reducing that delay to hundreds of milliseconds changes the equation.</p>
+
+  <p>A wallet that can construct a shielded transaction almost instantly feels fundamentally different from one that makes users wait through a visible processing step.</p>
+
+  <p>That could matter for:</p>
+
+  <ul>
+    <li>Mobile Zcash wallets</li>
+    <li>Everyday private payments</li>
+    <li>Wallet onboarding</li>
+    <li>Merchant applications</li>
+    <li>High-frequency private transactions</li>
+    <li>Future payment infrastructure</li>
+  </ul>
+
+  <p>But software adoption is crucial.</p>
+
+  <p>The performance improvement exists in Zakura Common. It does not automatically propagate to every Zcash wallet.</p>
+
+  <h2>A Faster Wallet Is Not the Same as a Faster Blockchain</h2>
+
+  <p>This is perhaps the most important distinction for readers.</p>
+
+  <p>If a wallet creates a transaction in 200 milliseconds instead of three seconds, that does <strong>not</strong> mean the Zcash blockchain has suddenly reached 50,000 transactions per second.</p>
+
+  <p>Those are two different measurements.</p>
+
+  <p><strong>Transaction creation latency</strong> measures how long the user's device takes to construct the cryptographic transaction.</p>
+
+  <p><strong>Blockchain throughput</strong> measures how many transactions the network can process.</p>
+
+  <p>Zakura Common primarily addresses the first problem while also improving several node-side operations.</p>
+
+  <p>The 50,000+ TPS ambition requires additional protocol, networking and infrastructure improvements. Project Tachyon is part of that broader effort.</p>
+
+  <h2>What Happens Next?</h2>
+
+  <p>The next stage is adoption.</p>
+
+  <p>Zakura has said it is inviting wallet developers to integrate the new libraries. Its upcoming 1.3.0 release is expected to use Zakura Common, and the project says Tachyon has also moved to the new stack.</p>
+
+  <p>If more wallets adopt the libraries, users could gradually begin seeing faster shielded transaction creation without needing to wait for a network-wide upgrade.</p>
+
+  <p>That could make the improvement more meaningful than a benchmark alone.</p>
+
+  <p>A cryptographic optimization becomes valuable when it disappears into the user experience.</p>
+
+  <p>If someone taps <strong>Send</strong>, waits a fraction of a second and sees the transaction broadcast, they do not need to understand the mathematics underneath.</p>
+
+  <p>They simply experience a faster wallet.</p>
+
+  <h2>The Bigger Picture</h2>
+
+  <p>Zakura Common is not the final answer to Zcash's scaling challenge.</p>
+
+  <p>It is better understood as one important layer of a much larger engineering effort.</p>
+
+  <p>The release addresses a real user-facing problem: the computational delay involved in creating private transactions.</p>
+
+  <p>The numbers are striking — more than 14x faster mobile proof generation, more than 21x faster Sinsemilla hashing, faster verification and transaction creation that can fall below 200 milliseconds in many cases.</p>
+
+  <p>But the more interesting story may be what comes next.</p>
+
+  <p>Zcash developers are trying to combine faster cryptography, more efficient node software, recursive-proof research, privacy-preserving synchronization and future protocol changes into a system capable of supporting private payments at global scale.</p>
+
+  <p>That is a much bigger ambition than simply making a wallet load faster.</p>
+
+  <p>For now, Zakura Common gives the Zcash ecosystem a tangible performance improvement that developers can use on the existing network.</p>
+
+  <p>And if the project's broader roadmap succeeds, today's 200-millisecond benchmark could eventually look like just one early step toward making private cryptocurrency payments fast enough for everyday global use.</p>
+
+  <hr />
+
+  <h2>Key Facts</h2>
+
+  <div style="margin: 20px 0px; overflow-x: auto; width: 100%;">
+    <table style="border-collapse: collapse; font-size: 16px; min-width: 650px; width: 100%;">
+      <thead>
+        <tr>
+          <th style="border: 1px solid rgb(204, 204, 204); padding: 12px; text-align: left;">Fact</th>
+          <th style="border: 1px solid rgb(204, 204, 204); padding: 12px; text-align: left;">Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>Project</strong></td>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">Zakura Common</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>Ecosystem</strong></td>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">Zcash</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>Mobile proof generation</strong></td>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>More than 14x faster</strong></td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>Desktop proof generation</strong></td>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">More than 5x faster</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>Sinsemilla hashing</strong></td>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">More than 21x faster</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>zk-SNARK verification</strong></td>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">4x–8x faster</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>Transaction creation</strong></td>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">Under 200ms in many cases</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>Network upgrade required?</strong></td>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">No, according to Zakura</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>License</strong></td>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">MIT / Apache 2.0</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>Long-term scaling ambition</strong></td>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">50,000+ transactions per second</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>Related initiative</strong></td>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">Project Tachyon</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;"><strong>Upgrade context</strong></td>
+          <td style="border: 1px solid rgb(204, 204, 204); padding: 12px;">NU7</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <h3>What is Zakura Common?</h3>
+
+  <p>Zakura Common is an open-source collection of cryptography and protocol libraries developed for the Zcash ecosystem. It is designed to improve the performance of wallets and full nodes.</p>
+
+  <h3>How much faster is Zakura Common?</h3>
+
+  <p>Zakura reports that mobile proof generation is more than 14 times faster, desktop proof generation is more than five times faster, Sinsemilla hashing is more than 21 times faster, and zk-SNARK verification is between four and eight times faster.</p>
+
+  <h3>Can Zcash transactions really be created in under 200 milliseconds?</h3>
+
+  <p>Zakura says wallet transaction creation can take less than 200 milliseconds in many cases with its optimized cryptographic stack. That is a benchmark claim, not a guarantee for every device or wallet.</p>
+
+  <h3>Does Zakura Common require a Zcash hard fork?</h3>
+
+  <p>No. Zakura says the improvements do not require a network upgrade. Wallets and node implementations can adopt the libraries through their own software releases.</p>
+
+  <h3>What is Project Tachyon?</h3>
+
+  <p>Project Tachyon is a proposed Zcash scalability initiative exploring advanced cryptographic techniques to make private payments more scalable while maintaining privacy.</p>
+
+  <h3>Is Zcash targeting 50,000 transactions per second?</h3>
+
+  <p>The Zakura team has described more than 50,000 transactions per second as a long-term benchmark for supporting payment volumes comparable to major global payment networks. Reaching that level would require improvements across multiple layers of the Zcash stack.</p>
+
+  <h3>Does the Zakura release guarantee that ZEC will rise?</h3>
+
+  <p>No. Faster technology may improve the long-term usability and scalability outlook, but it does not guarantee a particular ZEC price. Market prices are influenced by many factors.</p>
+
+  <hr />
+
+  <h2>Sources</h2>
+
+  <ul>
+    <li>
+      <a href="https://zakura.com/announcements/zakura-common/" rel="noopener noreferrer" target="_blank">
+        Zakura — Zakura Common Official Announcement
+      </a>
+    </li>
+    <li>
+      <a href="https://tachyon.z.cash/" rel="noopener noreferrer" target="_blank">
+        Project Tachyon — Official Website
+      </a>
+    </li>
+    <li>
+      <a href="https://zfnd.org/zcap-poll-now-open-nu7/" rel="noopener noreferrer" target="_blank">
+        Zcash Foundation — NU7 ZCAP Update
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/zakura-core/zakura/" rel="noopener noreferrer" target="_blank">
+        Zakura Core — GitHub
+      </a>
+    </li>
+    <li>
+      <a href="https://www.tradingview.com/news/coinpedia%3Ae5f8a6623094b%3A0-zcash-developer-zakura-launches-common-as-zec-price-jumps-5/" rel="noopener noreferrer" target="_blank">
+        TradingView — Zcash/Zakura Market Report
+      </a>
+    </li>
+  </ul>
+
+  <div style="background: rgb(245, 245, 245); border-left: 4px solid rgb(136, 136, 136); margin-top: 30px; padding: 16px;">
+    <p><span style="color: #01ffff;"><strong>Editorial Note:</strong> Performance figures in this article are based primarily on benchmarks published by the Zakura team. Actual performance may vary by hardware, wallet implementation and software integration. Project Tachyon and future Zcash upgrades remain subject to development, review and community approval.</span></p>
+
+    <p><em><span style="color: #01ffff;">This article is for informational purposes only and does not constitute financial, investment or trading advice.</span></em></p>
+  </div>
+
+</article>
+```
+<br />
+  </div>
+</article>
