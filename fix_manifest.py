@@ -1,16 +1,12 @@
 #!/usr/bin/env python3
-"""
-Fix: Update manifest.json with generated posts (all required fields)
-"""
-import os
-import json
+import os, json
 
 POSTS_DIR = "src/generated/posts"
 MANIFEST_FILE = "src/data/manifest.json"
+DEFAULT_BODY_CLASS = "post-template-default single single-post single-format-standard wp-embed-responsive theme-atlas s-front site-skin site-light box-solid wheading-simple sticky-header-active reading-indicator-bottom sticky-sidebar elementor-default elementor-kit-6"
 
 def main():
-    print("🔧 Fixing manifest.json...")
-
+    print("Fixing manifest...")
     if os.path.exists(MANIFEST_FILE):
         with open(MANIFEST_FILE, "r", encoding="utf-8") as f:
             try:
@@ -26,58 +22,44 @@ def main():
         manifest["pages"] = []
 
     manifest["posts"] = [p for p in manifest["posts"] if isinstance(p, dict)]
-    manifest["pages"] = [p for p in manifest["pages"] if isinstance(p, dict)]
 
     if os.path.exists(POSTS_DIR):
         files = sorted([f for f in os.listdir(POSTS_DIR) if f.endswith(".html")])
-        print(f"📁 Found {len(files)} post files")
-
-        # Purani entries hatao, sirf files wali rakho
-        existing_slugs = {p.get("slug") for p in manifest["posts"] if p.get("slug")}
+        print(f"Found {len(files)} posts")
 
         for filename in files:
             slug = filename[:-5]
-            title = slug.replace("-", " ").title()
+            title = slug.replace("-", " ").replace("_", " ").title()
 
-            # Already hai? toh update karo, warna add karo
             found = False
             for p in manifest["posts"]:
                 if p.get("slug") == slug:
-                    p["title"] = title
+                    p["title"] = p.get("title") or title
                     p["file"] = f"posts/{filename}"
                     p["path"] = f"/{slug}/"
                     p["excerpt"] = p.get("excerpt", "")
                     p["cover"] = p.get("cover", "")
-                    p["date"] = p.get("date", "2026-01-01")
-                    p["site"] = p.get("site", "CoinAINews")
-                    p["categories"] = p.get("categories", ["Crypto"])
+                    p["date"] = p.get("date", "2026-10-02")
+                    p["site"] = p.get("site", "default")
+                    p["categories"] = p.get("categories", ["crypto"])
                     p["format"] = p.get("format", "standard")
-                    p["bodyClass"] = p.get("bodyClass", "single-post")
+                    p["bodyClass"] = p.get("bodyClass", DEFAULT_BODY_CLASS)
                     found = True
                     break
 
             if not found:
                 manifest["posts"].append({
-                    "slug": slug,
-                    "title": title,
-                    "excerpt": "",
-                    "cover": "",
-                    "date": "2026-01-01",
-                    "site": "CoinAINews",
-                    "categories": ["Crypto"],
-                    "format": "standard",
-                    "bodyClass": "single-post",
-                    "file": f"posts/{filename}",
-                    "path": f"/{slug}/"
+                    "slug": slug, "title": title, "excerpt": "", "cover": "",
+                    "date": "2026-10-02", "site": "default", "categories": ["crypto"],
+                    "format": "standard", "bodyClass": DEFAULT_BODY_CLASS,
+                    "file": f"posts/{filename}", "path": f"/{slug}/"
                 })
 
     os.makedirs(os.path.dirname(MANIFEST_FILE), exist_ok=True)
     with open(MANIFEST_FILE, "w", encoding="utf-8") as f:
         json.dump(manifest, f, indent=2, ensure_ascii=False)
 
-    print(f"✅ Manifest updated!")
-    print(f"   📝 Total posts: {len(manifest['posts'])}")
-    print(f"   📄 Total pages: {len(manifest['pages'])}")
+    print(f"Done. Total posts: {len(manifest['posts'])}")
 
 if __name__ == "__main__":
     main()
