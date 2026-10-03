@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
 """
 Fix manifest.json — remove Atlas demo posts (food, fashion, lifestyle).
-Keep only crypto-related posts.
+Includes safety checks for corrupt/empty JSON.
 """
 import os
 import json
 
 MANIFEST_FILE = "src/data/manifest.json"
-DEFAULT_BODY_CLASS = "post-template-default single single-post single-format-standard wp-embed-responsive theme-atlas s-front site-skin site-light box-solid wheading-simple sticky-header-active reading-indicator-bottom sticky-sidebar elementor-default elementor-kit-6"
 
-# Atlas demo post slugs (food, fashion, lifestyle, gadgets) — delete these
 ATLAS_DEMO_SLUGS = [
     "a-mild-sweet-fruit-with-a-fibrous-center",
     "always-keep-your-drone-within-the-vlos",
@@ -65,13 +63,39 @@ ATLAS_DEMO_SLUGS = [
 
 def main():
     print("🔧 Cleaning Atlas demo posts from manifest...")
-
-    with open(MANIFEST_FILE, "r", encoding="utf-8") as f:
-        manifest = json.load(f)
-
-    old_count = len(manifest.get("posts", []))
+    print(f"📁 File: {MANIFEST_FILE}")
     
-    # Filter out Atlas demo posts
+    # Check file exists
+    if not os.path.exists(MANIFEST_FILE):
+        print(f"❌ {MANIFEST_FILE} NOT FOUND")
+        return
+    
+    # Check file size
+    size = os.path.getsize(MANIFEST_FILE)
+    print(f"📊 File size: {size} bytes")
+    
+    if size == 0:
+        print(f"❌ {MANIFEST_FILE} is EMPTY (0 bytes)")
+        return
+    
+    # Try to load JSON
+    try:
+        with open(MANIFEST_FILE, "r", encoding="utf-8") as f:
+            content = f.read()
+            print(f"📄 First 100 chars: {content[:100]}")
+            manifest = json.loads(content)
+    except json.JSONDecodeError as e:
+        print(f"❌ JSON ERROR: {e}")
+        print(f"📄 First 500 chars:")
+        print(content[:500])
+        return
+    except Exception as e:
+        print(f"❌ ERROR: {e}")
+        return
+    
+    old_count = len(manifest.get("posts", []))
+    print(f"📝 Before: {old_count} posts")
+    
     cleaned_posts = [
         p for p in manifest.get("posts", [])
         if p.get("slug", "") not in ATLAS_DEMO_SLUGS
