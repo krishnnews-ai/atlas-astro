@@ -1,113 +1,31 @@
-#!/usr/bin/env python3
-"""
-Fix manifest.json — remove Atlas demo posts (food, fashion, lifestyle).
-Includes safety checks for corrupt/empty JSON.
-"""
-import os
-import json
-
-MANIFEST_FILE = "src/data/manifest.json"
-
-ATLAS_DEMO_SLUGS = [
-    "a-mild-sweet-fruit-with-a-fibrous-center",
-    "always-keep-your-drone-within-the-vlos",
-    "blog-post",
-    "coconut-curry-soup-with-chickpeas",
-    "comfortable-pairs-of-sneakers-to-walk-all-day",
-    "dark-chocolate-self-saucing-pudding",
-    "delicious-chicken-meatball-soup",
-    "essential-tech-tips-for-your-business",
-    "fairy-potion-summer-fruit-drink",
-    "fashion-tips-trends-and-celebrity-style",
-    "finally-found-a-work-computer-setup-thats-practically-perfect",
-    "for-good-results-must-be-make-good-plan",
-    "fruit-yogurt-easy-homemade-fruit-drink",
-    "gadgets-that-will-upgrade-your-home",
-    "headsets-are-better-if-youre-playing-games",
-    "healthy-chicken-and-rice-soup",
-    "hot-new-releases-in-audio-headphones",
-    "how-to-do-the-superman-standing-exercise",
-    "how-to-organize-and-write-content-for",
-    "in-fact-certainly-influenced-seldes-the-leftist-journalist-i-f-stone",
-    "laptops-tend-to-be-smaller-than-desktops",
-    "laugh-cry-and-learn-within-virtual-reality",
-    "make-your-gaming-setup-look-better",
-    "make-your-phone-feel-new-again",
-    "melt-and-mix-chocolate-and-ginger-mud-cake",
-    "mistakes-you-might-be-making-with-your-watch",
-    "mobile-camera-makes-a-huge-leap-in-quality",
-    "pecan-chocolate-bread-and-butter",
-    "refreshing-summer-fruit-drink",
-    "rugby-african-ations-are-singing-to-save-their-wildlif",
-    "spicy-crispy-chicken-burger-recipe",
-    "spiked-strawberry-slushies-for-a-crowd",
-    "surprising-benefits-of-honeydew-melon",
-    "the-inbound-marketing-methodology-method-of-drawing-the-right",
-    "the-secret-of-buzzfeeds-success-has-a-lot-to-do-with-the-image-heavy",
-    "there-are-several-differences-between-outbound",
-    "tips-to-ensure-you-always-look-stylish",
-    "tomato-bisque-with-fried-cheese",
-    "top-12-health-benefits-of-eating-grapes",
-    "top-classic-style-inspiration-ideas",
-    "top-mens-fashion-trends-from-spring",
-    "tortellini-soup-with-italian-sausage-and-kale",
-    "vegan-chocolate-avocado-milkshakes",
-    "vr-headset-virtual-reality-glasses",
-    "why-do-restaurant-burgers-taste-better",
-    "wild-mushroom-chowder-with-leeks",
-    "will-humans-be-able-to-live-in-mars-in-the-future",
-    "winter-dressing-tips-when-its-really-cold-out",
-    "contact",
-    "privacy-policy",
-]
-
-def main():
-    print("🔧 Cleaning Atlas demo posts from manifest...")
-    print(f"📁 File: {MANIFEST_FILE}")
-    
-    # Check file exists
-    if not os.path.exists(MANIFEST_FILE):
-        print(f"❌ {MANIFEST_FILE} NOT FOUND")
-        return
-    
-    # Check file size
-    size = os.path.getsize(MANIFEST_FILE)
-    print(f"📊 File size: {size} bytes")
-    
-    if size == 0:
-        print(f"❌ {MANIFEST_FILE} is EMPTY (0 bytes)")
-        return
-    
-    # Try to load JSON
-    try:
-        with open(MANIFEST_FILE, "r", encoding="utf-8") as f:
-            content = f.read()
-            print(f"📄 First 100 chars: {content[:100]}")
-            manifest = json.loads(content)
-    except json.JSONDecodeError as e:
-        print(f"❌ JSON ERROR: {e}")
-        print(f"📄 First 500 chars:")
-        print(content[:500])
-        return
-    except Exception as e:
-        print(f"❌ ERROR: {e}")
-        return
-    
-    old_count = len(manifest.get("posts", []))
-    print(f"📝 Before: {old_count} posts")
-    
-    cleaned_posts = [
-        p for p in manifest.get("posts", [])
-        if p.get("slug", "") not in ATLAS_DEMO_SLUGS
-    ]
-
-    manifest["posts"] = cleaned_posts
-
-    with open(MANIFEST_FILE, "w", encoding="utf-8") as f:
-        json.dump(manifest, f, indent=2, ensure_ascii=False)
-
-    print(f"✅ Posts: {old_count} → {len(cleaned_posts)}")
-    print(f"   ❌ Removed {old_count - len(cleaned_posts)} Atlas demo posts")
-
-if __name__ == "__main__":
-    main()
+{
+  "posts": [
+    {
+      "slug": "10-of-weirdest-things-ever-tokenized-on",
+      "title": "10 Of Weirdest Things Ever Tokenized On",
+      "excerpt": "",
+      "cover": "",
+      "date": "2026-01-01",
+      "site": "CoinAINews",
+      "categories": ["Market News"],
+      "format": "standard",
+      "bodyClass": "single-post",
+      "file": "posts/10-of-weirdest-things-ever-tokenized-on.html",
+      "path": "/10-of-weirdest-things-ever-tokenized-on/"
+    },
+    {
+      "slug": "30-crypto-ai-crypto-startups-2026",
+      "title": "30 Crypto Ai Crypto Startups 2026",
+      "excerpt": "",
+      "cover": "",
+      "date": "2026-01-01",
+      "site": "CoinAINews",
+      "categories": ["Editor's Choice"],
+      "format": "standard",
+      "bodyClass": "single-post",
+      "file": "posts/30-crypto-ai-crypto-startups-2026.html",
+      "path": "/30-crypto-ai-crypto-startups-2026/"
+    }
+  ],
+  "pages": []
+}
