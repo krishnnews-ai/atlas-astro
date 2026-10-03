@@ -8,23 +8,27 @@ const latest = posts.slice(-20).reverse();
 <Layout
   title="CoinAI News — Latest Crypto & AI News"
   description="Latest crypto & AI news"
-  bodyClass="home page-template page-template-page-front page-template-page-front-php page page-id-41 wp-embed-responsive theme-atlas s-front site-skin site-light box-solid wheading-simple sticky-header-active sticky-sidebar sidebar-full elementor-default elementor-kit-6 elementor-page elementor-page-41"
+  bodyClass="home"
   css="home-default"
   js="home-default"
   dir="ltr"
 >
-  <main id="main" class="site-main">
-    <header class="page-header">
-      <h1 class="page-title">Latest Crypto & AI News</h1>
-    </header>
-    <div class="post-list" style="max-width:800px;margin:0 auto;padding:20px;">
+  <div style="max-width:900px;margin:0 auto;padding:30px 20px;font-family:Arial,sans-serif;background:#fff;">
+    <h1 style="font-size:32px;margin:0 0 30px;color:#111;border-bottom:2px solid #333;padding-bottom:15px;">
+      Latest Crypto &amp; AI News
+    </h1>
+    <div>
       {latest.map((p) => (
-        <article class="post-item" style="border-bottom:1px solid #eee;padding:20px 0;">
-          <h2 style="margin:0 0 8px;"><a href={`/${p.slug}/`} style="text-decoration:none;color:#111;">{p.title}</a></h2>
-          {p.excerpt && <p style="color:#555;margin:0;">{p.excerpt}</p>}
-          <small style="color:#999;">{p.date}</small>
+        <article style="border-bottom:1px solid #eee;padding:20px 0;">
+          <h2 style="margin:0 0 10px;font-size:22px;line-height:1.3;">
+            <a href={`/${p.slug}/`} style="text-decoration:none;color:#0066cc;">
+              {p.title}
+            </a>
+          </h2>
+          {p.excerpt && <p style="color:#555;margin:0 0 8px;font-size:15px;line-height:1.5;">{p.excerpt}</p>}
+          <small style="color:#999;font-size:13px;">{p.date}</small>
         </article>
       ))}
     </div>
-  </main>
+  </div>
 </Layout>
