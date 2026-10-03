@@ -15,9 +15,9 @@ interface Props {
   css: string;
   js?: string;
   dir?: string;
-  header: string;
-  footer: string;
-  tail: string;
+  header?: string;
+  footer?: string;
+  tail?: string;
   main?: string;
   canonical?: string;
   image?: string;
@@ -36,9 +36,6 @@ const {
   css,
   js,
   dir = 'ltr',
-  header,
-  footer,
-  tail,
   canonical,
   image = 'https://www.coinainews.com/og-default.jpg',
   type = 'website',
@@ -54,6 +51,7 @@ const SITE_URL = 'https://www.coinainews.com';
 const SITE_NAME = 'CoinAI News';
 const canonicalURL = canonical ? `${SITE_URL}${canonical}` : `${SITE_URL}${Astro.url.pathname}`;
 const FAVICON = '/atlas/default/wp-content/uploads/sites/2/2023/11/cropped-layer-32x32.png';
+const LOGO = '/atlas/default/wp-content/uploads/sites/2/2023/10/atlas.png';
 
 // Organization Schema
 const orgSchema = {
@@ -129,6 +127,22 @@ const breadcrumbSchema = breadcrumbs.length > 0 ? {
     ...(b.url && { "item": `${SITE_URL}${b.url}` })
   }))
 } : null;
+
+// Menu items
+const menuItems = [
+  { name: 'Home', url: '/' },
+  { name: 'Crypto Regulations', url: '/category/crypto-regulations/' },
+  { name: 'Market News', url: '/category/market-news/' },
+  { name: 'Wallet', url: '/category/wallet/' },
+  { name: 'Bitcoin News', url: '/category/bitcoin-news/' },
+  { name: 'Altcoin News', url: '/category/altcoin-news/' },
+  { name: "Editor's Choice", url: '/category/editors-choice/' },
+  { name: 'Ethereum News', url: '/category/ethereum-news/' },
+  { name: 'Stablecoin', url: '/category/stablecoin/' },
+];
+
+const currentPath = Astro.url.pathname;
+const today = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
 <!doctype html>
@@ -136,15 +150,12 @@ const breadcrumbSchema = breadcrumbs.length > 0 ? {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
-    <!-- Primary Meta Tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <link rel="canonical" href={canonicalURL} />
-    
-    <!-- Open Graph / Facebook -->
+
     <meta property="og:type" content={type} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
@@ -158,8 +169,7 @@ const breadcrumbSchema = breadcrumbs.length > 0 ? {
     {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
     {author && <meta property="article:author" content={author} />}
     {category && <meta property="article:section" content={category} />}
-    
-    <!-- Twitter Card -->
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonicalURL} />
     <meta name="twitter:title" content={title} />
@@ -167,35 +177,193 @@ const breadcrumbSchema = breadcrumbs.length > 0 ? {
     <meta name="twitter:image" content={image} />
     <meta name="twitter:site" content="@coinainews" />
     <meta name="twitter:creator" content="@coinainews" />
-    
-    <!-- Favicon -->
+
     <link rel="icon" href={FAVICON} sizes="32x32" />
     <link rel="apple-touch-icon" href={FAVICON} />
-    
-    <!-- Stylesheets -->
     <link rel="stylesheet" href={`/css/${css}.css`} />
     <meta name="generator" content={Astro.generator} />
-    
-    <!-- Schema Markup: Organization -->
+
     <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
-    
-    <!-- Schema Markup: WebSite -->
     <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
-    
-    <!-- Schema Markup: NewsArticle (post pages only) -->
     {articleSchema && <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />}
-    
-    <!-- Schema Markup: BreadcrumbList -->
     {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
+
+    <style is:inline>
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: Poppins, -apple-system, sans-serif; background: #fff; color: #111; }
+
+      /* ===== TOP BAR ===== */
+      .coin-topbar { background: #111; color: #fff; font-size: 12px; padding: 8px 0; }
+      .coin-topbar-inner { max-width: 1280px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+      .coin-topbar .top-date { opacity: 0.85; }
+      .coin-topbar .top-socials a { color: #fff; margin-left: 16px; text-decoration: none; font-weight: 500; opacity: 0.9; }
+      .coin-topbar .top-socials a:hover { color: #ff6b00; opacity: 1; }
+
+      /* ===== HEADER ===== */
+      .coin-header { background: #fff; border-bottom: 3px solid #ff6b00; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+      .coin-header-inner { max-width: 1280px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+
+      .coin-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; padding: 14px 0; flex-shrink: 0; }
+      .coin-logo img { height: 42px; width: auto; }
+      .coin-logo-text { font-size: 24px; font-weight: 800; color: #111; letter-spacing: -0.5px; }
+      .coin-logo-text span { color: #0066cc; }
+
+      .coin-nav { display: flex; align-items: center; gap: 2px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+      .coin-nav::-webkit-scrollbar { display: none; }
+      .coin-nav a { color: #111; text-decoration: none; font-size: 13px; font-weight: 600; padding: 20px 12px; white-space: nowrap; border-bottom: 3px solid transparent; margin-bottom: -3px; transition: all 0.2s; }
+      .coin-nav a:hover { color: #ff6b00; border-bottom-color: #ff6b00; }
+      .coin-nav a.active { color: #ff6b00; border-bottom-color: #ff6b00; }
+
+      .coin-search-btn { background: none; border: 0; cursor: pointer; padding: 8px; display: flex; align-items: center; }
+      .coin-search-btn svg { width: 20px; height: 20px; stroke: #111; }
+      .coin-search-btn:hover svg { stroke: #ff6b00; }
+
+      .coin-hamburger { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
+      .coin-hamburger svg { width: 26px; height: 26px; stroke: #111; }
+
+      /* Mobile nav */
+      .coin-mobile-nav { display: none; background: #fff; border-top: 1px solid #eee; padding: 10px 0; }
+      .coin-mobile-nav.open { display: block; }
+      .coin-mobile-nav a { display: block; padding: 12px 24px; color: #111; text-decoration: none; font-size: 14px; font-weight: 500; border-bottom: 1px solid #f5f5f5; }
+      .coin-mobile-nav a:hover { background: #fafafa; color: #ff6b00; }
+
+      @media (max-width: 1100px) {
+        .coin-nav { display: none; }
+        .coin-hamburger { display: block; }
+      }
+
+      /* ===== FOOTER ===== */
+      .coin-footer { background: #111; color: #ccc; margin-top: 60px; padding: 50px 0 0; }
+      .coin-footer-inner { max-width: 1280px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; }
+      @media (max-width: 900px) { .coin-footer-inner { grid-template-columns: 1fr 1fr; } }
+      @media (max-width: 600px) { .coin-footer-inner { grid-template-columns: 1fr; } }
+
+      .coin-footer h4 { color: #fff; font-size: 15px; font-weight: 700; margin: 0 0 18px; padding-bottom: 10px; border-bottom: 2px solid #ff6b00; display: inline-block; }
+      .coin-footer p { font-size: 13px; line-height: 1.7; margin: 0 0 16px; color: #aaa; }
+      .coin-footer ul { list-style: none; padding: 0; margin: 0; }
+      .coin-footer li { padding: 6px 0; font-size: 13px; }
+      .coin-footer li a { color: #ccc; text-decoration: none; transition: color 0.2s; }
+      .coin-footer li a:hover { color: #ff6b00; }
+
+      .coin-footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+      .coin-footer-logo img { height: 38px; }
+      .coin-footer-logo-text { font-size: 22px; font-weight: 800; color: #fff; }
+      .coin-footer-logo-text span { color: #ff6b00; }
+
+      .coin-footer-bottom { border-top: 1px solid #222; margin-top: 40px; padding: 20px 0; }
+      .coin-footer-bottom-inner { max-width: 1280px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 12px; color: #888; }
+      .coin-footer-bottom a { color: #ff6b00; text-decoration: none; }
+    </style>
   </head>
   <body class={bodyClass}>
     <div id="page" class="site">
+      <!-- TOP BAR -->
+      <div class="coin-topbar">
+        <div class="coin-topbar-inner">
+          <span class="top-date">{today}</span>
+          <div class="top-socials">
+            <a href="https://twitter.com/coinainews" target="_blank" rel="noopener">Twitter</a>
+            <a href="https://facebook.com/coinainews" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://t.me/coinainews" target="_blank" rel="noopener">Telegram</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HEADER -->
+      <header class="coin-header">
+        <div class="coin-header-inner">
+          <a href="/" class="coin-logo">
+            <img src={LOGO} alt="CoinAI News" />
+          </a>
+
+          <nav class="coin-nav">
+            {menuItems.map((item) => (
+              <a
+                href={item.url}
+                class={currentPath === item.url || (item.url !== '/' && currentPath.startsWith(item.url)) ? 'active' : ''}
+              >
+                {item.name}
+              </a>
+            ))}
+          </nav>
+
+          <a href="/search/" class="coin-search-btn" aria-label="Search">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="2.5" viewBox="0 0 24 24">
+              <path d="M2.778 11.767a8.989 8.989 0 1 0 17.978 0 8.989 8.989 0 1 0-17.978 0m15.24 6.718L21.542 22"/>
+            </svg>
+          </a>
+
+          <button class="coin-hamburger" id="coinHamburger" aria-label="Menu">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M3 6h18M3 12h18M3 18h18"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- MOBILE NAV -->
+        <nav class="coin-mobile-nav" id="coinMobileNav">
+          {menuItems.map((item) => (
+            <a href={item.url}>{item.name}</a>
+          ))}
+        </nav>
+      </header>
+
       <h1 class="screen-reader-text">{title}</h1>
-      <Fragment set:html={header} />
       <slot />
-      <Fragment set:html={footer} />
+
+      <!-- FOOTER -->
+      <footer class="coin-footer">
+        <div class="coin-footer-inner">
+          <div>
+            <div class="coin-footer-logo">
+              <span class="coin-footer-logo-text">Coin<span>AI</span>News</span>
+            </div>
+            <p>Your trusted source for the latest crypto & AI news, market analysis, blockchain updates, and expert insights.</p>
+          </div>
+          <div>
+            <h4>Categories</h4>
+            <ul>
+              <li><a href="/category/crypto-regulations/">Crypto Regulations</a></li>
+              <li><a href="/category/market-news/">Market News</a></li>
+              <li><a href="/category/wallet/">Wallet</a></li>
+              <li><a href="/category/bitcoin-news/">Bitcoin News</a></li>
+              <li><a href="/category/altcoin-news/">Altcoin News</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>More</h4>
+            <ul>
+              <li><a href="/category/editors-choice/">Editor's Choice</a></li>
+              <li><a href="/category/ethereum-news/">Ethereum News</a></li>
+              <li><a href="/category/stablecoin/">Stablecoin</a></li>
+              <li><a href="/search/">Search</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Follow Us</h4>
+            <ul>
+              <li><a href="https://twitter.com/coinainews" target="_blank" rel="noopener">Twitter / X</a></li>
+              <li><a href="https://facebook.com/coinainews" target="_blank" rel="noopener">Facebook</a></li>
+              <li><a href="https://t.me/coinainews" target="_blank" rel="noopener">Telegram</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="coin-footer-bottom">
+          <div class="coin-footer-bottom-inner">
+            <span>© {new Date().getFullYear()} CoinAI News. All rights reserved.</span>
+            <span><a href="/privacy-policy/">Privacy Policy</a> · <a href="/contact/">Contact</a></span>
+          </div>
+        </div>
+      </footer>
     </div>
-    <Fragment set:html={tail} />
+
+    <script is:inline>
+      const btn = document.getElementById('coinHamburger');
+      const nav = document.getElementById('coinMobileNav');
+      if (btn && nav) {
+        btn.addEventListener('click', () => nav.classList.toggle('open'));
+      }
+    </script>
     {js && <script src={`/js/${js}.js`} is:inline></script>}
   </body>
 </html>
