@@ -9,8 +9,32 @@ export function getStaticPaths() {
 
 const { slug } = Astro.params;
 const doc = postDoc(slug!);
+const post = posts.find((p) => p.slug === slug);
+
+// Breadcrumbs
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  ...(post?.categories?.[0] ? [{ name: post.categories[0], url: `/category/${post.categories[0].toLowerCase()}/` }] : []),
+  { name: doc.title }
+];
+
+// Image URL — post ka cover ya default
+const imageUrl = post?.cover
+  ? (post.cover.startsWith('http') ? post.cover : `https://www.coinainews.com${post.cover}`)
+  : 'https://www.coinainews.com/og-default.jpg';
 ---
 
-<Layout {...doc}>
+<Layout
+  {...doc}
+  canonical={`/${slug}/`}
+  image={imageUrl}
+  type="article"
+  publishedTime={post?.date ? new Date(post.date).toISOString() : new Date().toISOString()}
+  modifiedTime={post?.date ? new Date(post.date).toISOString() : new Date().toISOString()}
+  author="CoinAI News"
+  category={post?.categories?.[0] || 'Crypto'}
+  breadcrumbs={breadcrumbs}
+  isArticle={true}
+>
   <Fragment set:html={doc.main} />
 </Layout>
