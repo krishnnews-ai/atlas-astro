@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { postDoc, posts } from '../lib/content';
 
 export function getStaticPaths() {
+  if (!posts || !Array.isArray(posts)) return [];
   return posts.map((p) => ({ params: { slug: p.slug } }));
 }
 
