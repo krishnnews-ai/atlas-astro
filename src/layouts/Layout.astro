@@ -53,7 +53,6 @@ const canonicalURL = canonical ? `${SITE_URL}${canonical}` : `${SITE_URL}${Astro
 const FAVICON = '/atlas/default/wp-content/uploads/sites/2/2023/11/cropped-layer-32x32.png';
 const LOGO = '/atlas/default/wp-content/uploads/sites/2/2023/10/atlas.png';
 
-// Organization Schema
 const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -67,7 +66,6 @@ const orgSchema = {
   ]
 };
 
-// WebSite Schema
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -80,7 +78,6 @@ const websiteSchema = {
   }
 };
 
-// NewsArticle Schema
 const articleSchema = isArticle ? {
   "@context": "https://schema.org",
   "@type": "NewsArticle",
@@ -116,7 +113,6 @@ const articleSchema = isArticle ? {
   ...(category && { "articleSection": category })
 } : null;
 
-// Breadcrumb Schema
 const breadcrumbSchema = breadcrumbs.length > 0 ? {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -128,7 +124,6 @@ const breadcrumbSchema = breadcrumbs.length > 0 ? {
   }))
 } : null;
 
-// Menu items
 const menuItems = [
   { name: 'Home', url: '/' },
   { name: 'Crypto Regulations', url: '/category/crypto-regulations/' },
@@ -192,21 +187,17 @@ const today = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'n
       * { box-sizing: border-box; }
       body { margin: 0; font-family: Poppins, -apple-system, sans-serif; background: #fff; color: #111; }
 
-      /* ===== TOP BAR ===== */
       .coin-topbar { background: #111; color: #fff; font-size: 12px; padding: 8px 0; }
       .coin-topbar-inner { max-width: 1280px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
       .coin-topbar .top-date { opacity: 0.85; }
       .coin-topbar .top-socials a { color: #fff; margin-left: 16px; text-decoration: none; font-weight: 500; opacity: 0.9; }
       .coin-topbar .top-socials a:hover { color: #ff6b00; opacity: 1; }
 
-      /* ===== HEADER ===== */
       .coin-header { background: #fff; border-bottom: 3px solid #ff6b00; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
       .coin-header-inner { max-width: 1280px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 
       .coin-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; padding: 14px 0; flex-shrink: 0; }
       .coin-logo img { height: 42px; width: auto; }
-      .coin-logo-text { font-size: 24px; font-weight: 800; color: #111; letter-spacing: -0.5px; }
-      .coin-logo-text span { color: #0066cc; }
 
       .coin-nav { display: flex; align-items: center; gap: 2px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
       .coin-nav::-webkit-scrollbar { display: none; }
@@ -221,7 +212,6 @@ const today = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'n
       .coin-hamburger { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
       .coin-hamburger svg { width: 26px; height: 26px; stroke: #111; }
 
-      /* Mobile nav */
       .coin-mobile-nav { display: none; background: #fff; border-top: 1px solid #eee; padding: 10px 0; }
       .coin-mobile-nav.open { display: block; }
       .coin-mobile-nav a { display: block; padding: 12px 24px; color: #111; text-decoration: none; font-size: 14px; font-weight: 500; border-bottom: 1px solid #f5f5f5; }
@@ -232,10 +222,9 @@ const today = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'n
         .coin-hamburger { display: block; }
       }
 
-      /* ===== FOOTER ===== */
       .coin-footer { background: #111; color: #ccc; margin-top: 60px; padding: 50px 0 0; }
-      .coin-footer-inner { max-width: 1280px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; }
-      @media (max-width: 900px) { .coin-footer-inner { grid-template-columns: 1fr 1fr; } }
+      .coin-footer-inner { max-width: 1280px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 40px; }
+      @media (max-width: 1000px) { .coin-footer-inner { grid-template-columns: 1fr 1fr 1fr; } }
       @media (max-width: 600px) { .coin-footer-inner { grid-template-columns: 1fr; } }
 
       .coin-footer h4 { color: #fff; font-size: 15px; font-weight: 700; margin: 0 0 18px; padding-bottom: 10px; border-bottom: 2px solid #ff6b00; display: inline-block; }
@@ -247,17 +236,15 @@ const today = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'n
 
       .coin-footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
       .coin-footer-logo img { height: 38px; }
-      .coin-footer-logo-text { font-size: 22px; font-weight: 800; color: #fff; }
-      .coin-footer-logo-text span { color: #ff6b00; }
 
       .coin-footer-bottom { border-top: 1px solid #222; margin-top: 40px; padding: 20px 0; }
       .coin-footer-bottom-inner { max-width: 1280px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 12px; color: #888; }
       .coin-footer-bottom a { color: #ff6b00; text-decoration: none; }
+      .coin-footer-bottom a:hover { text-decoration: underline; }
     </style>
   </head>
   <body class={bodyClass}>
     <div id="page" class="site">
-      <!-- TOP BAR -->
       <div class="coin-topbar">
         <div class="coin-topbar-inner">
           <span class="top-date">{today}</span>
@@ -269,7 +256,6 @@ const today = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'n
         </div>
       </div>
 
-      <!-- HEADER -->
       <header class="coin-header">
         <div class="coin-header-inner">
           <a href="/" class="coin-logo">
@@ -300,7 +286,6 @@ const today = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'n
           </button>
         </div>
 
-        <!-- MOBILE NAV -->
         <nav class="coin-mobile-nav" id="coinMobileNav">
           {menuItems.map((item) => (
             <a href={item.url}>{item.name}</a>
@@ -311,12 +296,11 @@ const today = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'n
       <h1 class="screen-reader-text">{title}</h1>
       <slot />
 
-      <!-- FOOTER -->
       <footer class="coin-footer">
         <div class="coin-footer-inner">
           <div>
             <div class="coin-footer-logo">
-              <span class="coin-footer-logo-text">Coin<span>AI</span>News</span>
+              <img src={LOGO} alt="CoinAI News" />
             </div>
             <p>Your trusted source for the latest crypto & AI news, market analysis, blockchain updates, and expert insights.</p>
           </div>
@@ -340,6 +324,15 @@ const today = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'n
             </ul>
           </div>
           <div>
+            <h4>Company</h4>
+            <ul>
+              <li><a href="/about/">About CoinAINews</a></li>
+              <li><a href="/privacy-policy/">Privacy Policy</a></li>
+              <li><a href="/disclaimer/">Disclaimer & Editorial Policy</a></li>
+              <li><a href="/contact/">Contact Us</a></li>
+            </ul>
+          </div>
+          <div>
             <h4>Follow Us</h4>
             <ul>
               <li><a href="https://twitter.com/coinainews" target="_blank" rel="noopener">Twitter / X</a></li>
@@ -351,7 +344,12 @@ const today = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'n
         <div class="coin-footer-bottom">
           <div class="coin-footer-bottom-inner">
             <span>© {new Date().getFullYear()} CoinAI News. All rights reserved.</span>
-            <span><a href="/privacy-policy/">Privacy Policy</a> · <a href="/contact/">Contact</a></span>
+            <span>
+              <a href="/about/">About</a> · 
+              <a href="/privacy-policy/">Privacy Policy</a> · 
+              <a href="/disclaimer/">Disclaimer</a> · 
+              <a href="/contact/">Contact</a>
+            </span>
           </div>
         </div>
       </footer>
