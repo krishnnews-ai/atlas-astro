@@ -1,87 +1,43 @@
 #!/usr/bin/env python3
 """
-Fix manifest.json — remove Atlas demo posts (food, fashion, lifestyle, gadgets).
-Keep only crypto-related posts.
+Keep ONLY posts that have HTML files in src/generated/posts/
+Remove all Atlas demo posts.
 """
 import os
 import json
 
 MANIFEST_FILE = "src/data/manifest.json"
-
-# Atlas demo post slugs (food, fashion, lifestyle, gadgets) — delete these
-ATLAS_DEMO_SLUGS = [
-    "a-mild-sweet-fruit-with-a-fibrous-center",
-    "always-keep-your-drone-within-the-vlos",
-    "blog-post",
-    "coconut-curry-soup-with-chickpeas",
-    "comfortable-pairs-of-sneakers-to-walk-all-day",
-    "dark-chocolate-self-saucing-pudding",
-    "delicious-chicken-meatball-soup",
-    "essential-tech-tips-for-your-business",
-    "fairy-potion-summer-fruit-drink",
-    "fashion-tips-trends-and-celebrity-style",
-    "finally-found-a-work-computer-setup-thats-practically-perfect",
-    "for-good-results-must-be-make-good-plan",
-    "fruit-yogurt-easy-homemade-fruit-drink",
-    "gadgets-that-will-upgrade-your-home",
-    "headsets-are-better-if-youre-playing-games",
-    "healthy-chicken-and-rice-soup",
-    "hot-new-releases-in-audio-headphones",
-    "how-to-do-the-superman-standing-exercise",
-    "how-to-organize-and-write-content-for",
-    "in-fact-certainly-influenced-seldes-the-leftist-journalist-i-f-stone",
-    "laptops-tend-to-be-smaller-than-desktops",
-    "laugh-cry-and-learn-within-virtual-reality",
-    "make-your-gaming-setup-look-better",
-    "make-your-phone-feel-new-again",
-    "melt-and-mix-chocolate-and-ginger-mud-cake",
-    "mistakes-you-might-be-making-with-your-watch",
-    "mobile-camera-makes-a-huge-leap-in-quality",
-    "pecan-chocolate-bread-and-butter",
-    "refreshing-summer-fruit-drink",
-    "rugby-african-ations-are-singing-to-save-their-wildlif",
-    "spicy-crispy-chicken-burger-recipe",
-    "spiked-strawberry-slushies-for-a-crowd",
-    "surprising-benefits-of-honeydew-melon",
-    "the-inbound-marketing-methodology-method-of-drawing-the-right",
-    "the-secret-of-buzzfeeds-success-has-a-lot-to-do-with-the-image-heavy",
-    "there-are-several-differences-between-outbound",
-    "tips-to-ensure-you-always-look-stylish",
-    "tomato-bisque-with-fried-cheese",
-    "top-12-health-benefits-of-eating-grapes",
-    "top-classic-style-inspiration-ideas",
-    "top-mens-fashion-trends-from-spring",
-    "tortellini-soup-with-italian-sausage-and-kale",
-    "vegan-chocolate-avocado-milkshakes",
-    "vr-headset-virtual-reality-glasses",
-    "why-do-restaurant-burgers-taste-better",
-    "wild-mushroom-chowder-with-leeks",
-    "will-humans-be-able-to-live-in-mars-in-the-future",
-    "winter-dressing-tips-when-its-really-cold-out",
-    "contact",
-    "privacy-policy",
-]
+POSTS_DIR = "src/generated/posts"
 
 def main():
-    print("🔧 Cleaning Atlas demo posts from manifest...")
-
+    print("🔧 Loading manifest...")
+    
     with open(MANIFEST_FILE, "r", encoding="utf-8") as f:
         manifest = json.load(f)
-
+    
+    # Get all HTML files
+    if os.path.exists(POSTS_DIR):
+        files = [f for f in os.listdir(POSTS_DIR) if f.endswith(".html")]
+    else:
+        files = []
+    
+    print(f"📁 Found {len(files)} HTML files")
+    
+    # Valid slugs
+    valid_slugs = {f[:-5] for f in files}
+    
     old_count = len(manifest.get("posts", []))
     
-    cleaned_posts = [
-        p for p in manifest.get("posts", [])
-        if p.get("slug", "") not in ATLAS_DEMO_SLUGS
-    ]
-
-    manifest["posts"] = cleaned_posts
-
+    # Keep only posts with HTML files
+    cleaned = [p for p in manifest.get("posts", []) if p.get("slug") in valid_slugs]
+    
+    manifest["posts"] = cleaned
+    
     with open(MANIFEST_FILE, "w", encoding="utf-8") as f:
         json.dump(manifest, f, indent=2, ensure_ascii=False)
-
-    print(f"✅ Posts: {old_count} → {len(cleaned_posts)}")
-    print(f"   ❌ Removed {old_count - len(cleaned_posts)} Atlas demo posts")
+    
+    print(f"✅ Posts: {old_count} → {len(cleaned)}")
+    print(f"❌ Removed: {old_count - len(cleaned)} Atlas demo posts")
 
 if __name__ == "__main__":
     main()
