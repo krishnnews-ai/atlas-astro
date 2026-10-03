@@ -1,34 +1,239 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { posts } from '../lib/content';
+import { posts, categories } from '../lib/content';
 
-const latest = posts.slice(-20).reverse();
+// Latest posts
+const allPosts = posts.slice().reverse();
+const heroMain = allPosts[0];
+const heroSide = allPosts.slice(1, 5);
+const trendingPosts = allPosts.slice(5, 11);
+const latestPosts = allPosts.slice(11, 31);
+
+// Category-wise posts
+const catGroups: Record<string, any[]> = {};
+const catOrder = ['Market News', 'Trending News', 'Crypto Regulations', 'Crypto', 'Bitcoin', 'Ethereum'];
+
+for (const cat of catOrder) {
+  const catPosts = allPosts.filter((p) =>
+    p.categories?.some((c: string) => c.toLowerCase() === cat.toLowerCase())
+  );
+  if (catPosts.length >= 3) {
+    catGroups[cat] = catPosts.slice(0, 6);
+  }
+}
+
+const today = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
 <Layout
   title="CoinAI News — Latest Crypto & AI News"
-  description="Latest crypto & AI news"
-  bodyClass="home"
+  description="Latest crypto & AI news, market analysis, and blockchain updates from CoinAI News."
+  bodyClass="home-magazine"
   css="home-default"
   js="home-default"
   dir="ltr"
 >
-  <div style="max-width:900px;margin:0 auto;padding:30px 20px;font-family:Arial,sans-serif;background:#fff;">
-    <h1 style="font-size:32px;margin:0 0 30px;color:#111;border-bottom:2px solid #333;padding-bottom:15px;">
-      Latest Crypto &amp; AI News
-    </h1>
-    <div>
-      {latest.map((p) => (
-        <article style="border-bottom:1px solid #eee;padding:20px 0;">
-          <h2 style="margin:0 0 10px;font-size:22px;line-height:1.3;">
-            <a href={`/${p.slug}/`} style="text-decoration:none;color:#0066cc;">
-              {p.title}
-            </a>
-          </h2>
-          {p.excerpt && <p style="color:#555;margin:0 0 8px;font-size:15px;line-height:1.5;">{p.excerpt}</p>}
-          <small style="color:#999;font-size:13px;">{p.date}</small>
-        </article>
-      ))}
+  <style is:inline>
+    .magazine-wrap { max-width: 1280px; margin: 0 auto; padding: 24px 20px; font-family: Poppins, -apple-system, sans-serif; background: #fff; }
+    .mag-topbar { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; font-size: 13px; color: #666; margin-bottom: 24px; }
+    .mag-topbar .socials a { color: #666; margin-left: 14px; text-decoration: none; font-weight: 600; }
+    .mag-topbar .socials a:hover { color: #0066cc; }
+
+    .mag-section-title { font-size: 20px; font-weight: 700; color: #111; margin: 0 0 18px; padding-bottom: 10px; border-bottom: 2px solid #111; display: flex; align-items: center; justify-content: space-between; }
+    .mag-section-title a { font-size: 12px; font-weight: 500; color: #0066cc; text-decoration: none; }
+    .mag-section-title a:hover { text-decoration: underline; }
+
+    .mag-hero { display: grid; grid-template-columns: 1.6fr 1fr; gap: 24px; margin-bottom: 40px; }
+    @media (max-width: 900px) { .mag-hero { grid-template-columns: 1fr; } }
+
+    .mag-hero-main { position: relative; border-radius: 8px; overflow: hidden; background: #f5f5f5; }
+    .mag-hero-main a { display: block; color: #fff; text-decoration: none; }
+    .mag-hero-main .hero-content { padding: 32px 28px 28px; background: linear-gradient(transparent, rgba(0,0,0,0.85)); }
+    .mag-hero-main .hero-cat { display: inline-block; background: #ff6b00; color: #fff; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 3px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .mag-hero-main h2 { font-size: 26px; font-weight: 700; margin: 0 0 10px; line-height: 1.3; }
+    .mag-hero-main .hero-date { font-size: 12px; opacity: 0.85; }
+
+    .mag-hero-side { display: grid; gap: 14px; }
+    .mag-hero-side article { display: flex; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid #f0f0f0; }
+    .mag-hero-side article:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mag-hero-side .side-thumb { width: 90px; height: 90px; flex-shrink: 0; background: #f0f0f0; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 11px; }
+    .mag-hero-side .side-content { flex: 1; }
+    .mag-hero-side .side-cat { font-size: 10px; color: #ff6b00; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .mag-hero-side h3 { font-size: 14px; font-weight: 600; margin: 4px 0 6px; line-height: 1.4; }
+    .mag-hero-side h3 a { color: #111; text-decoration: none; }
+    .mag-hero-side h3 a:hover { color: #0066cc; }
+    .mag-hero-side .side-date { font-size: 11px; color: #999; }
+
+    .mag-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px; }
+    .mag-card { background: #fff; border: 1px solid #f0f0f0; border-radius: 8px; overflow: hidden; transition: box-shadow 0.2s; }
+    .mag-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .mag-card .card-thumb { height: 160px; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); display: flex; align-items: center; justify-content: center; color: #4a5568; font-size: 12px; }
+    .mag-card .card-body { padding: 18px; }
+    .mag-card .card-cat { font-size: 10px; color: #ff6b00; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .mag-card h3 { font-size: 15px; font-weight: 600; margin: 6px 0 10px; line-height: 1.4; }
+    .mag-card h3 a { color: #111; text-decoration: none; }
+    .mag-card h3 a:hover { color: #0066cc; }
+    .mag-card .card-date { font-size: 11px; color: #999; }
+
+    .mag-layout-2col { display: grid; grid-template-columns: 1fr 320px; gap: 40px; }
+    @media (max-width: 900px) { .mag-layout-2col { grid-template-columns: 1fr; } }
+
+    .mag-sidebar-widget { background: #fafafa; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+    .mag-sidebar-widget h4 { font-size: 15px; font-weight: 700; margin: 0 0 14px; color: #111; padding-bottom: 10px; border-bottom: 2px solid #ff6b00; }
+    .mag-sidebar-widget ul { list-style: none; padding: 0; margin: 0; }
+    .mag-sidebar-widget li { padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px; }
+    .mag-sidebar-widget li:last-child { border-bottom: 0; }
+    .mag-sidebar-widget li a { color: #333; text-decoration: none; }
+    .mag-sidebar-widget li a:hover { color: #0066cc; }
+    .mag-sidebar-widget .newsletter-input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 13px; margin-bottom: 10px; }
+    .mag-sidebar-widget .newsletter-btn { width: 100%; padding: 10px; background: #ff6b00; color: #fff; border: 0; border-radius: 4px; font-size: 13px; font-weight: 600; cursor: pointer; }
+    .mag-sidebar-widget .newsletter-btn:hover { background: #e55f00; }
+
+    .mag-ticker { background: #111; color: #fff; padding: 10px 20px; border-radius: 6px; margin-bottom: 30px; display: flex; align-items: center; gap: 16px; overflow: hidden; }
+    .mag-ticker .ticker-label { background: #ff6b00; padding: 4px 12px; border-radius: 3px; font-size: 11px; font-weight: 700; text-transform: uppercase; flex-shrink: 0; }
+    .mag-ticker .ticker-items { display: flex; gap: 30px; font-size: 13px; white-space: nowrap; overflow: hidden; }
+    .mag-ticker .ticker-items a { color: #fff; text-decoration: none; }
+    .mag-ticker .ticker-items a:hover { color: #ff6b00; }
+  </style>
+
+  <div class="magazine-wrap">
+    <!-- Top Bar -->
+    <div class="mag-topbar">
+      <span>{today}</span>
+      <div class="socials">
+        <a href="https://twitter.com/coinainews" target="_blank" rel="noopener">Twitter</a>
+        <a href="https://facebook.com/coinainews" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://t.me/coinainews" target="_blank" rel="noopener">Telegram</a>
+      </div>
+    </div>
+
+    <!-- Breaking Ticker -->
+    {trendingPosts.length > 0 && (
+      <div class="mag-ticker">
+        <span class="ticker-label">Trending</span>
+        <div class="ticker-items">
+          {trendingPosts.slice(0, 5).map((p) => (
+            <a href={`/${p.slug}/`}>{p.title}</a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Hero Section -->
+    {heroMain && (
+      <section class="mag-hero">
+        <div class="mag-hero-main">
+          <a href={`/${heroMain.slug}/`}>
+            <div style="height:400px;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);"></div>
+            <div class="hero-content">
+              <span class="hero-cat">{heroMain.categories?.[0] || 'Featured'}</span>
+              <h2>{heroMain.title}</h2>
+              <span class="hero-date">{heroMain.date}</span>
+            </div>
+          </a>
+        </div>
+        <div class="mag-hero-side">
+          {heroSide.map((p) => (
+            <article>
+              <div class="side-thumb">📰</div>
+              <div class="side-content">
+                <span class="side-cat">{p.categories?.[0] || 'News'}</span>
+                <h3><a href={`/${p.slug}/`}>{p.title}</a></h3>
+                <span class="side-date">{p.date}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Main Content + Sidebar -->
+    <div class="mag-layout-2col">
+      <div>
+        <!-- Latest News Grid -->
+        <h2 class="mag-section-title">
+          Latest News
+          <a href="/search/">View All →</a>
+        </h2>
+        <div class="mag-grid">
+          {latestPosts.slice(0, 9).map((p) => (
+            <article class="mag-card">
+              <div class="card-thumb">📊</div>
+              <div class="card-body">
+                <span class="card-cat">{p.categories?.[0] || 'Crypto'}</span>
+                <h3><a href={`/${p.slug}/`}>{p.title}</a></h3>
+                <span class="card-date">{p.date}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <!-- Category Sections -->
+        {Object.entries(catGroups).slice(0, 3).map(([catName, catPosts]) => (
+          <>
+            <h2 class="mag-section-title">
+              {catName}
+              <a href={`/category/${catName.toLowerCase().replace(/\s+/g, '-')}/`}>View All →</a>
+            </h2>
+            <div class="mag-grid" style="margin-bottom:40px;">
+              {catPosts.map((p) => (
+                <article class="mag-card">
+                  <div class="card-thumb" style="background:linear-gradient(135deg,#2d1b4e 0%,#1a1a2e 100%);">🔐</div>
+                  <div class="card-body">
+                    <span class="card-cat">{catName}</span>
+                    <h3><a href={`/${p.slug}/`}>{p.title}</a></h3>
+                    <span class="card-date">{p.date}</span>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </>
+        ))}
+      </div>
+
+      <!-- Sidebar -->
+      <aside>
+        <!-- Trending Widget -->
+        <div class="mag-sidebar-widget">
+          <h4>🔥 Trending Now</h4>
+          <ul>
+            {trendingPosts.slice(0, 6).map((p) => (
+              <li><a href={`/${p.slug}/`}>{p.title}</a></li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Categories Widget -->
+        <div class="mag-sidebar-widget">
+          <h4>📂 Categories</h4>
+          <ul>
+            <li><a href="/category/market-news/">Market News</a></li>
+            <li><a href="/category/trending-news/">Trending News</a></li>
+            <li><a href="/category/crypto-regulations/">Crypto Regulations</a></li>
+            <li><a href="/category/crypto/">Crypto</a></li>
+            <li><a href="/category/bitcoin/">Bitcoin</a></li>
+            <li><a href="/category/ethereum/">Ethereum</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter Widget -->
+        <div class="mag-sidebar-widget">
+          <h4>📬 Newsletter</h4>
+          <p style="font-size:13px;color:#666;margin:0 0 12px;">Get the latest crypto news in your inbox.</p>
+          <input type="email" placeholder="Your email address" class="newsletter-input" />
+          <button class="newsletter-btn">Subscribe</button>
+        </div>
+
+        <!-- Follow Us Widget -->
+        <div class="mag-sidebar-widget">
+          <h4>🌐 Follow Us</h4>
+          <ul>
+            <li><a href="https://twitter.com/coinainews" target="_blank" rel="noopener">Twitter / X</a></li>
+            <li><a href="https://facebook.com/coinainews" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://t.me/coinainews" target="_blank" rel="noopener">Telegram</a></li>
+          </ul>
+        </div>
+      </aside>
     </div>
   </div>
 </Layout>
