@@ -1,10 +1,58 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { pageDoc } from '../lib/content';
-
-const doc = pageDoc('contact', 'contact');
 ---
 
-<Layout {...doc}>
-  <Fragment set:html={doc.main} />
+<Layout
+  title="Contact Us — CoinAINews"
+  description="Contact CoinAINews for news tips, feedback, corrections, or partnership inquiries."
+  bodyClass="page"
+  css="home-default"
+  js="home-default"
+  dir="ltr"
+>
+  <div style="max-width:900px;margin:0 auto;padding:60px 20px;font-family:Poppins,sans-serif;">
+    <h1 style="font-size:36px;font-weight:800;margin:0 0 24px;color:#111;">Contact Us</h1>
+
+    <p style="font-size:16px;line-height:1.8;color:#444;margin-bottom:32px;">
+      Got a story tip? Spotted an error? Want to work with us? We read every email — and we reply to most of them. Usually within 24 hours.
+    </p>
+
+    <div style="margin-bottom:32px;">
+      <h3 style="font-size:20px;font-weight:700;margin:0 0 8px;color:#111;">General inquiries</h3>
+      <p style="font-size:16px;color:#444;margin:0;">krishnnews@gmail.com</p>
+    </div>
+
+    <div style="margin-bottom:32px;">
+      <h3 style="font-size:20px;font-weight:700;margin:0 0 8px;color:#111;">News tips</h3>
+      <p style="font-size:16px;color:#444;margin:0 0 8px;">
+        Have something we should know about? Send it to:
+      </p>
+      <p style="font-size:16px;color:#444;margin:0;">krishnnews@gmail.com</p>
+      <p style="font-size:14px;color:#888;margin:8px 0 0;">
+        We protect our sources. If you want to stay anonymous, just say so in your email — we'll keep your identity out of everything we publish.
+      </p>
+    </div>
+
+    <div style="margin-bottom:32px;">
+      <h3 style="font-size:20px;font-weight:700;margin:0 0 8px;color:#111;">Corrections</h3>
+      <p style="font-size:16px;color:#444;margin:0 0 8px;">
+        Found an error? Tell us and we'll fix it fast.
+      </p>
+      <p style="font-size:16px;color:#444;margin:0;">krishnnews@gmail.com</p>
+    </div>
+
+    <div style="margin-bottom:32px;">
+      <h3 style="font-size:20px;font-weight:700;margin:0 0 8px;color:#111;">Advertising & partnerships</h3>
+      <p style="font-size:16px;color:#444;margin:0;">krishnnews@gmail.com</p>
+    </div>
+
+    <div>
+      <h3 style="font-size:20px;font-weight:700;margin:0 0 8px;color:#111;">Follow us</h3>
+      <p style="font-size:16px;color:#444;margin:0;">
+        <a href="https://twitter.com/coinainews" style="color:#0066cc;text-decoration:none;">Twitter</a> · 
+        <a href="https://facebook.com/coinainews" style="color:#0066cc;text-decoration:none;">Facebook</a> · 
+        <a href="https://t.me/coinainews" style="color:#0066cc;text-decoration:none;">Telegram</a>
+      </p>
+    </div>
+  </div>
 </Layout>
