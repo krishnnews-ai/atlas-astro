@@ -16,7 +16,21 @@ def get_cover(slug):
         return ""
 
 def main():
-    data = json.load(open(MANIFEST, encoding="utf-8"))
+    # Check file exists and not empty
+    if not os.path.exists(MANIFEST):
+        print(f"❌ {MANIFEST} not found")
+        return
+    if os.path.getsize(MANIFEST) == 0:
+        print(f"❌ {MANIFEST} is empty — cannot process")
+        return
+
+    with open(MANIFEST, encoding="utf-8") as f:
+        try:
+            data = json.load(f)
+        except json.JSONDecodeError as e:
+            print(f"❌ Invalid JSON in {MANIFEST}: {e}")
+            return
+
     count = 0
     for post in data.get("posts", []):
         if not post.get("cover"):
@@ -24,7 +38,10 @@ def main():
             if cover:
                 post["cover"] = cover
                 count += 1
-    json.dump(data, open(MANIFEST, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
+
+    with open(MANIFEST, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
     print(f"✅ {count} posts me cover add hua")
 
 if __name__ == "__main__":
