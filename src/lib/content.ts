@@ -22,16 +22,19 @@ const chrome = (key: string): Chrome => ({
   tail: pick(CHROME, key + '.tail.html'),
 });
 
-export const homes = manifest.homes as Record<string, { title: string; bodyClass: string; css: string; chrome: string; dir?: string }>;
-export const posts = manifest.posts as Array<{ slug: string; title: string; excerpt: string; cover: string; date: string; site: string; categories: string[]; format: string; bodyClass: string }>;
-export const categories = manifest.categories as Record<string, { title: string; bodyClass: string }>;
-export const tags = manifest.tags as Record<string, { title: string; bodyClass: string }>;
-export const pages = manifest.pages as Record<string, { title: string; bodyClass: string }>;
+export const homes = (manifest.homes || {}) as Record<string, { title: string; bodyClass: string; css: string; chrome: string; dir?: string }>;
+export const posts = (manifest.posts || []) as Array<{ slug: string; title: string; excerpt: string; cover: string; date: string; site: string; categories: string[]; format: string; bodyClass: string }>;
+export const categories = (manifest.categories || {}) as Record<string, { title: string; bodyClass: string }>;
+export const tags = (manifest.tags || {}) as Record<string, { title: string; bodyClass: string }>;
+export const pages = (manifest.pages || {}) as Record<string, { title: string; bodyClass: string }>;
 
 export type Doc = { title: string; description: string; bodyClass: string; css: string; js: string; dir: string; main: string } & Chrome;
 
 export function homeDoc(variant: string): Doc {
   const m = homes[variant] ?? homes.default;
+  if (!m) {
+    return { title: 'CoinAI News', description: SITE_DESC, bodyClass: 'home', css: 'home-default', js: 'home-default', dir: 'ltr', main: '', ...chrome('default') };
+  }
   const key = homes[variant] ? variant : 'default';
   return { title: m.title, description: SITE_DESC, bodyClass: m.bodyClass, css: m.css, js: m.css, dir: m.dir || 'ltr', main: pick(HOME, key + '.html'), ...chrome(m.chrome) };
 }
@@ -42,10 +45,14 @@ export function postDoc(slug: string): Doc {
     return { title: 'Not Found', description: '', bodyClass: DEFAULT_BODY_CLASS, css: 'single', js: 'single', dir: 'ltr', main: '', ...chrome('inner') };
   }
   return {
-    title: p.title || slug, description: p.excerpt || '',
+    title: p.title || slug,
+    description: p.excerpt || '',
     bodyClass: p.bodyClass || DEFAULT_BODY_CLASS,
-    css: 'single', js: 'single', dir: 'ltr',
-    main: pick(POST, slug + '.html'), ...chrome('inner')
+    css: 'single',
+    js: 'single',
+    dir: 'ltr',
+    main: pick(POST, slug + '.html'),
+    ...chrome('inner')
   };
 }
 
