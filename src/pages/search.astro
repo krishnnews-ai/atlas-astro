@@ -1,10 +1,84 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { pageDoc } from '../lib/content';
+import { posts } from '../lib/content';
 
-const doc = pageDoc('search');
+const allPosts = posts.slice().reverse();
 ---
 
-<Layout {...doc}>
-  <Fragment set:html={doc.main} />
+<Layout
+  title="Search — CoinAI News"
+  description="Search crypto & AI news on CoinAI News."
+  bodyClass="search-page"
+  css="home-default"
+  js="home-default"
+  dir="ltr"
+>
+  <style is:inline>
+    .search-wrap { max-width: 1280px; margin: 0 auto; padding: 40px 20px; font-family: Poppins, sans-serif; }
+    .search-header { margin-bottom: 36px; padding-bottom: 20px; border-bottom: 3px solid #ff6b00; }
+    .search-header h1 { font-size: 34px; font-weight: 800; margin: 0 0 8px; color: #111; }
+    .search-header p { color: #666; font-size: 14px; margin: 0; }
+    .search-input-wrap { margin: 24px 0 40px; }
+    .search-input-wrap input { width: 100%; max-width: 600px; padding: 14px 18px; border: 2px solid #eaeaea; border-radius: 8px; font-size: 15px; font-family: Poppins, sans-serif; }
+    .search-input-wrap input:focus { outline: 0; border-color: #ff6b00; }
+    .search-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+    .search-card { background: #fff; border: 1px solid #f0f0f0; border-radius: 8px; overflow: hidden; transition: box-shadow 0.2s; }
+    .search-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+    .search-card .card-body { padding: 20px; }
+    .search-card .card-cat { font-size: 10px; color: #ff6b00; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .search-card h3 { font-size: 16px; font-weight: 600; margin: 8px 0 12px; line-height: 1.4; }
+    .search-card h3 a { color: #111; text-decoration: none; }
+    .search-card h3 a:hover { color: #0066cc; }
+    .search-card .card-date { font-size: 12px; color: #999; }
+    .no-results { text-align: center; padding: 60px 20px; color: #999; }
+  </style>
+
+  <div class="search-wrap">
+    <div class="search-header">
+      <h1>Search</h1>
+      <p>Search all {allPosts.length} articles on CoinAI News</p>
+    </div>
+
+    <div class="search-input-wrap">
+      <input type="text" id="searchInput" placeholder="Type to search articles..." autofocus />
+    </div>
+
+    <div class="search-grid" id="searchResults">
+      {allPosts.map((p) => (
+        <article class="search-card" data-title={p.title.toLowerCase()} data-slug={p.slug}>
+          <div class="card-body">
+            <span class="card-cat">{p.categories?.[0] || 'Crypto'}</span>
+            <h3><a href={`/${p.slug}/`}>{p.title}</a></h3>
+            <span class="card-date">{p.date}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="no-results" id="noResults" style="display:none;">
+      <h2>No results found</h2>
+      <p>Try a different keyword.</p>
+    </div>
+  </div>
+
+  <script is:inline>
+    const input = document.getElementById('searchInput');
+    const cards = document.querySelectorAll('.search-card');
+    const noResults = document.getElementById('noResults');
+
+    input.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      let visible = 0;
+      cards.forEach((card) => {
+        const title = card.getAttribute('data-title') || '';
+        if (!q || title.includes(q)) {
+          card.style.display = '';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      noResults.style.display = visible === 0 ? 'block' : 'none';
+    });
+  </script>
 </Layout>
