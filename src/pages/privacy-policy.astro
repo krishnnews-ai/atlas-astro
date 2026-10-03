@@ -1,10 +1,56 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { pageDoc } from '../lib/content';
-
-const doc = pageDoc('privacy-policy', 'contact');
 ---
 
-<Layout {...doc}>
-  <Fragment set:html={doc.main} />
+<Layout
+  title="Privacy Policy — CoinAINews"
+  description="How CoinAINews collects, uses, and protects your data. Plain English, no legal jargon."
+  bodyClass="page"
+  css="home-default"
+  js="home-default"
+  dir="ltr"
+>
+  <div style="max-width:900px;margin:0 auto;padding:60px 20px;font-family:Poppins,sans-serif;">
+    <h1 style="font-size:36px;font-weight:800;margin:0 0 24px;color:#111;">Privacy Policy</h1>
+
+    <p style="font-size:16px;line-height:1.8;color:#444;margin-bottom:20px;">
+      Your privacy matters. This page explains what we collect, why we collect it, and how we keep it safe — in plain English, not legal jargon.
+    </p>
+
+    <h2 style="font-size:22px;font-weight:700;margin:32px 0 12px;color:#111;">What we collect</h2>
+
+    <p style="font-size:16px;line-height:1.8;color:#444;margin-bottom:20px;">
+      When you subscribe to our newsletter, we collect your email address. When you browse the site, we collect basic analytics — pages visited, time spent, browser type. That's it. We don't sell your data. We don't share it with advertisers. We don't build shadow profiles of you.
+    </p>
+
+    <h2 style="font-size:22px;font-weight:700;margin:32px 0 12px;color:#111;">Why we collect it</h2>
+
+    <p style="font-size:16px;line-height:1.8;color:#444;margin-bottom:20px;">
+      Analytics help us understand which articles people actually read, so we can write more of what matters. Your email is used to send you the newsletter you asked for — nothing else. We don't send promotional emails. We don't rent your address to third parties.
+    </p>
+
+    <h2 style="font-size:22px;font-weight:700;margin:32px 0 12px;color:#111;">Cookies</h2>
+
+    <p style="font-size:16px;line-height:1.8;color:#444;margin-bottom:20px;">
+      We use cookies to remember your preferences and to measure site performance. You can disable cookies in your browser at any time — the site will still work. We don't use cookies to track you across other websites.
+    </p>
+
+    <h2 style="font-size:22px;font-weight:700;margin:32px 0 12px;color:#111;">Third-party services</h2>
+
+    <p style="font-size:16px;line-height:1.8;color:#444;margin-bottom:20px;">
+      We use Cloudflare for hosting and security. Cloudflare may collect basic traffic data. We don't use Google Analytics or Facebook Pixel. If we ever add third-party services, we'll update this page and tell you.
+    </p>
+
+    <h2 style="font-size:22px;font-weight:700;margin:32px 0 12px;color:#111;">Your rights</h2>
+
+    <p style="font-size:16px;line-height:1.8;color:#444;margin-bottom:20px;">
+      You can ask us to delete your data at any time. You can unsubscribe from our newsletter with one click. You can email us and ask what data we have on you. We'll respond within 7 days.
+    </p>
+
+    <h2 style="font-size:22px;font-weight:700;margin:32px 0 12px;color:#111;">Questions?</h2>
+
+    <p style="font-size:16px;line-height:1.8;color:#444;">
+      Email us at krishnnews@gmail.com. We read every message.
+    </p>
+  </div>
 </Layout>
