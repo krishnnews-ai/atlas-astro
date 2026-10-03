@@ -11,6 +11,35 @@ const { slug } = Astro.params;
 const doc = postDoc(slug!);
 const post = posts.find((p) => p.slug === slug);
 
+// Smart human-like description generator
+function generateDescription(title: string, excerpt?: string, category?: string): string {
+  // Agar excerpt hai aur meaningful hai toh use karo
+  if (excerpt && excerpt.trim().length > 60) {
+    return excerpt.trim().slice(0, 155).replace(/\s+\S*$/, '') + '...';
+  }
+
+  // Warna title se natural description banao
+  const cleanTitle = title.replace(/[—–-]/g, ' ').replace(/\s+/g, ' ').trim();
+  const cat = category || 'crypto';
+  
+  const templates = [
+    `${cleanTitle}. Get the latest ${cat} news, market analysis, and expert insights from CoinAI News.`,
+    `Read about ${cleanTitle.toLowerCase()} — breaking ${cat} news and in-depth coverage on CoinAI News.`,
+    `${cleanTitle}. Stay updated with the latest ${cat} developments, trends, and analysis on CoinAI News.`,
+    `Latest update: ${cleanTitle}. Fresh ${cat} news, insights, and market coverage from CoinAI News.`,
+    `${cleanTitle} — your trusted source for breaking ${cat} news and analysis. Read more on CoinAI News.`,
+  ];
+  
+  // Title length ke hisaab se best template chuno
+  const idx = cleanTitle.length % templates.length;
+  const desc = templates[idx];
+  
+  return desc.length > 155 ? desc.slice(0, 152) + '...' : desc;
+}
+
+const category = post?.categories?.[0] || 'Crypto';
+const description = generateDescription(doc.title, post?.excerpt, category);
+
 // Breadcrumbs
 const breadcrumbs = [
   { name: 'Home', url: '/' },
@@ -26,13 +55,14 @@ const imageUrl = post?.cover
 
 <Layout
   {...doc}
+  description={description}
   canonical={`/${slug}/`}
   image={imageUrl}
   type="article"
   publishedTime={post?.date ? new Date(post.date).toISOString() : new Date().toISOString()}
   modifiedTime={post?.date ? new Date(post.date).toISOString() : new Date().toISOString()}
   author="CoinAI News"
-  category={post?.categories?.[0] || 'Crypto'}
+  category={category}
   breadcrumbs={breadcrumbs}
   isArticle={true}
 >
