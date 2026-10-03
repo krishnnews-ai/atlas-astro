@@ -1,0 +1,105 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { posts } from '../../lib/content';
+
+export function getStaticPaths() {
+  if (!posts || !Array.isArray(posts)) return [];
+  
+  const allCats = new Set<string>();
+  posts.forEach((p) => {
+    if (p.categories && Array.isArray(p.categories)) {
+      p.categories.forEach((c: string) => allCats.add(c));
+    }
+  });
+  
+  return Array.from(allCats).map((cat) => ({
+    params: { slug: cat.toLowerCase().replace(/\s+/g, '-') },
+    props: { categoryName: cat },
+  }));
+}
+
+const { slug } = Astro.params;
+const { categoryName } = Astro.props;
+
+const catPosts = posts
+  .filter((p) => p.categories?.some((c: string) => c.toLowerCase().replace(/\s+/g, '-') === slug))
+  .reverse();
+
+const title = `${categoryName} — CoinAI News`;
+const description = `Latest ${categoryName} news, analysis, and updates from CoinAI News.`;
+---
+
+<Layout
+  title={title}
+  description={description}
+  bodyClass="category-page"
+  css="home-default"
+  js="home-default"
+  dir="ltr"
+  category={categoryName}
+  breadcrumbs={[
+    { name: 'Home', url: '/' },
+    { name: categoryName, url: `/category/${slug}/` }
+  ]}
+>
+  <style is:inline>
+    .cat-wrap { max-width: 1280px; margin: 0 auto; padding: 32px 20px; font-family: Poppins, sans-serif; }
+    .cat-header { margin-bottom: 36px; padding-bottom: 20px; border-bottom: 3px solid #ff6b00; }
+    .cat-header h1 { font-size: 34px; font-weight: 800; margin: 0 0 8px; color: #111; }
+    .cat-header p { color: #666; font-size: 14px; margin: 0; }
+    .cat-breadcrumb { font-size: 12px; color: #999; margin-bottom: 12px; }
+    .cat-breadcrumb a { color: #0066cc; text-decoration: none; }
+    .cat-breadcrumb a:hover { text-decoration: underline; }
+
+    .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+    .cat-card { background: #fff; border: 1px solid #f0f0f0; border-radius: 8px; overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; display: flex; flex-direction: column; }
+    .cat-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
+    .cat-card .card-thumb { height: 180px; overflow: hidden; background: linear-gradient(135deg, #2d1b4e 0%, #1a1a2e 100%); display: flex; align-items: center; justify-content: center; color: #6c5ce7; font-size: 40px; }
+    .cat-card .card-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .cat-card .card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+    .cat-card .card-cat { font-size: 10px; color: #ff6b00; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .cat-card h3 { font-size: 16px; font-weight: 600; margin: 8px 0 12px; line-height: 1.4; flex: 1; }
+    .cat-card h3 a { color: #111; text-decoration: none; }
+    .cat-card h3 a:hover { color: #0066cc; }
+    .cat-card .card-date { font-size: 12px; color: #999; }
+
+    .cat-empty { text-align: center; padding: 60px 20px; color: #999; }
+    .cat-empty h2 { font-size: 22px; color: #111; margin: 0 0 10px; }
+  </style>
+
+  <div class="cat-wrap">
+    <div class="cat-header">
+      <div class="cat-breadcrumb">
+        <a href="/">Home</a> › <span>{categoryName}</span>
+      </div>
+      <h1>{categoryName}</h1>
+      <p>{catPosts.length} article{catPosts.length !== 1 ? 's' : ''} in this category</p>
+    </div>
+
+    {catPosts.length > 0 ? (
+      <div class="cat-grid">
+        {catPosts.map((p) => (
+          <article class="cat-card">
+            <div class="card-thumb">
+              {p.cover ? (
+                <img src={p.cover} alt={p.title} loading="lazy" />
+              ) : (
+                <span>📰</span>
+              )}
+            </div>
+            <div class="card-body">
+              <span class="card-cat">{categoryName}</span>
+              <h3><a href={`/${p.slug}/`}>{p.title}</a></h3>
+              <span class="card-date">{p.date}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="cat-empty">
+        <h2>No posts yet</h2>
+        <p>No articles in this category right now. Check back soon!</p>
+      </div>
+    )}
+  </div>
+</Layout>  
