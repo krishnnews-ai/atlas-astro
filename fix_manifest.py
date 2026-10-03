@@ -1,79 +1,47 @@
 #!/usr/bin/env python3
-import json
+import json, os, re
 
-MANIFEST_FILE = "src/data/manifest.json"
+MANIFEST = "src/data/manifest.json"
+POSTS_DIR = "src/generated/posts"
 
-ATLAS_DEMO_SLUGS = [
-    "a-mild-sweet-fruit-with-a-fibrous-center",
-    "always-keep-your-drone-within-the-vlos",
-    "blog-post",
-    "coconut-curry-soup-with-chickpeas",
-    "comfortable-pairs-of-sneakers-to-walk-all-day",
-    "dark-chocolate-self-saucing-pudding",
-    "delicious-chicken-meatball-soup",
-    "essential-tech-tips-for-your-business",
-    "fairy-potion-summer-fruit-drink",
-    "fashion-tips-trends-and-celebrity-style",
-    "finally-found-a-work-computer-setup-thats-practically-perfect",
-    "for-good-results-must-be-make-good-plan",
-    "fruit-yogurt-easy-homemade-fruit-drink",
-    "gadgets-that-will-upgrade-your-home",
-    "headsets-are-better-if-youre-playing-games",
-    "healthy-chicken-and-rice-soup",
-    "hot-new-releases-in-audio-headphones",
-    "how-to-do-the-superman-standing-exercise",
-    "how-to-organize-and-write-content-for",
-    "in-fact-certainly-influenced-seldes-the-leftist-journalist-i-f-stone",
-    "laptops-tend-to-be-smaller-than-desktops",
-    "laugh-cry-and-learn-within-virtual-reality",
-    "make-your-gaming-setup-look-better",
-    "make-your-phone-feel-new-again",
-    "melt-and-mix-chocolate-and-ginger-mud-cake",
-    "mistakes-you-might-be-making-with-your-watch",
-    "mobile-camera-makes-a-huge-leap-in-quality",
-    "pecan-chocolate-bread-and-butter",
-    "refreshing-summer-fruit-drink",
-    "rugby-african-ations-are-singing-to-save-their-wildlif",
-    "spicy-crispy-chicken-burger-recipe",
-    "spiked-strawberry-slushies-for-a-crowd",
-    "surprising-benefits-of-honeydew-melon",
-    "the-inbound-marketing-methodology-method-of-drawing-the-right",
-    "the-secret-of-buzzfeeds-success-has-a-lot-to-do-with-the-image-heavy",
-    "there-are-several-differences-between-outbound",
-    "tips-to-ensure-you-always-look-stylish",
-    "tomato-bisque-with-fried-cheese",
-    "top-12-health-benefits-of-eating-grapes",
-    "top-classic-style-inspiration-ideas",
-    "top-mens-fashion-trends-from-spring",
-    "tortellini-soup-with-italian-sausage-and-kale",
-    "vegan-chocolate-avocado-milkshakes",
-    "vr-headset-virtual-reality-glasses",
-    "why-do-restaurant-burgers-taste-better",
-    "wild-mushroom-chowder-with-leeks",
-    "will-humans-be-able-to-live-in-mars-in-the-future",
-    "winter-dressing-tips-when-its-really-cold-out",
-]
+def get_cover(slug):
+    path = os.path.join(POSTS_DIR, f"{slug}.html")
+    if not os.path.exists(path):
+        return ""
+    try:
+        html = open(path, encoding="utf-8").read()
+        m = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', html)
+        return m.group(1) if m else ""
+    except:
+        return ""
 
 def main():
-    print("🔧 Removing Atlas demo posts...")
-    
-    with open(MANIFEST_FILE, "r", encoding="utf-8") as f:
-        manifest = json.load(f)
-    
-    old_count = len(manifest.get("posts", []))
-    
-    cleaned_posts = [
-        p for p in manifest.get("posts", [])
-        if p.get("slug", "") not in ATLAS_DEMO_SLUGS
-    ]
-    
-    manifest["posts"] = cleaned_posts
-    
-    with open(MANIFEST_FILE, "w", encoding="utf-8") as f:
-        json.dump(manifest, f, indent=2, ensure_ascii=False)
-    
-    print(f"✅ Posts: {old_count} → {len(cleaned_posts)}")
-    print(f"❌ Removed: {old_count - len(cleaned_posts)}")
+    if not os.path.exists(MANIFEST):
+        print(f"❌ {MANIFEST} not found")
+        return
+    if os.path.getsize(MANIFEST) == 0:
+        print(f"❌ {MANIFEST} is empty")
+        return
+
+    with open(MANIFEST, encoding="utf-8") as f:
+        try:
+            data = json.load(f)
+        except json.JSONDecodeError as e:
+            print(f"❌ Invalid JSON: {e}")
+            return
+
+    count = 0
+    for post in data.get("posts", []):
+        if not post.get("cover"):
+            cover = get_cover(post["slug"])
+            if cover:
+                post["cover"] = cover
+                count += 1
+
+    with open(MANIFEST, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+    print(f"✅ {count} posts me cover add hua")
 
 if __name__ == "__main__":
     main()
