@@ -41,7 +41,7 @@ const {
   type = 'website',
   publishedTime,
   modifiedTime,
-  author = 'CoinAI News',
+  author = 'Subhasmita Mishra',
   category,
   breadcrumbs = [],
   isArticle = false,
@@ -96,8 +96,22 @@ const articleSchema = isArticle ? {
   "dateModified": modifiedTime || publishedTime || new Date().toISOString(),
   "author": {
     "@type": "Person",
-    "name": author,
-    "url": `${SITE_URL}/author/${author.toLowerCase().replace(/\s+/g, '-')}`
+    "@id": `${SITE_URL}/author/subhasmita-mishra/#person`,
+    "name": "Subhasmita Mishra",
+    "url": `${SITE_URL}/author/subhasmita-mishra/`,
+    "image": `${SITE_URL}/authors/subhasmita-mishra.jpg`,
+    "jobTitle": "Crypto & AI News Editor",
+    "description": "Subhasmita Mishra covers cryptocurrency, blockchain, and AI developments for CoinAI News. She specializes in market analysis and regulatory updates.",
+    "sameAs": [
+      "https://x.com/subhashmitlied",
+      "https://www.linkedin.com/in/subhasmita-mishra-8058ba71/",
+      "https://www.facebook.com/subhasmita.mishra1988"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "CoinAI News",
+      "url": SITE_URL
+    }
   },
   "publisher": {
     "@type": "Organization",
@@ -329,8 +343,8 @@ const today = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'n
             <h4>Company</h4>
             <ul>
               <li><a href="/about/">About CoinAINews</a></li>
+              <li><a href="/author/subhasmita-mishra/">Author: Subhasmita Mishra</a></li>
               <li><a href="/privacy-policy/">Privacy Policy</a></li>
-              <li><a href="/disclaimer/">Disclaimer & Editorial Policy</a></li>
               <li><a href="/contact/">Contact Us</a></li>
             </ul>
           </div>
@@ -348,7 +362,6 @@ const today = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'n
             <span>
               <a href="/about/">About</a> · 
               <a href="/privacy-policy/">Privacy Policy</a> · 
-              <a href="/disclaimer/">Disclaimer</a> · 
               <a href="/contact/">Contact</a>
             </span>
           </div>
