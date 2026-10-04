@@ -13,12 +13,10 @@ const post = posts.find((p) => p.slug === slug);
 
 // Smart human-like description generator
 function generateDescription(title: string, excerpt?: string, category?: string): string {
-  // Agar excerpt hai aur meaningful hai toh use karo
   if (excerpt && excerpt.trim().length > 60) {
     return excerpt.trim().slice(0, 155).replace(/\s+\S*$/, '') + '...';
   }
 
-  // Warna title se natural description banao
   const cleanTitle = title.replace(/[—–-]/g, ' ').replace(/\s+/g, ' ').trim();
   const cat = category || 'crypto';
   
@@ -30,7 +28,6 @@ function generateDescription(title: string, excerpt?: string, category?: string)
     `${cleanTitle} — your trusted source for breaking ${cat} news and analysis. Read more on CoinAI News.`,
   ];
   
-  // Title length ke hisaab se best template chuno
   const idx = cleanTitle.length % templates.length;
   const desc = templates[idx];
   
@@ -61,10 +58,90 @@ const imageUrl = post?.cover
   type="article"
   publishedTime={post?.date ? new Date(post.date).toISOString() : new Date().toISOString()}
   modifiedTime={post?.date ? new Date(post.date).toISOString() : new Date().toISOString()}
-  author="CoinAI News"
+  author="Subhasmita Verma"
   category={category}
   breadcrumbs={breadcrumbs}
   isArticle={true}
 >
   <Fragment set:html={doc.main} />
+
+  <!-- Author Box -->
+  <div class="author-box">
+    <img src="/authors/subhasmita-mishra.jpg" alt="Subhasmita Verma" class="author-box-img" />
+    <div class="author-box-info">
+      <div class="author-box-label">Written by</div>
+      <h3><a href="/author/subhasmita-verma/">Subhasmita Verma</a></h3>
+      <div class="author-box-role">Crypto & AI News Editor</div>
+      <p>Subhasmita Verma covers cryptocurrency, blockchain, and AI developments for CoinAI News. She specializes in market analysis, regulatory updates, and emerging Web3 technologies.</p>
+      <div class="author-box-socials">
+        <a href="https://x.com/subhashmitlied" target="_blank" rel="noopener">Twitter / X</a>
+        <a href="https://www.linkedin.com/in/subhasmita-mishra-8058ba71/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
+  <style is:inline>
+    .author-box {
+      max-width: 800px;
+      margin: 50px auto 30px;
+      padding: 24px;
+      background: linear-gradient(135deg, #fff5e6 0%, #fff 100%);
+      border: 1px solid #ffe0b2;
+      border-radius: 12px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      font-family: Poppins, sans-serif;
+    }
+    .author-box-img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 3px solid #ff6b00;
+    }
+    .author-box-info { flex: 1; }
+    .author-box-label {
+      font-size: 11px;
+      color: #ff6b00;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .author-box-info h3 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .author-box-info h3 a {
+      color: #111;
+      text-decoration: none;
+    }
+    .author-box-info h3 a:hover { color: #ff6b00; }
+    .author-box-role {
+      font-size: 13px;
+      color: #ff6b00;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .author-box-info p {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.6;
+      margin: 0 0 12px;
+    }
+    .author-box-socials a {
+      color: #ff6b00;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      margin-right: 16px;
+    }
+    .author-box-socials a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      .author-box { flex-direction: column; text-align: center; align-items: center; }
+    }
+  </style>
 </Layout>
