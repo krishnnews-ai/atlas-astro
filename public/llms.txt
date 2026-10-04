@@ -1,0 +1,23 @@
+# CoinAI News
+
+> Latest crypto & AI news, market analysis, and blockchain updates from CoinAI News.
+
+CoinAI News is a crypto & AI news website covering market trends, regulations, blockchain technology, and AI developments in the crypto space. Updated daily with breaking news and in-depth analysis.
+
+## Main Sections
+
+- [Homepage](https://www.coinainews.com/): Latest crypto & AI news
+- [Bitcoin News](https://www.coinainews.com/category/bitcoin-news/): Bitcoin updates and analysis
+- [Market News](https://www.coinainews.com/category/market-news/): Crypto market trends
+- [Crypto Regulations](https://www.coinainews.com/category/crypto-regulations/): Regulatory news
+- [Ethereum News](https://www.coinainews.com/category/ethereum-news/): Ethereum updates
+- [Altcoin News](https://www.coinainews.com/category/altcoin-news/): Altcoin coverage
+- [Stablecoin](https://www.coinainews.com/category/stablecoin/): Stablecoin news
+- [Wallet](https://www.coinainews.com/category/wallet/): Crypto wallet guides
+- [Editor's Choice](https://www.coinainews.com/category/editors-choice/): Top picks
+
+## Contact
+
+- Website: https://www.coinainews.com
+- Twitter: https://twitter.com/coinainews
+- Facebook: https://facebook.com/coinainews
