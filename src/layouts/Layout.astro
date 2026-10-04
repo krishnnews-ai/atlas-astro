@@ -37,7 +37,7 @@ const {
   js,
   dir = 'ltr',
   canonical,
-  image = 'https://www.coinainews.com/og-default.jpg',
+  image,
   type = 'website',
   publishedTime,
   modifiedTime,
@@ -52,6 +52,10 @@ const SITE_NAME = 'CoinAI News';
 const canonicalURL = canonical ? `${SITE_URL}${canonical}` : `${SITE_URL}${Astro.url.pathname}`;
 const FAVICON = '/atlas/default/wp-content/uploads/sites/2/2023/11/cropped-layer-32x32.png';
 const LOGO = '/atlas/default/wp-content/uploads/sites/2/2023/10/atlas.png';
+
+const ogImage = image
+  ? (image.startsWith('http') ? image : `${SITE_URL}${image}`)
+  : `${SITE_URL}/og-default.jpg`;
 
 const orgSchema = {
   "@context": "https://schema.org",
@@ -85,7 +89,7 @@ const articleSchema = isArticle ? {
   "description": description,
   "image": {
     "@type": "ImageObject",
-    "url": image,
+    "url": ogImage,
     "width": 1200,
     "height": 675
   },
@@ -155,7 +159,7 @@ const today = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'n
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="675" />
     <meta property="og:site_name" content={SITE_NAME} />
@@ -169,7 +173,7 @@ const today = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'n
     <meta name="twitter:url" content={canonicalURL} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:site" content="@coinainews" />
     <meta name="twitter:creator" content="@coinainews" />
 
