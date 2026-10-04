@@ -1,0 +1,9 @@
+# Purani URLs → Nayi URLs (301 Redirect)
+
+# Trailing slash + www fix
+/can-coinbase-reverse-bitcoin-sent-to-another-coinbase-user    /can-coinbase-reverse-bitcoin-sent-to-another-coinbase-user/    301
+
+# Search/Query URLs → 410 Gone (Blogger pagination)
+/search*    410
+/?m=0       410
+/lander     410
