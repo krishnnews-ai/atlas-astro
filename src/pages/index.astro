@@ -2,7 +2,62 @@
 import Layout from '../layouts/Layout.astro';
 import { posts } from '../lib/content';
 
-const allPosts = posts.slice().reverse();
+// Atlas theme ki dummy posts hatao
+const DUMMY_SLUGS = [
+  'blog-post',
+  'coconut-curry-soup-with-chickpeas',
+  'dark-chocolate-self-saucing-pudding',
+  'delicious-chicken-meatball-soup',
+  'fairy-potion-summer-fruit-drink',
+  'fashion-tips-trends-and-celebrity-style',
+  'fruit-yogurt-easy-homemade-fruit-drink',
+  'healthy-chicken-and-rice-soup',
+  'melt-and-mix-chocolate-and-ginger-mud-cake',
+  'pecan-chocolate-bread-and-butter',
+  'refreshing-summer-fruit-drink',
+  'spicy-crispy-chicken-burger-recipe',
+  'spiked-strawberry-slushies-for-a-crowd',
+  'tomato-bisque-with-fried-cheese',
+  'tortellini-soup-with-italian-sausage-and-kale',
+  'vegan-chocolate-avocado-milkshakes',
+  'wild-mushroom-chowder-with-leeks',
+  'why-do-restaurant-burgers-taste-better',
+  'a-mild-sweet-fruit-with-a-fibrous-center',
+  'always-keep-your-drone-within-the-vlos',
+  'comfortable-pairs-of-sneakers-to-walk-all-day',
+  'essential-tech-tips-for-your-business',
+  'finally-found-a-work-computer-setup-thats-practically-perfect',
+  'for-good-results-must-be-make-good-plan',
+  'gadgets-that-will-upgrade-your-home',
+  'headsets-are-better-if-youre-playing-games',
+  'hot-new-releases-in-audio-headphones',
+  'how-to-do-the-superman-standing-exercise',
+  'how-to-organize-and-write-content-for',
+  'in-fact-certainly-influenced-seldes-the-leftist-journalist-i-f-stone',
+  'laptops-tend-to-be-smaller-than-desktops',
+  'laugh-cry-and-learn-within-virtual-reality',
+  'make-your-gaming-setup-look-better',
+  'make-your-phone-feel-new-again',
+  'mistakes-you-might-be-making-with-your-watch',
+  'mobile-camera-makes-a-huge-leap-in-quality',
+  'rugby-african-ations-are-singing-to-save-their-wildlif',
+  'surprising-benefits-of-honeydew-melon',
+  'the-inbound-marketing-methodology-method-of-drawing-the-right',
+  'the-secret-of-buzzfeeds-success-has-a-lot-to-do-with-the-image-heavy',
+  'there-are-several-differences-between-outbound',
+  'tips-to-ensure-you-always-look-stylish',
+  'top-12-health-benefits-of-eating-grapes',
+  'top-classic-style-inspiration-ideas',
+  'top-mens-fashion-trends-from-spring',
+  'vr-headset-virtual-reality-glasses',
+  'will-humans-be-able-to-live-in-mars-in-the-future',
+  'winter-dressing-tips-when-its-really-cold-out',
+  'contact',
+  'privacy-policy'
+];
+
+const cleanPosts = posts.filter((p: any) => !DUMMY_SLUGS.includes(p.slug));
+const allPosts = cleanPosts.slice().reverse();
 const heroMain = allPosts[0];
 const heroSide = allPosts.slice(1, 5);
 const trendingPosts = allPosts.slice(5, 11);
