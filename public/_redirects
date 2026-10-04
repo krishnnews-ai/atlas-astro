@@ -1,9 +1,21 @@
-# Purani URLs → Nayi URLs (301 Redirect)
+# ============================================
+# CoinAI News — Redirects
+# ============================================
 
-# Trailing slash + www fix
+# 1. Trailing slash + www fix (jo exist karti hai)
 /can-coinbase-reverse-bitcoin-sent-to-another-coinbase-user    /can-coinbase-reverse-bitcoin-sent-to-another-coinbase-user/    301
 
-# Search/Query URLs → 410 Gone (Blogger pagination)
+# 2. Deleted posts — 410 Gone
+/meet-khanmigo-khan-academys-ai-powered-teaching-assistant-tutor    410
+/stablecoin-market-shake-up-usdc-vs-usdt                            410
+/binance-smart-chain-a-comprehensive-guide                          410
+/bitcoins-ominous-crossroad-navigating-the-weekly-death-cross-amid-shifting-market-trends    410
+/altcoin-season-analysis                                            410
+/advancements-in-robotics-systems-what-to-expect-in-2025            410
+/apple-watch-series-2-is-swimproof-and-comes-with-built-in-gps     410
+/watch-dogs-2-update-coming-this-week-heres-what-it-does           410
+
+# 3. Blogger search/query URLs — 410 Gone
 /search*    410
 /?m=0       410
 /lander     410
