@@ -1,15 +1,16 @@
 backend:
   name: github
-  repo: username/repo-name  # Yahan apna GitHub username aur repo ka naam dalo
-  branch: main              # Agar aapka default branch 'master' hai toh master likho
+  repo: krishnnews-ai/atlas-astro
+  branch: main
+  auth_type: pkce
 
-media_folder: "public/images" # Jab aap CMS se photo upload karoge toh kahan save hogi
+media_folder: "public/images"
 public_folder: "/images"
 
 collections:
   - name: "blog"
     label: "Blog Posts"
-    folder: "src/content/blog" # Aapke blog posts ki location
+    folder: "src/content/blog"
     create: true
     slug: "{{slug}}"
     fields:
