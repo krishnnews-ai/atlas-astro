@@ -1,0 +1,24 @@
+backend:
+  name: github
+  repo: krishnnews-ai/atlas-astro
+  branch: main
+  base_url: https://www.coinainews.com
+  auth_endpoint: /api/auth
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "src/generated/posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Meta Title", name: "meta_title", widget: "string", required: false }
+      - { label: "Meta Description", name: "meta_description", widget: "text", required: false }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Cover Image", name: "cover", widget: "image", required: false }
+      - { label: "Image Alt Text", name: "cover_alt", widget: "string", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
