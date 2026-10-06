@@ -2,20 +2,26 @@
 # CoinAI News — Redirects
 # ============================================
 
-# 1. Trailing slash + www fix (jo exist karti hai)
-/can-coinbase-reverse-bitcoin-sent-to-another-coinbase-user    /can-coinbase-reverse-bitcoin-sent-to-another-coinbase-user/    301
+# 1. Blogger Posts Redirect (All 350+ Posts with Date & .html)
+/:year/:month/:slug.html /:slug/ 301
+/:year/:month/:slug.html /:slug 301
 
-# 2. Deleted posts — 410 Gone
-/meet-khanmigo-khan-academys-ai-powered-teaching-assistant-tutor    410
-/stablecoin-market-shake-up-usdc-vs-usdt                            410
-/binance-smart-chain-a-comprehensive-guide                          410
-/bitcoins-ominous-crossroad-navigating-the-weekly-death-cross-amid-shifting-market-trends    410
-/altcoin-season-analysis                                            410
-/advancements-in-robotics-systems-what-to-expect-in-2025            410
-/apple-watch-series-2-is-swimproof-and-comes-with-built-in-gps     410
-/watch-dogs-2-update-coming-this-week-heres-what-it-does           410
+# 2. Blogger Pages Redirect (For /p/about-us.html type pages)
+/p/:slug.html /:slug/ 301
 
-# 3. Blogger search/query URLs — 410 Gone
-/search*    410
-/?m=0       410
-/lander     410
+# 3. Trailing slash fix
+/can-coinbase-reverse-bitcoin-sent-to-another-coinbase-user /can-coinbase-reverse-bitcoin-sent-to-another-coinbase-user/ 301
+
+# 4. Deleted posts — 410 Gone
+/meet-khanmigo-khan-academys-ai-powered-teaching-assistant-tutor 410
+/stablecoin-market-shake-up-usdc-vs-usdt 410
+/binance-smart-chain-a-comprehensive-guide 410
+/bitcoins-ominous-crossroad-navigating-the-weekly-death-cross-amid-shifting-market-trends 410
+/altcoin-season-analysis 410
+/advancements-in-robotics-systems-what-to-expect-in-2025 410
+/apple-watch-series-2-is-swimproof-and-comes-with-built-in-gps 410
+/watch-dogs-2-update-coming-this-week-heres-what-it-does 410
+
+# 5. Blogger search/query URLs — 410 Gone
+/search* 410
+/lander 410
