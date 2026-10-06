@@ -46,6 +46,7 @@ The 10 home demos are each a distinct Elementor "skin" with their own chrome and
 
 To regenerate from scratch: run the scripts in order (`harvest`, `harvest2`, `harvest3`, `harvest4`, `extract-css`, `extract-js`, `build-generated`), then `pnpm build`, then `node harvest/check-links.mjs`.
 
+
 ---
 
 This is an independent fan re-creation for learning/personal use. "Atlas" and its design belong to their original author (TMRW-studio); a license to the original theme is required for commercial use.
