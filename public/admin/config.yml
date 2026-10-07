@@ -14,16 +14,28 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string", hint: "Target keyword ko title ke shuru me rakhein (50-60 chars)" }
-      - { label: "URL Slug", name: "slug", widget: "string", required: false, hint: "Short & SEO friendly slug (e.g. bitcoin-etf-news)" }
+      - { label: "URL Slug", name: "slug", widget: "string", required: false, hint: "Custom URL link (e.g. bitcoin-news-today)" }
       - { label: "Draft Post", name: "draft", widget: "boolean", default: false, hint: "On karne par post site par hide rahegi" }
       - { label: "Publish Date", name: "pubDate", widget: "datetime" }
-      - { label: "Updated Date", name: "updatedDate", widget: "datetime", required: false, hint: "Post update karne par yeh date badlein (Google Freshness)" }
-      - { label: "Author Name", name: "author", widget: "string", default: "Coin AI News Team", hint: "Google E-E-A-T ranking ke liyai zaroori" }
-      - { label: "Category", name: "category", widget: "string", default: "Crypto", hint: "Single primary category" }
-      - { label: "Keywords / Tags", name: "tags", widget: "list", required: false, hint: "Relevant keywords separated by comma" }
-      - { label: "Meta Description", name: "description", widget: "text", hint: "150-160 characters ka catchy summary (CTR badhane ke liye)" }
+      - { label: "Updated Date", name: "updatedDate", widget: "datetime", required: false, hint: "Post update karne par date badlein (Google Freshness)" }
+      - { label: "Author Name", name: "author", widget: "string", default: "Coin AI News Team", hint: "Google E-E-A-T ranking ke liye" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        default: "Bitcoin News"
+        options:
+          - "Crypto Regulations"
+          - "Market News"
+          - "Wallet"
+          - "Bitcoin News"
+          - "Altcoin News"
+          - "Editor's Choice"
+          - "Ethereum News"
+          - "Stablecoin"
+      - { label: "Keywords / Tags", name: "tags", widget: "list", required: false, hint: "Relevant keywords comma se alag karein" }
+      - { label: "Meta Description", name: "description", widget: "text", hint: "150-160 characters ka summary (CTR badhane ke liye)" }
       - { label: "Cover Image", name: "image", widget: "image", required: false }
-      - { label: "Image Alt Text", name: "imageAlt", widget: "string", required: false, hint: "Google Image SEO ke liye descriptive text" }
-      - { label: "Canonical URL", name: "canonicalURL", widget: "string", required: false, hint: "Agar news kahin aur se copy ki hai toh original link yahan dalei" }
-      - { label: "Hide from Google (Noindex)", name: "noindex", widget: "boolean", default: false, hint: "Low quality ya private pages ko index hone se rokne ke liye" }
+      - { label: "Image Alt Text", name: "imageAlt", widget: "string", required: false, hint: "SEO image description" }
+      - { label: "Canonical URL", name: "canonicalURL", widget: "string", required: false, hint: "Original source URL agar news kahin aur se li hai" }
+      - { label: "Hide from Google (Noindex)", name: "noindex", widget: "boolean", default: false, hint: "Indexing rokne ke liye" }
       - { label: "Body", name: "body", widget: "markdown" }
