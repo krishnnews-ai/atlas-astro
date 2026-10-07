@@ -24,7 +24,14 @@ collections:
         widget: "select"
         default: "Bitcoin News"
         options:
+          - "Crypto Regulations"
+          - "Market News"
+          - "Wallet"
           - "Bitcoin News"
+          - "Altcoin News"
+          - "Editor's Choice"
+          - "Ethereum News"
+          - "Stablecoin"
       - { label: "Keywords / Tags", name: "tags", widget: "list", required: false, hint: "Relevant keywords comma se alag karein" }
       - { label: "Meta Description", name: "description", widget: "text", hint: "150-160 characters ka summary (CTR badhane ke liye)" }
       - { label: "Cover Image", name: "image", widget: "image", required: false }
