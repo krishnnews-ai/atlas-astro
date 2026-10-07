@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { posts } from '../lib/content';
 
-// Atlas theme ki dummy posts hatao
+// Atlas theme ki dummy posts filtering
 const DUMMY_SLUGS = [
   'blog-post',
   'coconut-curry-soup-with-chickpeas',
@@ -91,8 +91,8 @@ function getPostImage(slug: string): string {
 ---
 
 <Layout
-  title="CoinAI News — Latest Crypto & AI News"
-  description="Latest crypto & AI news, market analysis, and blockchain updates from CoinAI News."
+  title="Coin AI News | Latest Crypto, Bitcoin & AI News"
+  description="Coin AI News delivers the latest news, market analysis, and updates on Bitcoin, Ethereum, Altcoins, and Crypto Regulations."
   bodyClass="home-magazine"
   css="home-default"
   js="home-default"
@@ -247,7 +247,7 @@ function getPostImage(slug: string): string {
         </div>
 
         {Object.entries(catGroups).slice(0, 2).map(([catName, catPosts]) => (
-          <>
+          <div>
             <h2 class="mag-section-title">{catName}</h2>
             <div class="mag-grid" style="margin-bottom:40px;">
               {catPosts.map((p) => (
@@ -267,7 +267,7 @@ function getPostImage(slug: string): string {
                 </article>
               ))}
             </div>
-          </>
+          </div>
         ))}
       </div>
 
