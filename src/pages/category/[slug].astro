@@ -3,15 +3,31 @@ import Layout from '../../layouts/Layout.astro';
 import { posts } from '../../lib/content';
 
 export function getStaticPaths() {
-  if (!posts || !Array.isArray(posts)) return [];
-  
-  const allCats = new Set<string>();
-  posts.forEach((p) => {
-    if (p.categories && Array.isArray(p.categories)) {
-      p.categories.forEach((c: string) => allCats.add(c));
-    }
-  });
-  
+  // Master list of all website categories
+  const MASTER_CATEGORIES = [
+    "Crypto Regulations",
+    "Market News",
+    "Wallet",
+    "Bitcoin News",
+    "Altcoin News",
+    "Editor's Choice",
+    "Ethereum News",
+    "Stablecoin"
+  ];
+
+  const allCats = new Set<string>(MASTER_CATEGORIES);
+
+  if (posts && Array.isArray(posts)) {
+    posts.forEach((p) => {
+      if (p.categories && Array.isArray(p.categories)) {
+        p.categories.forEach((c: string) => allCats.add(c));
+      }
+      if (p.category && typeof p.category === 'string') {
+        allCats.add(p.category);
+      }
+    });
+  }
+
   return Array.from(allCats).map((cat) => ({
     params: { slug: cat.toLowerCase().replace(/\s+/g, '-') },
     props: { categoryName: cat },
@@ -21,8 +37,12 @@ export function getStaticPaths() {
 const { slug } = Astro.params;
 const { categoryName } = Astro.props;
 
-const catPosts = posts
-  .filter((p) => p.categories?.some((c: string) => c.toLowerCase().replace(/\s+/g, '-') === slug))
+const catPosts = (posts || [])
+  .filter((p) => {
+    const matchesArray = p.categories?.some((c: string) => c.toLowerCase().replace(/\s+/g, '-') === slug);
+    const matchesString = p.category && typeof p.category === 'string' && p.category.toLowerCase().replace(/\s+/g, '-') === slug;
+    return matchesArray || matchesString;
+  })
   .reverse();
 
 const title = `${categoryName} — CoinAI News`;
@@ -102,4 +122,4 @@ const description = `Latest ${categoryName} news, analysis, and updates from Coi
       </div>
     )}
   </div>
-</Layout>  
+</Layout>
