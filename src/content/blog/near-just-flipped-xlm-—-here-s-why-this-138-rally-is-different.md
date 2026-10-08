@@ -9,7 +9,7 @@ category: Crypto Regulations
 tags:
   - NEAR Protocol, $NEAR, XLM flip, Crypto Top 20  Bitwise NEAR ETF, NRR ETF, Altseason 2026  NEAR Intents, Stellar XLM price, Crypto market cap rankings, NEAR price prediction
 description: NEAR surges 138% to flip XLM and enter crypto's top 20. Inside the Bitwise ETF influx and what's next for the rally. Read the full breakdown.
-image: /images/NEAR Breakout_ Top 20 Crypto Surge.png
+image: ''
 imageAlt: NEAR Protocol token price chart showing 138% monthly surge and market cap flip over XLM
 canonicalURL: https://www.coinainews.com/near-flips-xlm-top-20-crypto-rally-2026
 ---
