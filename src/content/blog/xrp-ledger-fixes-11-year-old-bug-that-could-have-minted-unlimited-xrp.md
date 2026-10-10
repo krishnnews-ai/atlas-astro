@@ -4,7 +4,7 @@ slug: xrp-ledger-fixes-11-year-old-bug-unlimited-xrp
 draft: false
 pubDate: 2026-10-10T17:53:00+05:30
 author: subhasmita mishra
-category: Crypto Regulations
+category: Market News
 tags:
   - XRP Ledger bug
   - XRP security vulnerability
