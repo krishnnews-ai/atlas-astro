@@ -2,7 +2,7 @@
 title: China Calls for National Blockchain Network as Part of Economic Strategy
 slug: china-national-blockchain-network-economic-strategy
 draft: false
-pubDate: 2026-10-10T19:30:00+05:30
+pubDate: 2026-10-01
 author: subhasmita mishra
 category: Bitcoin News
 tags:
