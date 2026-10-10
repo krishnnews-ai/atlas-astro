@@ -12,12 +12,13 @@ collections:
     folder: "src/content/blog"
     create: true
     slug: "{{slug}}"
+    extension: "md"
+    format: "yaml-frontmatter"
     fields:
       - { label: "Title", name: "title", widget: "string", hint: "Target keyword ko title ke shuru me rakhein (50-60 chars)" }
       - { label: "URL Slug", name: "slug", widget: "string", required: false, hint: "Custom URL link (e.g. bitcoin-news-today)" }
       - { label: "Draft Post", name: "draft", widget: "boolean", default: false, hint: "On karne par post site par hide rahegi" }
-      - { label: "Publish Date", name: "pubDate", widget: "datetime" }
-      - { label: "Updated Date", name: "updatedDate", widget: "datetime", required: false, hint: "Post update karne par date badlein (Google Freshness)" }
+      - { label: "Publish Date", name: "pubDate", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ", date_format: "YYYY-MM-DD", time_format: "HH:mm" }
       - { label: "Author Name", name: "author", widget: "string", default: "Coin AI News Team", hint: "Google E-E-A-T ranking ke liye" }
       - label: "Category"
         name: "category"
@@ -32,7 +33,7 @@ collections:
           - "Editor's Choice"
           - "Ethereum News"
           - "Stablecoin"
-      - { label: "Keywords / Tags", name: "tags", widget: "list", required: false, hint: "Relevant keywords comma se alag karein" }
+      - { label: "Keywords / Tags", name: "tags", widget: "list", required: false, default: [], hint: "Relevant keywords comma se alag karein" }
       - { label: "Meta Description", name: "description", widget: "text", hint: "150-160 characters ka summary (CTR badhane ke liye)" }
       - { label: "Cover Image", name: "image", widget: "image", required: false }
       - { label: "Image Alt Text", name: "imageAlt", widget: "string", required: false, hint: "SEO image description" }
