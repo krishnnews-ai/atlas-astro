@@ -1,5 +1,5 @@
 ---
-title: NEAR Just Flipped XLM — Here's Why This 138% Rally Is Different
+title: NEAR Just Flipped XLM — Here's Why This 138% Rally Is Differen
 slug: near-flips-xlm-top-20-crypto-rally-2026
 draft: false
 pubDate: 2026-10-08T20:43:00
