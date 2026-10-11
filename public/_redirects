@@ -4,7 +4,6 @@
 
 # 1. Blogger Posts Redirect (All 350+ Posts with Date & .html)
 /:year/:month/:slug.html /:slug/ 301
-/:year/:month/:slug.html /:slug 301
 
 # 2. Blogger Pages Redirect (For /p/about-us.html type pages)
 /p/:slug.html /:slug/ 301
