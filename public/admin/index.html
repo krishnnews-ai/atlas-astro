@@ -4,11 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tina CMS Admin</title>
+    <meta name="robots" content="noindex, nofollow" />
   </head>
   <body>
+    <div id="root"></div>
     <script type="module">
       import { createAdminApp } from "https://esm.sh/tinacms@1.5.0/dist/admin";
-      createAdminApp();
+      import { tinaConfig } from "../../tina/config.js"; 
+      // Fallback loader for static hosting
+      try {
+        createAdminApp();
+      } catch (e) {
+        console.error("Tina CMS failed to load", e);
+      }
     </script>
   </body>
 </html>
