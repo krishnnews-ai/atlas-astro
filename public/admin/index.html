@@ -6,9 +6,10 @@
     <title>Tina CMS Admin</title>
   </head>
   <body>
-    <script>
-      // Automatically redirect to the Tina admin entry point if built
-      window.location.href = "/admin/index.html";
+    <script type="module">
+      import { createAdminApp } from "https://esm.sh/tinacms@1.5.0/dist/admin";
+      // Load Tina CMS Admin dashboard directly
+      createAdminApp();
     </script>
   </body>
 </html>
