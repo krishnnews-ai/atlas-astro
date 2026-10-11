@@ -6,9 +6,23 @@
     <title>Tina CMS Admin</title>
   </head>
   <body>
+    <div id="root"></div>
     <script type="module">
-      import { createAdminApp } from "https://esm.sh/tinacms@1.5.0/dist/admin";
-      createAdminApp();
+      import { createAdminApp } from "https://esm.sh/tinacms@1.6.0/dist/admin";
+      
+      createAdminApp({
+        config: {
+          clientId: null,
+          branch: "main",
+          token: null,
+          media: {
+            tina: {
+              publicFolder: "public",
+              mediaRoot: "uploads"
+            }
+          }
+        }
+      });
     </script>
   </body>
 </html>
