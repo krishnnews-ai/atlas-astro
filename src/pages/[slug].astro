@@ -11,15 +11,12 @@ const { slug } = Astro.params;
 const doc = postDoc(slug!);
 const post = posts.find((p) => p.slug === slug);
 
-// Smart human-like description generator
 function generateDescription(title: string, excerpt?: string, category?: string): string {
   if (excerpt && excerpt.trim().length > 60) {
     return excerpt.trim().slice(0, 155).replace(/\s+\S*$/, '') + '...';
   }
-
   const cleanTitle = title.replace(/[—–-]/g, ' ').replace(/\s+/g, ' ').trim();
   const cat = category || 'crypto';
-  
   const templates = [
     `${cleanTitle}. Get the latest ${cat} news, market analysis, and expert insights from CoinAI News.`,
     `Read about ${cleanTitle.toLowerCase()} — breaking ${cat} news and in-depth coverage on CoinAI News.`,
@@ -27,24 +24,20 @@ function generateDescription(title: string, excerpt?: string, category?: string)
     `Latest update: ${cleanTitle}. Fresh ${cat} news, insights, and market coverage from CoinAI News.`,
     `${cleanTitle} — your trusted source for breaking ${cat} news and analysis. Read more on CoinAI News.`,
   ];
-  
   const idx = cleanTitle.length % templates.length;
   const desc = templates[idx];
-  
   return desc.length > 155 ? desc.slice(0, 152) + '...' : desc;
 }
 
 const category = post?.categories?.[0] || 'Crypto';
 const description = generateDescription(doc.title, post?.excerpt, category);
 
-// Breadcrumbs
 const breadcrumbs = [
   { name: 'Home', url: '/' },
-  ...(post?.categories?.[0] ? [{ name: post.categories[0], url: `/category/${post.categories[0].toLowerCase()}/` }] : []),
+  ...(post?.categories?.[0] ? [{ name: post.categories[0], url: `/category/${post.categories[0].toLowerCase().replace(/\s+/g, '-')}/` }] : []),
   { name: doc.title }
 ];
 
-// Image URL — post ka cover ya default
 const imageUrl = post?.cover
   ? (post.cover.startsWith('http') ? post.cover : `https://www.coinainews.com${post.cover}`)
   : 'https://www.coinainews.com/og-default.jpg';
@@ -65,7 +58,6 @@ const imageUrl = post?.cover
 >
   <Fragment set:html={doc.main} />
 
-  <!-- Author Box -->
   <div class="author-box">
     <img src="/authors/subhasmita-mishra.jpg" alt="Subhasmita Verma" class="author-box-img" />
     <div class="author-box-info">
