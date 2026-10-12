@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import { posts } from '../lib/content';
 
-// Atlas theme ki dummy posts filtering
 const DUMMY_SLUGS = [
   'blog-post',
   'coconut-curry-soup-with-chickpeas',
@@ -57,7 +56,7 @@ const DUMMY_SLUGS = [
 ];
 
 const cleanPosts = posts.filter((p: any) => !DUMMY_SLUGS.includes(p.slug));
-const allPosts = cleanPosts.slice().reverse();
+const allPosts = cleanPosts.slice();
 const heroMain = allPosts[0];
 const heroSide = allPosts.slice(1, 5);
 const trendingPosts = allPosts.slice(5, 11);
@@ -78,15 +77,15 @@ for (const cat of catOrder) {
 
 const today = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
-// Post HTML se pehli image nikaalo
 const POST_HTML = import.meta.glob('../generated/posts/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
 
-function getPostImage(slug: string): string {
+function getPostImage(slug: string, cover?: string): string {
+  if (cover && cover.startsWith('http')) return cover;
   const key = Object.keys(POST_HTML).find((k) => k.endsWith('/' + slug + '.html'));
-  if (!key) return '';
+  if (!key) return cover || '';
   const html = POST_HTML[key];
   const match = html.match(/<img[^>]+src=["']([^"']+)["']/i);
-  return match ? match[1] : '';
+  return match ? match[1] : (cover || '');
 }
 ---
 
@@ -188,8 +187,8 @@ function getPostImage(slug: string): string {
       <section class="mag-hero">
         <div class="mag-hero-main">
           <a href={`/${heroMain.slug}/`}>
-            {getPostImage(heroMain.slug) ? (
-              <img src={getPostImage(heroMain.slug)} alt={heroMain.title} class="hero-img" />
+            {getPostImage(heroMain.slug, heroMain.cover) ? (
+              <img src={getPostImage(heroMain.slug, heroMain.cover)} alt={heroMain.title} class="hero-img" />
             ) : (
               <div style="height:400px;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);"></div>
             )}
@@ -204,8 +203,8 @@ function getPostImage(slug: string): string {
           {heroSide.map((p) => (
             <article>
               <div class="side-thumb">
-                {getPostImage(p.slug) ? (
-                  <img src={getPostImage(p.slug)} alt={p.title} />
+                {getPostImage(p.slug, p.cover) ? (
+                  <img src={getPostImage(p.slug, p.cover)} alt={p.title} />
                 ) : (
                   <div style="width:100%;height:100%;background:linear-gradient(135deg,#2d1b4e,#1a1a2e);"></div>
                 )}
@@ -231,8 +230,8 @@ function getPostImage(slug: string): string {
           {latestPosts.slice(0, 9).map((p) => (
             <article class="mag-card">
               <div class="card-thumb">
-                {getPostImage(p.slug) ? (
-                  <img src={getPostImage(p.slug)} alt={p.title} loading="lazy" />
+                {getPostImage(p.slug, p.cover) ? (
+                  <img src={getPostImage(p.slug, p.cover)} alt={p.title} loading="lazy" />
                 ) : (
                   <div style="width:100%;height:100%;background:linear-gradient(135deg,#2d1b4e,#1a1a2e);"></div>
                 )}
@@ -253,8 +252,8 @@ function getPostImage(slug: string): string {
               {catPosts.map((p) => (
                 <article class="mag-card">
                   <div class="card-thumb">
-                    {getPostImage(p.slug) ? (
-                      <img src={getPostImage(p.slug)} alt={p.title} loading="lazy" />
+                    {getPostImage(p.slug, p.cover) ? (
+                      <img src={getPostImage(p.slug, p.cover)} alt={p.title} loading="lazy" />
                     ) : (
                       <div style="width:100%;height:100%;background:linear-gradient(135deg,#2d1b4e,#1a1a2e);"></div>
                     )}
