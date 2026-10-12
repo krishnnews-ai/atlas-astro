@@ -1,10 +1,9 @@
 ---
 title: "Morgan Stanley Predicts Tokenized Assets to Reach $3–10 Trillion by 2030, Institutional FOMO Intensifies"
-date: 2026-10-12
+pubDate: 2026-10-12
 description: "Morgan Stanley forecasts tokenized asset market to hit $3–10 trillion by 2030. Institutional FOMO intensifies as DTCC, NYSE, and Nasdaq embed tokenization into core infrastructure."
 category: "Crypto Regulations"
 tags: ["tokenization", "morgan-stanley", "institutional-fomo", "crypto-regulations", "blockchain", "tokenized-assets", "DTCC", "IMF"]
-keywords: ["Morgan Stanley tokenized assets", "tokenized assets 2030", "crypto regulations", "institutional FOMO crypto", "tokenization market size", "tokenized equities", "DTCC tokenization"]
 image: "/images/morgan-stanley-tokenized-assets-2030.jpg"
 imageAlt: "Morgan Stanley predicts tokenized assets to reach $3–10 trillion by 2030"
 author: "Krishn News"
@@ -42,7 +41,7 @@ Oldenburg described an observable fear of missing out among institutional player
 
 The IMF's analysis offered early evidence that investors value certain tokenization features. More than 50% of tokenized equity trading occurs outside traditional US market hours, and approximately 80% of trades executed on-chain were for less than one share, indicating retail demand for fractional ownership. Traditional assets absorbed between 87% and 99% of overnight price changes seen in tokenized equities, suggesting that on-chain and traditional markets respond to similar information.
 
-However, the IMF also warned that scaling tokenization could amplify traditional financial risks such as fire sales, liquidity runs, and contagion through greater interconnectedness and leverage. Features that reduce friction—including atomic settlement and continuous trading—also remove buffers that absorb shocks. For now, the fund assessed systemic risks as limited.
+However, the IMF also warned that scaling tokenization could amplify traditional financial risks such as fire sales, liquidity runs, and contagion through greater interconnectedness and leverage. Features that reduce friction—including atomic settlement and continuous trading—also remove buffers that absorb shocks. For now, the fund assessed systemic risks as low.
 
 ## The Path Forward
 
