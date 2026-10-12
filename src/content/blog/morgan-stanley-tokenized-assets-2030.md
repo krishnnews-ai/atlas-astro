@@ -41,7 +41,7 @@ Oldenburg described an observable fear of missing out among institutional player
 
 The IMF's analysis offered early evidence that investors value certain tokenization features. More than 50% of tokenized equity trading occurs outside traditional US market hours, and approximately 80% of trades executed on-chain were for less than one share, indicating retail demand for fractional ownership. Traditional assets absorbed between 87% and 99% of overnight price changes seen in tokenized equities, suggesting that on-chain and traditional markets respond to similar information.
 
-However, the IMF also warned that scaling tokenization could amplify traditional financial risks such as fire sales, liquidity runs, and contagion through greater interconnectedness and leverage. Features that reduce friction—including atomic settlement and continuous trading—also remove buffers that absorb shocks. For now, the fund assessed systemic risks as low.
+However, the IMF also warned that scaling tokenization could amplify traditional financial risks such as fire sales, liquidity runs, and contagion through greater interconnectedness and leverage. Features that reduce friction—including atomic settlement and continuous trading—also remove buffers that absorb shocks. For now, the fund assessed systemic risks as limited.
 
 ## The Path Forward
 
