@@ -1,4 +1,5 @@
 import manifest from '../data/manifest.json';
+import { getCollection } from 'astro:content';
 
 const CHROME = import.meta.glob('../generated/chrome/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
 const HOME = import.meta.glob('../generated/home/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
@@ -22,8 +23,52 @@ const chrome = (key: string): Chrome => ({
   tail: pick(CHROME, key + '.tail.html'),
 });
 
+// --- Purani posts (manifest.json se) ---
+const oldPosts = (manifest.posts || []) as Array<{
+  slug: string;
+  title: string;
+  excerpt: string;
+  cover: string;
+  date: string;
+  site: string;
+  categories: string[];
+  format: string;
+  bodyClass: string;
+}>;
+
+// --- Nayi posts (src/content/blog/ se) ---
+let newPosts: any[] = [];
+try {
+  const collection = await getCollection('blog');
+  newPosts = collection
+    .filter((p: any) => p.data.draft !== true)
+    .map((p: any) => ({
+      slug: p.data.slug || p.slug,
+      title: p.data.title || p.slug,
+      excerpt: p.data.description || '',
+      cover: p.data.image || '',
+      date: p.data.pubDate ? new Date(p.data.pubDate).toISOString().split('T')[0] : '2026-01-01',
+      site: 'CoinAINews',
+      categories: [p.data.category || 'Market News'],
+      format: 'standard',
+      bodyClass: 'single-post',
+      _isNew: true,
+      _body: p.body || '',
+      _data: p.data,
+    }));
+} catch (e) {
+  // Collection nahi mili to kuch nahi karo
+  console.warn('Blog collection not available:', e);
+}
+
+// --- Dono ko merge karo ---
+export const posts = [...oldPosts, ...newPosts].sort((a, b) => {
+  const da = new Date(a.date).getTime();
+  const db = new Date(b.date).getTime();
+  return db - da; // newest first
+});
+
 export const homes = (manifest.homes || {}) as Record<string, { title: string; bodyClass: string; css: string; chrome: string; dir?: string }>;
-export const posts = (manifest.posts || []) as Array<{ slug: string; title: string; excerpt: string; cover: string; date: string; site: string; categories: string[]; format: string; bodyClass: string }>;
 export const categories = (manifest.categories || {}) as Record<string, { title: string; bodyClass: string }>;
 export const tags = (manifest.tags || {}) as Record<string, { title: string; bodyClass: string }>;
 export const pages = (manifest.pages || {}) as Record<string, { title: string; bodyClass: string }>;
@@ -44,6 +89,33 @@ export function postDoc(slug: string): Doc {
   if (!p) {
     return { title: 'Not Found', description: '', bodyClass: DEFAULT_BODY_CLASS, css: 'single', js: 'single', dir: 'ltr', main: '', ...chrome('inner') };
   }
+
+  // Nayi post (MD se) hai to content render karo
+  let mainHtml = '';
+  if ((p as any)._isNew) {
+    const data = (p as any)._data;
+    const body = (p as any)._body || '';
+    mainHtml = `
+      <article class="atlas-post" data-slug="${p.slug}">
+        <header class="atlas-post__header">
+          <h1 class="atlas-post__title">${data.title || p.title}</h1>
+          <div class="atlas-post__meta">
+            <span class="atlas-post__author">${data.author || 'Coin AI News Team'}</span>
+            <time class="atlas-post__date" datetime="${p.date}">${p.date}</time>
+          </div>
+          <div class="atlas-post__categories">
+            <span class="atlas-post__category">${data.category || 'Market News'}</span>
+          </div>
+        </header>
+        <div class="atlas-post__content">
+          ${body}
+        </div>
+      </article>
+    `;
+  } else {
+    mainHtml = pick(POST, slug + '.html');
+  }
+
   return {
     title: p.title || slug,
     description: p.excerpt || '',
@@ -51,7 +123,7 @@ export function postDoc(slug: string): Doc {
     css: 'single',
     js: 'single',
     dir: 'ltr',
-    main: pick(POST, slug + '.html'),
+    main: mainHtml,
     ...chrome('inner')
   };
 }
