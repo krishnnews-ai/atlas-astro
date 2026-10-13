@@ -199,6 +199,15 @@ const today = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'n
     {articleSchema && <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />}
     {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
 
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D8KFCSDM2C"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-D8KFCSDM2C');
+    </script>
+
     <style is:inline>
       * { box-sizing: border-box; }
       body { margin: 0; font-family: Poppins, -apple-system, sans-serif; background: #fff; color: #111; }
