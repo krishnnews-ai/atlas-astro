@@ -13,6 +13,12 @@ const { slug } = Astro.params;
 const doc = postDoc(slug!);
 const post = posts.find((p) => p.slug === slug);
 
+// Nayi post (MD se) hai to Content component render karo
+let ContentComponent: any = null;
+if (post && (post as any)._isNew && (post as any)._Content) {
+  ContentComponent = (post as any)._Content;
+}
+
 function generateDescription(title: string, excerpt?: string, category?: string): string {
   if (excerpt && excerpt.trim().length > 60) {
     return excerpt.trim().slice(0, 155).replace(/\s+\S*$/, '') + '...';
@@ -58,7 +64,25 @@ const imageUrl = post?.cover
   breadcrumbs={breadcrumbs}
   isArticle={true}
 >
-  <Fragment set:html={doc.main} />
+  {ContentComponent ? (
+    <article class="atlas-post" data-slug={slug}>
+      <header class="atlas-post__header">
+        <h1 class="atlas-post__title">{doc.title}</h1>
+        <div class="atlas-post__meta">
+          <span class="atlas-post__author">{(post as any)?._data?.author || 'Coin AI News Team'}</span>
+          <time class="atlas-post__date" datetime={post?.date}>{post?.date}</time>
+        </div>
+        <div class="atlas-post__categories">
+          <span class="atlas-post__category">{category}</span>
+        </div>
+      </header>
+      <div class="atlas-post__content">
+        <ContentComponent />
+      </div>
+    </article>
+  ) : (
+    <Fragment set:html={doc.main} />
+  )}
 
   <div class="author-box">
     <img src="/authors/subhasmita-mishra.jpg" alt="Subhasmita Verma" class="author-box-img" />
