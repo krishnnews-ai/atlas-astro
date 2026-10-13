@@ -100,13 +100,12 @@ export function postDoc(slug: string): Doc {
     return { title: 'Not Found', description: '', bodyClass: DEFAULT_BODY_CLASS, css: 'single', js: 'single', dir: 'ltr', main: '', ...chrome('inner') };
   }
 
-  // DEBUG
-  console.log('POSTDOC slug:', slug, 'isNew:', (p as any)._isNew, 'bodyLen:', ((p as any)._body || '').length);
-
   let mainHtml = '';
-  if ((p as any)._isNew) {
-    const data = (p as any)._data;
-    const body = (p as any)._body || '';
+
+  // Agar _body hai (nayi post), to wahi use karo
+  if ((p as any)._body && (p as any)._body.length > 0) {
+    const data = (p as any)._data || {};
+    const body = (p as any)._body;
     mainHtml = `
       <article class="atlas-post" data-slug="${p.slug}">
         <header class="atlas-post__header">
