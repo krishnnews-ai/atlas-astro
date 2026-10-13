@@ -41,6 +41,7 @@ const oldPosts = (manifest.posts || []) as Array<{
 let newPosts: any[] = [];
 try {
   const collection = await getCollection('blog');
+  console.log('COLLECTION COUNT:', collection.length);
   const newPostsRaw = await Promise.all(
     collection
       .filter((p: any) => p.data.draft !== true)
@@ -78,6 +79,9 @@ export const posts = [...oldPosts, ...newPosts].sort((a, b) => {
   return db - da;
 });
 
+console.log('NEWPOSTS COUNT:', newPosts.length);
+console.log('POSTS COUNT:', posts.length);
+
 export const homes = (manifest.homes || {}) as Record<string, { title: string; bodyClass: string; css: string; chrome: string; dir?: string }>;
 export const categories = (manifest.categories || {}) as Record<string, { title: string; bodyClass: string }>;
 export const tags = (manifest.tags || {}) as Record<string, { title: string; bodyClass: string }>;
@@ -102,7 +106,6 @@ export function postDoc(slug: string): Doc {
 
   let mainHtml = '';
 
-  // Agar _body hai (nayi post), to wahi use karo
   if ((p as any)._body && (p as any)._body.length > 0) {
     const data = (p as any)._data || {};
     const body = (p as any)._body;
