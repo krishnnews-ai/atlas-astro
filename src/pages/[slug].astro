@@ -33,6 +33,12 @@ if (post && (post as any)._isNew) {
   }
 }
 
+// DEBUG
+console.log('DEBUG slug:', slug);
+console.log('DEBUG post slug:', post?.slug);
+console.log('DEBUG isNew:', (post as any)?._isNew);
+console.log('DEBUG ContentComponent:', ContentComponent ? 'YES' : 'NO');
+
 function generateDescription(title: string, excerpt?: string, category?: string): string {
   if (excerpt && excerpt.trim().length > 60) {
     return excerpt.trim().slice(0, 155).replace(/\s+\S*$/, '') + '...';
