@@ -9,6 +9,8 @@ imageAlt: "S&P Dow Jones Indices and Kaiko complete first on-chain OTC swap refe
 author: "Krishn News"
 ---
 
+![S&P Dow Jones Indices and Kaiko complete first on-chain OTC swap referencing a tokenized benchmark on Canton Network](/images/sp-dow-jones-kaiko-tokenized-index-otc-swap-canton-network.png)
+
 S&P Dow Jones Indices ("S&P DJI"), Kaiko and Derivnex today announced the completion of the first over-the-counter (OTC) swap transaction on the Canton Network. The total return swap, executed on Derivnex between DRW and Marex, references S&P DJI's iBoxx USD Liquid Investment Grade Index, which was tokenized on Canton by Kaiko.
 
 The transaction represents the first OTC derivative to reference a fully tokenized index on distributed ledger infrastructure. It demonstrates how benchmark data, licensing, trade representation and valuation can be connected within privacy-enabled infrastructure designed for institutional markets.
