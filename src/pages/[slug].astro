@@ -58,6 +58,10 @@ const imageUrl = post?.cover
   breadcrumbs={breadcrumbs}
   isArticle={true}
 >
+  <div style="padding:20px;background:#ffe0b2;font-family:monospace;font-size:16px;">
+    DEBUG main length: {doc.main ? doc.main.length : 0}
+  </div>
+
   <Fragment set:html={doc.main} />
 
   <div class="author-box">
