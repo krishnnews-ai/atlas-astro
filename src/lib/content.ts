@@ -1,5 +1,5 @@
 import manifest from '../data/manifest.json';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 
 const CHROME = import.meta.glob('../generated/chrome/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
 const HOME = import.meta.glob('../generated/home/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
@@ -40,30 +40,32 @@ const oldPosts = (manifest.posts || []) as Array<{
 let newPosts: any[] = [];
 try {
   const collection = await getCollection('blog');
-  newPosts = collection
-    .filter((p: any) => p.data.draft !== true)
-    .map((p: any) => {
-      // slug: pehle data.slug dekho, nahi to id se .md/.mdx hatao
-      const cleanId = (p.id || '').replace(/\.(md|mdx)$/i, '');
-      const slug = p.data.slug || cleanId;
-      return {
-        slug,
-        title: p.data.title || slug,
-        excerpt: p.data.description || '',
-        cover: p.data.image || '',
-        date: p.data.pubDate
-          ? new Date(p.data.pubDate).toISOString().split('T')[0]
-          : '2026-01-01',
-        site: 'CoinAINews',
-        categories: [p.data.category || 'Market News'],
-        format: 'standard',
-        bodyClass: 'single-post',
-        _isNew: true,
-        _body: p.body || '',
-        _data: p.data,
-      };
-    })
-    .filter((p: any) => p.slug);
+  const newPostsRaw = await Promise.all(
+    collection
+      .filter((p: any) => p.data.draft !== true)
+      .map(async (p: any) => {
+        const cleanId = (p.id || '').replace(/\.(md|mdx)$/i, '');
+        const slug = p.data.slug || cleanId;
+        const { Content } = await render(p);
+        return {
+          slug,
+          title: p.data.title || slug,
+          excerpt: p.data.description || '',
+          cover: p.data.image || '',
+          date: p.data.pubDate
+            ? new Date(p.data.pubDate).toISOString().split('T')[0]
+            : '2026-01-01',
+          site: 'CoinAINews',
+          categories: [p.data.category || 'Market News'],
+          format: 'standard',
+          bodyClass: 'single-post',
+          _isNew: true,
+          _Content: Content,
+          _data: p.data,
+        };
+      })
+  );
+  newPosts = newPostsRaw.filter((p: any) => p.slug);
 } catch (e) {
   console.warn('Blog collection not available:', e);
 }
@@ -72,7 +74,7 @@ try {
 export const posts = [...oldPosts, ...newPosts].sort((a, b) => {
   const da = new Date(a.date).getTime();
   const db = new Date(b.date).getTime();
-  return db - da; // newest first
+  return db - da;
 });
 
 export const homes = (manifest.homes || {}) as Record<string, { title: string; bodyClass: string; css: string; chrome: string; dir?: string }>;
@@ -97,28 +99,10 @@ export function postDoc(slug: string): Doc {
     return { title: 'Not Found', description: '', bodyClass: DEFAULT_BODY_CLASS, css: 'single', js: 'single', dir: 'ltr', main: '', ...chrome('inner') };
   }
 
-  // Nayi post (MD se) hai to content render karo
   let mainHtml = '';
   if ((p as any)._isNew) {
-    const data = (p as any)._data;
-    const body = (p as any)._body || '';
-    mainHtml = `
-      <article class="atlas-post" data-slug="${p.slug}">
-        <header class="atlas-post__header">
-          <h1 class="atlas-post__title">${data.title || p.title}</h1>
-          <div class="atlas-post__meta">
-            <span class="atlas-post__author">${data.author || 'Coin AI News Team'}</span>
-            <time class="atlas-post__date" datetime="${p.date}">${p.date}</time>
-          </div>
-          <div class="atlas-post__categories">
-            <span class="atlas-post__category">${data.category || 'Market News'}</span>
-          </div>
-        </header>
-        <div class="atlas-post__content">
-          ${body}
-        </div>
-      </article>
-    `;
+    // Nayi post (MD se) — content Astro component se render hoga
+    mainHtml = '';
   } else {
     mainHtml = pick(POST, slug + '.html');
   }
