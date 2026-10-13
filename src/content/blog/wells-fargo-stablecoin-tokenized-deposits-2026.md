@@ -2,14 +2,14 @@
 title: "Wells Fargo Moves Deeper Into Digital Assets as Major Banks Prepare for Stablecoins"
 pubDate: 2026-10-13
 description: "Wells Fargo expands into blockchain payments with tokenized deposits and joins a 21-bank stablecoin initiative. Here is what it means for crypto and banking."
-category: "Market News"
+category: "Crypto Regulations"
 tags: ["Wells Fargo", "stablecoin", "tokenized deposits", "bank stablecoin", "blockchain payments", "institutional crypto", "GENIUS Act", "MiCA", "digital assets", "crypto regulation"]
-image: "/images/wells-fargo-stablecoin-tokenized-deposits-2026.png"
+image: "/images/wells-fargo-stablecoin-blockchain-banking-2026.png"
 imageAlt: "Wells Fargo's blockchain payment strategy and institutional stablecoin adoption"
 author: "Krishn News"
 ---
 
-![Wells Fargo's blockchain payment strategy and institutional stablecoin adoption](/images/wells-fargo-stablecoin-tokenized-deposits-2026.png)
+![Wells Fargo's blockchain payment strategy and institutional stablecoin adoption](/images/wells-fargo-stablecoin-blockchain-banking-2026.png)
 
 Wells Fargo is expanding its involvement in blockchain-based financial services as major financial institutions explore stablecoins and tokenized money for payments and settlement. The US banking giant, which reports approximately $2.3 trillion in assets, announced plans for tokenized deposits in August and joined a 21-institution initiative aimed at developing a US dollar-denominated stablecoin in September.
 
