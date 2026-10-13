@@ -42,22 +42,29 @@ try {
   const collection = await getCollection('blog');
   newPosts = collection
     .filter((p: any) => p.data.draft !== true)
-    .map((p: any) => ({
-      slug: p.data.slug || p.slug,
-      title: p.data.title || p.slug,
-      excerpt: p.data.description || '',
-      cover: p.data.image || '',
-      date: p.data.pubDate ? new Date(p.data.pubDate).toISOString().split('T')[0] : '2026-01-01',
-      site: 'CoinAINews',
-      categories: [p.data.category || 'Market News'],
-      format: 'standard',
-      bodyClass: 'single-post',
-      _isNew: true,
-      _body: p.body || '',
-      _data: p.data,
-    }));
+    .map((p: any) => {
+      // slug: pehle data.slug dekho, nahi to id se .md/.mdx hatao
+      const cleanId = (p.id || '').replace(/\.(md|mdx)$/i, '');
+      const slug = p.data.slug || cleanId;
+      return {
+        slug,
+        title: p.data.title || slug,
+        excerpt: p.data.description || '',
+        cover: p.data.image || '',
+        date: p.data.pubDate
+          ? new Date(p.data.pubDate).toISOString().split('T')[0]
+          : '2026-01-01',
+        site: 'CoinAINews',
+        categories: [p.data.category || 'Market News'],
+        format: 'standard',
+        bodyClass: 'single-post',
+        _isNew: true,
+        _body: p.body || '',
+        _data: p.data,
+      };
+    })
+    .filter((p: any) => p.slug);
 } catch (e) {
-  // Collection nahi mili to kuch nahi karo
   console.warn('Blog collection not available:', e);
 }
 
