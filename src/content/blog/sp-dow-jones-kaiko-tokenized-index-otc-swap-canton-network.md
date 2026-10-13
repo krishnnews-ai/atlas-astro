@@ -4,7 +4,7 @@ pubDate: 2026-10-13
 description: "S&P DJI, Kaiko and Derivnex complete the first on-chain OTC swap referencing a tokenized benchmark on Canton Network. DRW and Marex execute the landmark total return swap."
 category: "Market News"
 tags: ["S&P Dow Jones Indices", "Kaiko", "Canton Network", "tokenized benchmark", "OTC swap", "Derivnex", "DRW", "Marex", "tokenization", "institutional derivatives"]
-image: "/images/sp-dow-jones-kaiko-tokenized-index-otc-swap-canton-network.jpg"
+image: "/images/sp-dow-jones-kaiko-tokenized-index-otc-swap-canton-network.png"
 imageAlt: "S&P Dow Jones Indices and Kaiko complete first on-chain OTC swap referencing a tokenized benchmark on Canton Network"
 author: "Krishn News"
 ---
