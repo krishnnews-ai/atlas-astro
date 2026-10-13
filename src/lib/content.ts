@@ -41,9 +41,6 @@ const oldPosts = (manifest.posts || []) as Array<{
 let newPosts: any[] = [];
 try {
   const collection = await getCollection('blog');
-  console.log('COLLECTION COUNT:', collection ? collection.length : 0);
-  console.log('COLLECTION LOADED:', collection.length);
-
   const newPostsRaw = await Promise.all(
     collection
       .filter((p: any) => p.data.draft !== true)
@@ -80,8 +77,6 @@ export const posts = [...oldPosts, ...newPosts].sort((a, b) => {
   const db = new Date(b.date).getTime();
   return db - da;
 });
-
-console.log('NEWPOSTS COUNT:', newPosts.length);
 
 export const homes = (manifest.homes || {}) as Record<string, { title: string; bodyClass: string; css: string; chrome: string; dir?: string }>;
 export const categories = (manifest.categories || {}) as Record<string, { title: string; bodyClass: string }>;
