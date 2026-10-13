@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { getCollection, render } from 'astro:content';
 import { postDoc, posts } from '../lib/content';
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
   if (!posts || !Array.isArray(posts)) return [];
   return posts
     .filter((p: any) => p && p.slug)
@@ -21,7 +21,8 @@ if (post && (post as any)._isNew) {
     const collection = await getCollection('blog');
     const cleanSlug = slug?.replace(/\.(md|mdx)$/i, '');
     const entry = collection.find((e: any) => {
-      const eSlug = e.data.slug || (e.id || '').replace(/\.(md|mdx)$/i, '');
+      const eId = (e.id || '').replace(/\.(md|mdx)$/i, '');
+      const eSlug = e.data.slug || eId.split('/').pop();
       return eSlug === slug || eSlug === cleanSlug;
     });
     if (entry) {
@@ -32,12 +33,6 @@ if (post && (post as any)._isNew) {
     console.warn('Content render error:', e);
   }
 }
-
-// DEBUG
-console.log('DEBUG slug:', slug);
-console.log('DEBUG post slug:', post?.slug);
-console.log('DEBUG isNew:', (post as any)?._isNew);
-console.log('DEBUG ContentComponent:', ContentComponent ? 'YES' : 'NO');
 
 function generateDescription(title: string, excerpt?: string, category?: string): string {
   if (excerpt && excerpt.trim().length > 60) {
