@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
 import { postDoc, posts } from '../lib/content';
 
 export function getStaticPaths() {
@@ -15,8 +16,21 @@ const post = posts.find((p) => p.slug === slug);
 
 // Nayi post (MD se) hai to Content component render karo
 let ContentComponent: any = null;
-if (post && (post as any)._isNew && (post as any)._Content) {
-  ContentComponent = (post as any)._Content;
+if (post && (post as any)._isNew) {
+  try {
+    const collection = await getCollection('blog');
+    const cleanSlug = slug?.replace(/\.(md|mdx)$/i, '');
+    const entry = collection.find((e: any) => {
+      const eSlug = e.data.slug || (e.id || '').replace(/\.(md|mdx)$/i, '');
+      return eSlug === slug || eSlug === cleanSlug;
+    });
+    if (entry) {
+      const rendered = await render(entry);
+      ContentComponent = rendered.Content;
+    }
+  } catch (e) {
+    console.warn('Content render error:', e);
+  }
 }
 
 function generateDescription(title: string, excerpt?: string, category?: string): string {
