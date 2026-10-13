@@ -1,5 +1,6 @@
 import manifest from '../data/manifest.json';
-import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
+import { marked } from 'marked';
 
 const CHROME = import.meta.glob('../generated/chrome/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
 const HOME = import.meta.glob('../generated/home/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
@@ -44,9 +45,9 @@ try {
     collection
       .filter((p: any) => p.data.draft !== true)
       .map(async (p: any) => {
-        const cleanId = (p.id || '').replace(/\.(md|mdx)$/i, '');
+        const cleanId = (p.id || '').replace(/\.(md|mdx)$/i, '').split('/').pop();
         const slug = p.data.slug || cleanId;
-        const { Content } = await render(p);
+        const htmlBody = await marked.parse(p.body || '');
         return {
           slug,
           title: p.data.title || slug,
@@ -60,7 +61,7 @@ try {
           format: 'standard',
           bodyClass: 'single-post',
           _isNew: true,
-          _Content: Content,
+          _body: htmlBody,
           _data: p.data,
         };
       })
@@ -101,8 +102,25 @@ export function postDoc(slug: string): Doc {
 
   let mainHtml = '';
   if ((p as any)._isNew) {
-    // Nayi post (MD se) — content Astro component se render hoga
-    mainHtml = '';
+    const data = (p as any)._data;
+    const body = (p as any)._body || '';
+    mainHtml = `
+      <article class="atlas-post" data-slug="${p.slug}">
+        <header class="atlas-post__header">
+          <h1 class="atlas-post__title">${data.title || p.title}</h1>
+          <div class="atlas-post__meta">
+            <span class="atlas-post__author">${data.author || 'Coin AI News Team'}</span>
+            <time class="atlas-post__date" datetime="${p.date}">${p.date}</time>
+          </div>
+          <div class="atlas-post__categories">
+            <span class="atlas-post__category">${data.category || 'Market News'}</span>
+          </div>
+        </header>
+        <div class="atlas-post__content">
+          ${body}
+        </div>
+      </article>
+    `;
   } else {
     mainHtml = pick(POST, slug + '.html');
   }
