@@ -3,7 +3,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://www.coinainews.com',
-  integrations: [sitemap({ ... })],
+  integrations: [sitemap()],
   build: { format: 'directory' },
   redirects: { '/2026/:month/:slug.html': '/:slug/' }
 });
