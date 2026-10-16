@@ -2,28 +2,6 @@ import manifest from '../data/manifest.json';
 import { getCollection } from 'astro:content';
 import { marked } from 'marked';
 
-const CHROME = import.meta.glob('../generated/chrome/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
-const HOME = import.meta.glob('../generated/home/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
-const POST = import.meta.glob('../generated/posts/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
-const CAT = import.meta.glob('../generated/cat/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
-const TAG = import.meta.glob('../generated/tag/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
-const PAGE = import.meta.glob('../generated/page/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
-
-const pick = (map: Record<string, string>, file: string) => {
-  const k = Object.keys(map).find((x) => x.endsWith('/' + file));
-  return k ? map[k] : '';
-};
-
-const SITE_DESC = 'CoinAI News';
-const DEFAULT_BODY_CLASS = 'post-template-default single single-post single-format-standard wp-embed-responsive theme-atlas s-front site-skin site-light box-solid wheading-simple sticky-header-active reading-indicator-bottom sticky-sidebar elementor-default elementor-kit-6';
-
-type Chrome = { header: string; footer: string; tail: string };
-const chrome = (key: string): Chrome => ({
-  header: pick(CHROME, key + '.header.html'),
-  footer: pick(CHROME, key + '.footer.html'),
-  tail: pick(CHROME, key + '.tail.html'),
-});
-
 // --- Dummy slugs jo purane template se aayi hain, inhe filter karna hai ---
 export const DUMMY_SLUGS = [
   'blog-post',
@@ -75,6 +53,28 @@ export const DUMMY_SLUGS = [
   'will-humans-be-able-to-live-in-mars-in-the-future',
   'winter-dressing-tips-when-its-really-cold-out'
 ];
+
+const CHROME = import.meta.glob('../generated/chrome/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+const HOME = import.meta.glob('../generated/home/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+const POST = import.meta.glob('../generated/posts/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+const CAT = import.meta.glob('../generated/cat/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+const TAG = import.meta.glob('../generated/tag/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+const PAGE = import.meta.glob('../generated/page/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+
+const pick = (map: Record<string, string>, file: string) => {
+  const k = Object.keys(map).find((x) => x.endsWith('/' + file));
+  return k ? map[k] : '';
+};
+
+const SITE_DESC = 'CoinAI News';
+const DEFAULT_BODY_CLASS = 'post-template-default single single-post single-format-standard wp-embed-responsive theme-atlas s-front site-skin site-light box-solid wheading-simple sticky-header-active reading-indicator-bottom sticky-sidebar elementor-default elementor-kit-6';
+
+type Chrome = { header: string; footer: string; tail: string };
+const chrome = (key: string): Chrome => ({
+  header: pick(CHROME, key + '.header.html'),
+  footer: pick(CHROME, key + '.footer.html'),
+  tail: pick(CHROME, key + '.tail.html'),
+});
 
 // --- Purani posts (manifest.json se) ---
 const oldPosts = (manifest.posts || []) as Array<{
