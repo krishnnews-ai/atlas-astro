@@ -59,6 +59,10 @@ const imageUrl = post?.cover
   breadcrumbs={breadcrumbs}
   isArticle={true}
 >
+  {post?.cover && (
+    <img src={imageUrl} alt={doc.title} class="post-hero-image" />
+  )}
+
   <Fragment set:html={doc.main} />
 
   <div class="author-box">
@@ -135,6 +139,14 @@ const imageUrl = post?.cover
       margin-right: 16px;
     }
     .author-box-socials a:hover { text-decoration: underline; }
+    .post-hero-image {
+      max-width: 800px;
+      width: 100%;
+      height: auto;
+      margin: 30px auto;
+      display: block;
+      border-radius: 8px;
+    }
     @media (max-width: 600px) {
       .author-box { flex-direction: column; text-align: center; align-items: center; }
     }
