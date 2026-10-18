@@ -2,8 +2,11 @@
 # CoinAI News — Redirects
 # ============================================
 
-# 1. Blogger Pages Redirect (/p/about-us.html → /about-us/)
-/p/*  /:splat  301
+# 1. Blogger date-based posts (/2023/10/post-name.html → /post-name/)
+/20:year/:month/:slug.html  /:slug/  301
 
-# 2. Trailing slash fix
+# 2. Blogger pages (/p/about-us.html → /about-us/)
+/p/:slug.html  /:slug/  301
+
+# 3. Trailing slash fix
 /can-coinbase-reverse-bitcoin-sent-to-another-coinbase-user  /can-coinbase-reverse-bitcoin-sent-to-another-coinbase-user/  301
