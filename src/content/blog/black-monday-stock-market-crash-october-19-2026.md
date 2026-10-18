@@ -4,6 +4,7 @@ description: "Could October 19, 2026, trigger a Black Monday-style market crash?
 pubDate: 2026-10-18
 category: "Market News"
 image: "/images/black-monday-stock-market-crash-october-19-2026.png"
+cover: "/images/black-monday-stock-market-crash-october-19-2026.png"
 imageAlt: "Global stock market volatility concept with falling charts, crude oil prices and Wall Street skyline ahead of October 19, 2026"
 slug: "black-monday-stock-market-crash-october-19-2026"
 author: "Subhasmita Verma"
