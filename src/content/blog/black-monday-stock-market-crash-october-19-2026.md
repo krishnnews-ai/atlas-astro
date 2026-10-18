@@ -3,7 +3,7 @@ title: "Is a Black Monday Stock Market Crash Coming on October 19, 2026?"
 description: "Could October 19, 2026, trigger a Black Monday-style market crash? Explore oil prices, AI sell-offs, bond yields, VIX and market circuit breakers."
 pubDate: 2026-10-18
 category: "Market News"
-image: "/images/black-monday-stock-market-crash-october-19-2026 (2).png"
+image: "/images/black-monday-stock-market-crash-october-19-2026.png"
 imageAlt: "Global stock market volatility concept with falling charts, crude oil prices and Wall Street skyline ahead of October 19, 2026"
 slug: "black-monday-stock-market-crash-october-19-2026"
 author: "Subhasmita Verma"
