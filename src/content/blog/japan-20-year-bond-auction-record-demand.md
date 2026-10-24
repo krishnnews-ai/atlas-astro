@@ -3,9 +3,9 @@ title: "Japan's 20-Year Bond Auction Sees Record Demand: Why Investors Are Retur
 description: "Japan's 20-year government bond auction drew record demand on October 20, 2026, with a bid-to-cover ratio of 5.84 and an average yield of 3.723%. Higher yields are pulling investors back into Japanese debt, but inflation, government borrowing and Bank of Japan policy remain key risks."
 pubDate: 2026-10-20
 category: "Market News"
-image: "/images/japan-finance-growth-at-sunset.png"
-cover: "/images/japan-finance-growth-at-sunset.png"
-imageAlt: "Japan finance growth concept at sunset representing record demand for 20-year Japanese government bonds"
+image: "/images/japan-20-year-government-bonds-record-demand.png"
+cover: "/images/japan-20-year-government-bonds-record-demand.png"
+imageAlt: "Japan 20-year government bonds record demand concept showing rising yields and investor interest"
 slug: "japan-20-year-bond-auction-record-demand"
 author: "Subhasmita Verma"
 keywords: "Japan 20-year bond auction, Japanese government bonds, JGB, bid-to-cover ratio, Japan bond yield, Bank of Japan, Japan inflation, Japan debt, global bond market, yen, #JapanBonds #JGB #BankOfJapan #MarketNews #GlobalMarkets #BondMarket"
