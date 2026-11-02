@@ -15,14 +15,6 @@ draft: false
 
 # Hong Kong Offers Up to HK$500,000 for Blockchain Projects as New Tokenization Platform Launches
 
-**SEO Title:** Hong Kong Offers HK$500K Blockchain Grants as tConnect Launches
-**Meta Description:** Hong Kong opens a new blockchain and RWA funding programme offering up to HK$500,000 per project, while HKMA and Cyberport launch the tConnect tokenization platform.
-**URL Slug:** `hong-kong-blockchain-grant-tokenization-tconnect-launch`
-**Category:** Wallet
-**Byline:** CoinAINews Editorial Team
-
----
-
 Hong Kong is stepping up its efforts to attract blockchain and digital asset businesses with two initiatives aimed at moving tokenization projects closer to real-world use.
 
 Cyberport has opened applications for the second round of its **Blockchain and Digital Asset Pilot Subsidy Scheme**, offering eligible projects funding of up to **80% of their actual development costs**, subject to a maximum grant of **HK$500,000 per approved project**.
@@ -265,5 +257,3 @@ No. Participation in the Launchpad does not constitute regulatory approval or en
 ## Editorial Note
 
 This report distinguishes between Cyberport's financial subsidy programme and the separate HKMA-Cyberport tConnect Launchpad. Funding is subject to eligibility, assessment and approval. Programme details and deadlines should be checked against the official pages before an application is submitted.
-
-**CoinAINews Editorial Team**
