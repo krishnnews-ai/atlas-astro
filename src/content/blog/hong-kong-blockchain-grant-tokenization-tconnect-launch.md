@@ -13,8 +13,6 @@ tags: ["#CryptoNews", "#HongKong", "#Blockchain", "#RWA", "#Tokenization", "#HKM
 draft: false
 ---
 
-# Hong Kong Offers Up to HK$500,000 for Blockchain Projects as New Tokenization Platform Launches
-
 Hong Kong is stepping up its efforts to attract blockchain and digital asset businesses with two initiatives aimed at moving tokenization projects closer to real-world use.
 
 Cyberport has opened applications for the second round of its **Blockchain and Digital Asset Pilot Subsidy Scheme**, offering eligible projects funding of up to **80% of their actual development costs**, subject to a maximum grant of **HK$500,000 per approved project**.
