@@ -1,0 +1,33 @@
+name: Optimize Images to WebP
+
+on:
+  push:
+    paths:
+      - 'public/**/*.{png,jpg,jpeg}'
+      - '**.md'
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write 
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run webp-me-all
+        run: npx webp-me-all "public/**/*.{png,jpg,jpeg}" --delete-originals
+
+      - name: Commit Changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m "Auto-convert images to WebP" || exit 0
+          git push
